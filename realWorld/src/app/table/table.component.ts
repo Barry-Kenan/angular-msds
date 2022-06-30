@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -6,16 +6,4 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./table.component.css'],
   //providers: [DataService],
 })
-export class TableComponent  {
-  items: string[] = [];
-  name: string = '';
-  // constructor(private dataService: DataService) {}
-
-  // addItem(name: string) {
-  //   this.dataService.addData(name);
-  //   this.name = ''
-  // }
-  // ngOnInit() {
-  //   this.items = this.dataService.getData();
-  // }
-}
+export class TableComponent {}

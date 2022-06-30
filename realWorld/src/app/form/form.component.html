@@ -15,72 +15,90 @@
     </div>
     <br />
     <div>
-        Заявитель
-        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="" [(ngModel)]="selectedZ" style="width: 100%">
-            <nz-option nzCustomContent nzLabel="Заявитель 1" nzValue="Заявитель 1">
-              Заявитель 1
-            </nz-option>
-            <nz-option nzCustomContent nzLabel="Заявитель 2" nzValue="Заявитель 2">
-                Заявитель 2
-            </nz-option>
-            <nz-option nzCustomContent nzLabel="Заявитель 3" nzValue="Заявитель 3">
-                Заявитель 3
-            </nz-option>
-        </nz-select>
+      Заявитель
+      <nz-select
+        nzShowSearch
+        nzAllowClear
+        nzPlaceHolder=""
+        [(ngModel)]="selectedZ"
+        style="width: 100%"
+      >
+        <nz-option nzCustomContent nzLabel="Заявитель 1" nzValue="Заявитель 1">
+          Заявитель 1
+        </nz-option>
+        <nz-option nzCustomContent nzLabel="Заявитель 2" nzValue="Заявитель 2">
+          Заявитель 2
+        </nz-option>
+        <nz-option nzCustomContent nzLabel="Заявитель 3" nzValue="Заявитель 3">
+          Заявитель 3
+        </nz-option>
+      </nz-select>
     </div>
-    <br>
+    <br />
     <div>
-        <label nz-checkbox [(ngModel)]="checked">Посредник</label>
+      <label nz-checkbox [(ngModel)]="checked">Посредник</label>
     </div>
-    <br>
+    <br />
     <div>
-        Посредник
-        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="" [(ngModel)]="selectedP" style="width: 100%">
-            <nz-option nzCustomContent nzLabel="Посредник 1" nzValue="Посредник 1">
-                Посредник 1
-            </nz-option>
-            <nz-option nzCustomContent nzLabel="Посредник 2" nzValue="Посредник 2">
-                Посредник 2
-            </nz-option>
-        </nz-select>
+      Посредник
+      <nz-select
+        nzShowSearch
+        nzAllowClear
+        nzPlaceHolder=""
+        [(ngModel)]="selectedP"
+        style="width: 100%"
+      >
+        <nz-option nzCustomContent nzLabel="Посредник 1" nzValue="Посредник 1">
+          Посредник 1
+        </nz-option>
+        <nz-option nzCustomContent nzLabel="Посредник 2" nzValue="Посредник 2">
+          Посредник 2
+        </nz-option>
+      </nz-select>
     </div>
-    <br>
+    <br />
     <div>
-        Регулярность
-        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="" [(ngModel)]="selectedR" style="width: 100%">
-            <nz-option nzCustomContent nzLabel="Регулярно" nzValue="Регулярно">
-                Регулярно
-            </nz-option>
-            <nz-option nzCustomContent nzLabel="Разово" nzValue="Разово">
-                Разово
-            </nz-option>
-        </nz-select>
+      Регулярность
+      <nz-select
+        nzShowSearch
+        nzAllowClear
+        nzPlaceHolder=""
+        [(ngModel)]="selectedR"
+        style="width: 100%"
+      >
+        <nz-option nzCustomContent nzLabel="Регулярно" nzValue="Регулярно">
+          Регулярно
+        </nz-option>
+        <nz-option nzCustomContent nzLabel="Разово" nzValue="Разово">
+          Разово
+        </nz-option>
+      </nz-select>
     </div>
-    <br>
+    <br />
     <div nz-row>
-        <div nz-col [nzSpan]="8" [nzOffset]="6">
-          <button
-            nz-button
-            class="login-form-button login-form-margin"
-            [nzType]="'primary'"
-          >
-            Отмена
-          </button>
-        </div>
-        <div nz-col [nzSpan]="8" >
-          <button
-            nz-button
-            class="login-form-button login-form-margin"
-            [nzType]="'primary'"
-          >
-            Сохранить
-          </button>
-        </div>
+      <div nz-col [nzSpan]="8" [nzOffset]="6">
+        <button
+          nz-button
+          class="login-form-button login-form-margin"
+          [nzType]="'primary'"
+        >
+          Отмена
+        </button>
       </div>
+      <div nz-col [nzSpan]="8">
+        <button
+          nz-button
+          class="login-form-button login-form-margin"
+          [nzType]="'primary'"
+        >
+          Сохранить
+        </button>
+      </div>
+    </div>
   </div>
 </div>
-<br>
-<hr>
+<br />
+<hr />
 <div>
-    <app-navbar></app-navbar>
+  <app-navbar></app-navbar>
 </div>

@@ -33,9 +33,9 @@ export class AuthService {
     subdivision: null,
   };
 
-  getProfileData(): UserProfile{
-    return this.userProfileData
-  }; 
+  getProfileData(): UserProfile {
+    return this.userProfileData;
+  }
 
   login(user: User) {
     const body = {
@@ -47,7 +47,6 @@ export class AuthService {
       this.userProfileData = res.userProfile;
       this.router.navigate(['/']);
       localStorage.setItem('auth-token', res.token);
-      // console.log(this.getProfileData())
     });
   }
 
