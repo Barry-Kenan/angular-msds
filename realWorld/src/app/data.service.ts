@@ -45,7 +45,7 @@ export class AuthService {
     };
     return this.http.post(this.url + 'login', body).subscribe((res: any) => {
       this.userProfileData = res.userProfile;
-      this.router.navigate(['/form']);
+      this.router.navigate(['/']);
       localStorage.setItem('auth-token', res.token);
       // console.log(this.getProfileData())
     });
