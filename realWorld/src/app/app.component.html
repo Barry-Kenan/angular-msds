@@ -1,7 +1,20 @@
-<!-- <div>
-  <app-login></app-login>
+<!-- <button nz-button (click)="increase()">Increase</button>
+<button nz-button (click)="decrease()" [disabled] = "disableDecrease$ | async">Decrease</button>
+<button nz-button (click)="clear()" [disabled] = "disableDecrease$ | async">Clear</button>
+
+<div>
+  <span>Counter is: {{count$ | async}} ; Updated at: {{updateAt$| async | date: "yyyy-MM-dd-hh:mm:ss"}}</span>
+</div>
+<div>
+  <textarea rows="4" nz-input   [(ngModel)]="text"></textarea>
+</div>
+<div>
+  <button nz-button (click)="Send()">send</button>
 </div> -->
+
 <div>
   <router-outlet></router-outlet>
 </div>
-
+<div>
+  <app-table></app-table>
+</div>
