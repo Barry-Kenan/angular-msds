@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User, UserProfile } from './modules';
 
+// *//
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  url = 'https://iap_dev2.tomskasu.ru/api/';
+  private url = 'https://iap_dev2.tomskasu.ru/api/';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -32,7 +33,6 @@ export class AuthService {
     roleId: '',
     subdivision: null,
   };
-  
 
   login(user: User) {
     const body = {

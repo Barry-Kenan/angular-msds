@@ -15,6 +15,7 @@ interface DataItem {
   kodTnWedEaes: number
 }
 
+// список ПБ  *//
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',

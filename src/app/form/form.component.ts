@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+
+// новый ПБ  *//
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',

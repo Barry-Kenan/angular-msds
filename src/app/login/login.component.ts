@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../data.service';
 
+
+// Логин ПБ  *//
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -35,7 +37,7 @@ export class LoginComponent implements OnInit {
     this.validateForm = this.fb.group({
       userName: [null, [Validators.required]],
       password: [null, [Validators.required]],
-      remember: [false, Validators.requiredTrue],
+      remember: [false],
     });
   }
 }
