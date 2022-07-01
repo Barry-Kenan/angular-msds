@@ -1,3 +1,27 @@
-<div>
-  <router-outlet></router-outlet>
-</div>
+<nz-layout>
+  <nz-header>
+    <div nz-row>
+      <div nz-col nzSpan="20">
+        <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">  
+        </ul>
+      </div>
+      <div nz-col nzSpan="4">
+        <div><span nz-typography nzType="success"><button nz-button *ngIf="!logIn"><a href="/login">Login</a></button>
+          <nz-divider nzType="vertical"></nz-divider><button nz-button (click)="logout()">Logout</button></span></div>
+      </div>
+    </div>
+  </nz-header>
+  <nz-layout>
+    <nz-layout class="inner-layout">
+      <nz-content>
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>
+
+
+
+

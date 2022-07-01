@@ -45,15 +45,15 @@ export class AuthService {
     };
     return this.http.post(this.url + 'login', body).subscribe((res: any) => {
       this.userProfileData = res.userProfile;
-      this.router.navigate(['/']);
-      localStorage.setItem('auth-token', res.token);
+      this.router.navigate(['/table']);
+      localStorage.setItem('auth-token', res.accessToken);
     });
   }
 
   logout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('auth-token');
   }
-  public get logIn(): boolean {
-    return localStorage.getItem('token') !== null;
+  public get isAuth(): boolean {
+    return localStorage.getItem('auth-token') !== null;
   }
 }

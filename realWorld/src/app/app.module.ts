@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { ru_RU } from 'ng-zorro-antd/i18n';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -24,13 +25,17 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { TableComponent } from './table/table.component';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzTableModule } from 'ng-zorro-antd/table';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { metaReducers, reducers } from 'src/store/state';
+import { metaReducers, reducers } from 'src/store/state/store';
 import { CountEffects } from 'src/store/effects/count.effects';
+import { AuthGuard } from './auth.guard';
 
 registerLocaleData(ru);
 
@@ -49,6 +54,7 @@ registerLocaleData(ru);
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    NzLayoutModule,
     NzFormModule,
     NzButtonModule,
     NzGridModule,
@@ -57,6 +63,9 @@ registerLocaleData(ru);
     NzDatePickerModule,
     NzSpaceModule,
     NzSelectModule,
+    NzTypographyModule,
+    NzDividerModule,
+    NzTableModule,
 
     StoreModule.forRoot(reducers, {
       metaReducers,
@@ -72,7 +81,7 @@ registerLocaleData(ru);
     EffectsModule.forRoot([CountEffects]),
     StoreRouterConnectingModule.forRoot(),
   ],
-  providers: [{ provide: NZ_I18N, useValue: ru_RU }],
+  providers: [{ provide: NZ_I18N, useValue: ru_RU }, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

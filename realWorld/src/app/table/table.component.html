@@ -1,1 +1,25 @@
-<p>table</p>
+<nz-table #sortTable [nzData]="listOfData" nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th *ngFor="let column of listOfColumn" >
+          {{ column.title }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of sortTable.data">
+        <td>{{ data.n }}</td>
+        <td>{{ data.dataPostupleniya }}</td>
+        <td>{{ data.nomerPB }}</td>
+        <td>{{ data.status }}</td>
+        <td>{{ data.naimenovaniye }}</td>
+        <td>{{ data.zayavitel }}</td>
+        <td>{{ data.posrednik }}</td>
+        <td>{{ data.ekspert }}</td>
+        <td>{{ data.deystvitelenOt }}</td>
+        <td>{{ data.deystvitelenDo }}</td>
+        <td>{{ data.kodOkppd }}</td>
+        <td>{{ data.kodTnWedEaes }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
