@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User, UserProfile } from './modules';
 
-// *//
+// Сервис для логина*//
 @Injectable({
   providedIn: 'root',
 })
@@ -49,6 +49,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('auth-token');
+    this.router.navigate(['/login'])
   }
   public get isAuth(): boolean {
     return localStorage.getItem('auth-token') !== null;

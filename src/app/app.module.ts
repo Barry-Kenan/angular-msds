@@ -23,6 +23,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { TableComponent } from './table/table.component';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
@@ -59,6 +60,7 @@ registerLocaleData(ru);
     NzTypographyModule,
     NzDividerModule,
     NzTableModule,
+    NzIconModule,
 
     StoreModule.forRoot(reducers, {
       metaReducers,

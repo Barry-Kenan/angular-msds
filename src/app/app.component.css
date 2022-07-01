@@ -17,6 +17,6 @@
 
   nz-content {
     background: #fff;
-    padding: 24px;
-    min-height: 280pxs;
+    max-width: 100%;
+    min-height: 875px;
   }

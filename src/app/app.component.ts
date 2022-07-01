@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { AuthService } from './data.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAuth = this.authService.isAuth;
+    // debugger;
     this.name = this.authService.getUserName;
   }
 

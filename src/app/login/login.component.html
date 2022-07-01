@@ -1,60 +1,72 @@
 <div class="login">
   <div nz-row nzJustify="center">
-    <div nz-col nzSpan="12" nzOffset="6">
+    <div nz-col>
       <form
         nz-form
         [formGroup]="validateForm"
         class="login-form"
         (ngSubmit)="submitForm()"
       >
-        <h2>Вход в систему</h2>
+        <div class="login-title1">Вход в систему</div>
         <nz-form-item>
           <nz-form-control nzErrorTip="Please input your username!">
-            <nz-input-group nzPrefixIcon="user">
-              <input
+            <p class="login-title2">Логин</p>
+            <nz-input-group  class="login-inputGroup">
+              <nz-row>
+                <nz-col [nzSpan]="2" class="login-icons"><i nz-icon nzType="user"></i></nz-col>
+                <nz-col [nzSpan]="22" class="login-input-container">
+                  <input
                 type="text"
                 nz-input
                 formControlName="userName"
-                placeholder="Username"
+                class="login-input"
               />
+                </nz-col>
+              </nz-row>
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
           <nz-form-control nzErrorTip="Please input your Password!">
-            <nz-input-group nzPrefixIcon="lock">
-              <input
+            <p class="login-title2">Пароль</p>
+            <nz-input-group>
+              <nz-row>
+                <nz-col [nzSpan]="2" class="login-icons"><i nz-icon nzType="lock"></i></nz-col>
+                <nz-col [nzSpan]="22" class="login-input-container">
+                  <input
                 type="password"
                 nz-input
                 formControlName="password"
-                placeholder="Password"
+                class="login-input"
               />
+                </nz-col>
+              </nz-row>
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
         <div nz-row class="login-form-margin">
           <div nz-col [nzSpan]="24">
-            <label nz-checkbox formControlName="remember">
+            <label nz-checkbox class="login-checkbox" formControlName="remember">
               Оставаться в системе
             </label>
           </div>
         </div>
         <div nz-row>
-          <div nz-col [nzSpan]="8" [nzOffset]="2">
+          <div nz-col [nzSpan]="9" [nzOffset]="1">
             <button
               nz-button
+              nzSize="large"
               (click)="resetForm($event)"
-              class="login-form-button login-form-margin"
-              [nzType]="'primary'"
+              class="login-form-button-cancel login-form-button "
             >
               Отмена
             </button>
           </div>
-          <div nz-col [nzSpan]="8" [nzOffset]="4">
+          <div nz-col [nzSpan]="9" [nzOffset]="4">
             <button
               nz-button
-              class="login-form-button login-form-margin"
-              [disabled]="!validateForm.valid"
+              nzSize="large"
+              class="login-form-button-open login-form-button "
               [nzType]="'primary'"
             >
               Войти
@@ -65,5 +77,4 @@
     </div>
   </div>
 </div>
-<hr />
 
