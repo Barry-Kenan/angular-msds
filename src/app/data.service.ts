@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { User, UserProfile } from './app.module';
+import { User, UserProfile } from './modules';
 
 @Injectable({
   providedIn: 'root',
@@ -32,10 +32,7 @@ export class AuthService {
     roleId: '',
     subdivision: null,
   };
-
-  getProfileData(): UserProfile {
-    return this.userProfileData;
-  }
+  
 
   login(user: User) {
     const body = {
@@ -55,5 +52,8 @@ export class AuthService {
   }
   public get isAuth(): boolean {
     return localStorage.getItem('auth-token') !== null;
+  }
+  public get getUserName(): string {
+    return this.userProfileData.displayName;
   }
 }

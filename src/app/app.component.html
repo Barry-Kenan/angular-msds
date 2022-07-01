@@ -6,8 +6,8 @@
         </ul>
       </div>
       <div nz-col nzSpan="4">
-        <div><span nz-typography nzType="success"><button nz-button *ngIf="!logIn"><a href="/login">Login</a></button>
-          <nz-divider nzType="vertical"></nz-divider><button nz-button (click)="logout()">Logout</button></span></div>
+        <div><span nz-typography nzType="success"><button nz-button *ngIf="!isAuth"><a href="/login">Login</a></button><span>{{name}}</span> 
+          <nz-divider nzType="vertical"></nz-divider><button nz-button *ngIf="isAuth" (click)="logout()">Logout</button></span></div>
       </div>
     </div>
   </nz-header>

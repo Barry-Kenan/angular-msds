@@ -18,7 +18,6 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { FormComponent } from './form/form.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
@@ -40,13 +39,7 @@ import { AuthGuard } from './auth.guard';
 registerLocaleData(ru);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    FormComponent,
-    NavbarComponent,
-    TableComponent,
-  ],
+  declarations: [AppComponent, LoginComponent, FormComponent, TableComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -85,31 +78,3 @@ registerLocaleData(ru);
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-
-export interface User {
-  userName: string;
-  password: string;
-  remember: boolean;
-}
-
-export interface UserProfile {
-  displayName: string;
-  email: string;
-  emailAdditional: string | null;
-  emailMainDispatch: string;
-  firstName: string;
-  id: string;
-  initials: string | null;
-  isConfirmed: boolean;
-  isDeleted: boolean;
-  isMediator: string | null;
-  lastName: string;
-  lastUserActivityDate: string | null;
-  organizationId: string | null;
-  patronymic: string;
-  phone: string | null;
-  position: string | null;
-  registrationDate: string | null;
-  roleId: string;
-  subdivision: string | null;
-}

@@ -9,7 +9,8 @@
     "test": "ng test",
     "prepare": "husky install",
     "lint": "ng lint",
-    "lint-fix": "ng lint --fix"
+    "lint-fix": "ng lint --fix",
+    "lint-css": "stylelint src/**/*.css"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +28,8 @@
     "@ngrx/store-devtools": "^13.2.0",
     "ng-zorro-antd": "^13.3.2",
     "rxjs": "~7.4.0",
+    "stylelint": "^14.9.1",
+    "stylelint-config-standard": "^26.0.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

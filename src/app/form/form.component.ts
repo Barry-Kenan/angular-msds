@@ -6,11 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent {
-  date = null;
-  selectedZ = null;
-  selectedP = null;
-  selectedR = null;
-  checked = true;
+  public date = null;
+  public selectedZ = null;
+  public selectedP = null;
+  public selectedR = null;
+  public checked = true;
 
   onChange(result: Date): void {
     console.log('onChange: ', result);
