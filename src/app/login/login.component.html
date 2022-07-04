@@ -1,25 +1,26 @@
 <div class="login">
-  <div nz-row nzJustify="center">
-    <div nz-col>
+  <div nz-row nzJustify="center" class="login-content">
+    <div nz-col [nzLg]="7" [nzMd]="16" [nzXs]="24">
       <form
         nz-form
         [formGroup]="validateForm"
         class="login-form"
         (ngSubmit)="submitForm()"
       >
-        <div class="login-title1">Вход в систему</div>
+        <div class="login-form-title1">Вход в систему</div>
         <nz-form-item>
           <nz-form-control nzErrorTip="Please input your username!">
-            <p class="login-title2">Логин</p>
+            <p class="login-form-title2">Логин</p>
             <nz-input-group  class="login-inputGroup">
               <nz-row>
-                <nz-col [nzSpan]="2" class="login-icons"><i nz-icon nzType="user"></i></nz-col>
-                <nz-col [nzSpan]="22" class="login-input-container">
+                <nz-col [nzLg]="2" [nzMd]="2" [nzXs]="4" class="login-form-icons"><i nz-icon nzType="user"></i></nz-col>
+                <nz-col [nzLg]="22" [nzMd]="22" [nzXs]="20" class="login-input-container">
                   <input
                 type="text"
                 nz-input
+                nzSize="large"
                 formControlName="userName"
-                class="login-input"
+                class="login-form-input"
               />
                 </nz-col>
               </nz-row>
@@ -28,25 +29,26 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-control nzErrorTip="Please input your Password!">
-            <p class="login-title2">Пароль</p>
+            <p class="login-form-title2">Пароль</p>
             <nz-input-group>
               <nz-row>
-                <nz-col [nzSpan]="2" class="login-icons"><i nz-icon nzType="lock"></i></nz-col>
-                <nz-col [nzSpan]="22" class="login-input-container">
+                <nz-col [nzLg]="2" [nzMd]="2" [nzXs]="4" class="login-form-icons"><i nz-icon nzType="lock"></i></nz-col>
+                <nz-col [nzLg]="22" [nzMd]="22" [nzXs]="20" class="login-input-container">
                   <input
                 type="password"
                 nz-input
+                nzSize="large"
                 formControlName="password"
-                class="login-input"
+                class="login-form-input"
               />
                 </nz-col>
               </nz-row>
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
-        <div nz-row class="login-form-margin">
-          <div nz-col [nzSpan]="24">
-            <label nz-checkbox class="login-checkbox" formControlName="remember">
+        <div nz-row class="login-form-margin" nzJustify="center">
+          <div nz-col [nzSpan]="10">
+            <label nz-checkbox class="login-form-checkbox" formControlName="remember">
               Оставаться в системе
             </label>
           </div>
@@ -57,7 +59,7 @@
               nz-button
               nzSize="large"
               (click)="resetForm($event)"
-              class="login-form-button-cancel login-form-button "
+              class="login-form-button-cancel login-form-button"
             >
               Отмена
             </button>
