@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User, UserProfile } from './modules';
+import { PassportService } from './passport.service';
 
 // Сервис для логина*//
 @Injectable({
@@ -10,7 +11,8 @@ import { User, UserProfile } from './modules';
 export class AuthService {
   private url = 'https://iap_dev2.tomskasu.ru/api/';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, 
+    private passportService: PassportService) {}
 
   private userProfileData: UserProfile = {
     displayName: '',
@@ -34,20 +36,22 @@ export class AuthService {
     subdivision: null,
   };
 
-  login(user: User) {
+  public login(user: User) {
     const body = {
       login: user.userName,
       password: user.password,
       remember: user.remember,
     };
+
     return this.http.post(this.url + 'login', body).subscribe((res: any) => {
       this.userProfileData = res.userProfile;
       this.router.navigate(['/table']);
       localStorage.setItem('auth-token', res.accessToken);
+      this.passportService.getListPassport();
     });
   }
 
-  logout() {
+  public logout() {
     localStorage.removeItem('auth-token');
     this.router.navigate(['/login'])
   }

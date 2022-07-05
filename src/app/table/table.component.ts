@@ -1,120 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ListPassport } from '../modules';
+import { PassportService } from '../passport.service';
 
-interface DataItem {
-  n: number,
-  dataPostupleniya: string,
-  nomerPB: number,
-  status: number,
-  naimenovaniye: number,
-  zayavitel: string,
-  posrednik: string,
-  ekspert: string,
-  deystvitelenOt: string,
-  deystvitelenDo: string,
-  kodOkppd: number,
-  kodTnWedEaes: number
-}
-
-// список ПБ  *//
+/* список ПБ  */
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
 })
-export class TableComponent {
-  listOfColumn = [
-    {
-      title: '№',
-      compare: null,
-      priority: false
-    },
-    {
-      title: 'Дата поступления документов',
-      priority: 3
-    },
-    {
-      title: 'Номер ПБ',
-      priority: 2
-    },
-    {
-      title: 'Статус',
-      priority: 1
-    },
-    {
-      title: 'Наименование',
-      priority: 1
-    },
-    {
-      title: 'Заявитель',
-      priority: 1
-    },
-    {
-      title: 'Посредник',
-      priority: 1
-    },
-    {
-      title: 'Эксперт',
-      priority: 1
-    },
-    {
-      title: 'Действителен от',
-      priority: 1
-    },
-    {
-      title: 'Дата выполнения работ',
-      priority: 1
-    },
-    {
-      title: 'Код ОКПД 2',
-      priority: 1
-    },
-    {
-      title: 'Код ТН ВЭД ЕАЭС',
-      priority: 1
-    },
-  ];
-  listOfData: DataItem[] = [
-    {
-      n: 1,
-      dataPostupleniya: 'John Brown',
-      nomerPB: 98,
-      status: 60,
-      naimenovaniye: 70,
-      zayavitel: 'asdfasd',
-      posrednik: 'asdfasdff',
-      ekspert: 'asdf',
-      deystvitelenOt: 'dfasdfa',
-      deystvitelenDo: 'asdfasd',
-      kodOkppd: 231,
-      kodTnWedEaes: 123
-    },
-    {
-      n: 2,
-      dataPostupleniya: 'John Brown',
-      nomerPB: 98,
-      status: 60,
-      naimenovaniye: 70,
-      zayavitel: 'asdfasd',
-      posrednik: 'asdfasdff',
-      ekspert: 'asdf',
-      deystvitelenOt: 'dfasdfa',
-      deystvitelenDo: 'asdfasd',
-      kodOkppd: 231,
-      kodTnWedEaes: 123
-    },
-    {
-      n: 3,
-      dataPostupleniya: 'John Brown',
-      nomerPB: 98,
-      status: 60,
-      naimenovaniye: 70,
-      zayavitel: 'asdfasd',
-      posrednik: 'asdfasdff',
-      ekspert: 'asdf',
-      deystvitelenOt: 'dfasdfa',
-      deystvitelenDo: 'asdfasd',
-      kodOkppd: 231,
-      kodTnWedEaes: 123
-    },
-  ];
+export class TableComponent implements OnInit {
+  constructor(public passportService: PassportService) {};
+  private totalPageCount: number = 0;
+  ngOnInit(): void {
+    this.passportService.getListPassport().subscribe((res: any) => {
+      this.listOfData = res.result.items;
+      this.totalPageCount = res.result.totalCount
+      this.listOfData.map((e, i) => (e.number = i + 1));
+    });
+  }
+
+  listOfData: Array<ListPassport> = [];
+
+  sortNumber = (a: ListPassport,b: ListPassport):number => a.number - b.number;
+  
 }

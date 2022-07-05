@@ -12,7 +12,8 @@ import { AuthService } from '../data.service';
 export class LoginComponent implements OnInit {
   validateForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(private fb: FormBuilder, 
+    private authService: AuthService) {}
 
   resetForm(e: MouseEvent): void {
     e.preventDefault();

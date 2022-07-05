@@ -15,6 +15,7 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'form', component: FormComponent, canActivate: [AuthGuard] },
+  { path: 'table', component: TableComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' },
 ];
 

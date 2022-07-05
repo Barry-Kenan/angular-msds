@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { registerLocaleData } from '@angular/common';
 import ru from '@angular/common/locales/ru';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { LoginComponent } from './login/login.component';
-
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { ru_RU } from 'ng-zorro-antd/i18n';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
@@ -36,6 +33,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { metaReducers, reducers } from 'src/store/state/store';
 import { CountEffects } from 'src/store/effects/count.effects';
 import { AuthGuard } from './auth.guard';
+import { PassportInterceptor } from './passport.interceptor';
 
 registerLocaleData(ru);
 
@@ -61,6 +59,7 @@ registerLocaleData(ru);
     NzDividerModule,
     NzTableModule,
     NzIconModule,
+    
 
     StoreModule.forRoot(reducers, {
       metaReducers,
@@ -76,7 +75,11 @@ registerLocaleData(ru);
     EffectsModule.forRoot([CountEffects]),
     StoreRouterConnectingModule.forRoot(),
   ],
-  providers: [{ provide: NZ_I18N, useValue: ru_RU }, AuthGuard],
+  providers: [{ provide: NZ_I18N, useValue: ru_RU }, AuthGuard, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: PassportInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

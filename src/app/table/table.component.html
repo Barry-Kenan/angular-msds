@@ -1,26 +1,38 @@
-<nz-table #sortTable [nzData]="listOfData" nzTableLayout="fixed">
+<div class="passportListTable">
+  <nz-table #sortTable [nzData]="listOfData" nzBordered  [nzScroll]="{ x: '1200px', y: '700px' }" nzPaginationType="small" >
     <thead>
       <tr>
-        <th *ngFor="let column of listOfColumn" >
-          {{ column.title }}
-        </th>
+        <th [nzSortFn] = "sortNumber" nzWidth="60px" >№</th>
+        <th [nzSortFn] = "sortNumber" nzWidth="120px">Дата поступления документов</th>
+        <th [nzSortFn] = "sortNumber" >Номер ПБ</th>
+        <th [nzSortFn] = "sortNumber">Наименование</th>
+        <th [nzSortFn] = "sortNumber">Статус</th>
+        <th [nzSortFn] = "sortNumber" nzWidth="200px">Заявитель</th>
+        <th [nzSortFn] = "sortNumber">Посредник</th>
+        <th [nzSortFn] = "sortNumber">Эксперт</th>
+        <th [nzSortFn] = "sortNumber" nzWidth="140px">Действителен от</th>
+        <th [nzSortFn] = "sortNumber" nzWidth="140px">Действителен до</th>
+        <th [nzSortFn] = "sortNumber" nzWidth="140px">Дата выполнения работ</th>
+        <th [nzSortFn] = "sortNumber">Код ОКПД 2</th>
+        <th [nzSortFn] = "sortNumber">Код ТН ВЭД ЕАЭС</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of sortTable.data">
-        <td>{{ data.n }}</td>
-        <td>{{ data.dataPostupleniya }}</td>
-        <td>{{ data.nomerPB }}</td>
+      <tr *ngFor="let data of sortTable.data" >
+        <td>{{ data.number }}</td>
+        <td>{{ data.documentArrivalDate | date:'d.MM.yyyy'  }}</td>
+        <td>{{ data.passportNumber }}</td>
+        <td>{{ data.names }}</td>
         <td>{{ data.status }}</td>
-        <td>{{ data.naimenovaniye }}</td>
-        <td>{{ data.zayavitel }}</td>
-        <td>{{ data.posrednik }}</td>
-        <td>{{ data.ekspert }}</td>
-        <td>{{ data.deystvitelenOt }}</td>
-        <td>{{ data.deystvitelenDo }}</td>
-        <td>{{ data.kodOkppd }}</td>
-        <td>{{ data.kodTnWedEaes }}</td>
+        <td>{{ data.organization[0].value }}</td>
+        <td>{{ '-' }}</td>
+        <td>{{ '-' }}</td>
+        <td>{{ data.startDate | date:'d.MM.yyyy' }}</td>
+        <td>{{ data.endDate | date:'d.MM.yyyy' }}</td>
+        <td>{{ data.workDate | date:'d.MM.yyyy'  }}</td>
+        <td>{{ data.okpd2Code }}</td>
+        <td>{{ data.tnVedCode }}</td>
       </tr>
     </tbody>
   </nz-table>
-
+</div>

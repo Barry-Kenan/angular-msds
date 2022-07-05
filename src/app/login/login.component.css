@@ -70,5 +70,5 @@
 }
 
 ::ng-deep .login-form-input:focus {
-  background-color: aqua;
+  background-color: rgb(205, 205, 224);
 }

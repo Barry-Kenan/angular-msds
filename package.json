@@ -1,5 +1,5 @@
 {
-  "name": "real-world",
+  "name": "iap-trainee",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -9,8 +9,7 @@
     "test": "ng test",
     "prepare": "husky install",
     "lint": "ng lint",
-    "lint-fix": "ng lint --fix",
-    "lint-css": "stylelint src/**/*.css"
+    "lint-fix": "ng lint --fix"
   },
   "private": true,
   "dependencies": {
