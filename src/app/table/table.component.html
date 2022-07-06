@@ -1,38 +1,144 @@
 <div class="passportListTable">
-  <nz-table #sortTable [nzData]="listOfData" nzBordered  [nzScroll]="{ x: '1200px', y: '700px' }" nzPaginationType="small" >
+  <nz-table
+    #sortTable
+    [nzData]="listOfData"
+    nzBordered
+    [nzScroll]="{ x: '1200px', y: '650px' }"
+    [nzFrontPagination]="false"
+  >
     <thead>
       <tr>
-        <th [nzSortFn] = "sortNumber" nzWidth="60px" >№</th>
-        <th [nzSortFn] = "sortNumber" nzWidth="120px">Дата поступления документов</th>
-        <th [nzSortFn] = "sortNumber" >Номер ПБ</th>
-        <th [nzSortFn] = "sortNumber">Наименование</th>
-        <th [nzSortFn] = "sortNumber">Статус</th>
-        <th [nzSortFn] = "sortNumber" nzWidth="200px">Заявитель</th>
-        <th [nzSortFn] = "sortNumber">Посредник</th>
-        <th [nzSortFn] = "sortNumber">Эксперт</th>
-        <th [nzSortFn] = "sortNumber" nzWidth="140px">Действителен от</th>
-        <th [nzSortFn] = "sortNumber" nzWidth="140px">Действителен до</th>
-        <th [nzSortFn] = "sortNumber" nzWidth="140px">Дата выполнения работ</th>
-        <th [nzSortFn] = "sortNumber">Код ОКПД 2</th>
-        <th [nzSortFn] = "sortNumber">Код ТН ВЭД ЕАЭС</th>
+        <th
+          [nzSortFn]="true"
+          (nzSortOrderChange)="sortSerialNumber($event)"
+          [nzSortDirections]="['descend', 'ascend']"
+          nzWidth="60px"
+        >
+          №
+        </th>
+        <th
+          [nzSortFn]="true"
+          (nzSortOrderChange)="sortDocumentArrivalDate($event)"
+          [nzSortDirections]="['descend', 'ascend']"
+          nzWidth="120px"
+        >
+          Дата поступления документов
+        </th>
+        <th
+          [nzSortFn]="true"
+          (nzSortOrderChange)="sortPassportNumber($event)"
+          [nzSortDirections]="['descend', 'ascend']"
+        >
+          Номер ПБ
+        </th>
+        <th
+          [nzSortFn]="true"
+          (nzSortOrderChange)="sortNames($event)"
+          [nzSortDirections]="['descend', 'ascend']"
+        >
+          Наименование
+        </th>
+        <th
+          [nzSortFn]="true"
+          (nzSortOrderChange)="sortStatus($event)"
+          [nzSortDirections]="['descend', 'ascend']"
+        >
+          Статус
+        </th>
+        <th
+          [nzSortFn]="true"
+          (nzSortOrderChange)="sortOrganization($event)"
+          [nzSortDirections]="['descend', 'ascend']"
+          nzWidth="200px"
+        >
+          Заявитель
+        </th>
+        <th
+          [nzSortFn]="true"
+          (nzSortOrderChange)="sortMediator($event)"
+          [nzSortDirections]="['descend', 'ascend']"
+        >
+          Посредник
+        </th>
+        <th
+          [nzSortFn]="true"
+          (nzSortOrderChange)="sortExpertId($event)"
+          [nzSortDirections]="['descend', 'ascend']"
+        >
+          Эксперт
+        </th>
+        <th
+          [nzSortFn]="true"
+          (nzSortOrderChange)="sortStartDate($event)"
+          [nzSortDirections]="['descend', 'ascend']"
+          nzWidth="140px"
+        >
+          Действителен от
+        </th>
+        <th
+          [nzSortFn]="true"
+          (nzSortOrderChange)="sortEndDate($event)"
+          [nzSortDirections]="['descend', 'ascend']"
+          nzWidth="140px"
+        >
+          Действителен до
+        </th>
+        <th
+          [nzSortFn]="true"
+          (nzSortOrderChange)="sortWorkDate($event)"
+          [nzSortDirections]="['descend', 'ascend']"
+          nzWidth="140px"
+        >
+          Дата выполнения работ
+        </th>
+        <th
+          [nzSortFn]="true"
+          (nzSortOrderChange)="sortOkpd2CodeId($event)"
+          [nzSortDirections]="['descend', 'ascend']"
+        >
+          Код ОКПД 2
+        </th>
+        <th
+          [nzSortFn]="true"
+          (nzSortOrderChange)="sortTnVedCodeId($event)"
+          [nzSortDirections]="['descend', 'ascend']"
+        >
+          Код ТН ВЭД ЕАЭС
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of sortTable.data" >
-        <td>{{ data.number }}</td>
-        <td>{{ data.documentArrivalDate | date:'d.MM.yyyy'  }}</td>
+      <tr *ngFor="let data of sortTable.data">
+        <td>{{ data.serialNumber }}</td>
+        <td>{{ data.documentArrivalDate | date: "d.MM.yyyy" }}</td>
         <td>{{ data.passportNumber }}</td>
         <td>{{ data.names }}</td>
         <td>{{ data.status }}</td>
         <td>{{ data.organization[0].value }}</td>
-        <td>{{ '-' }}</td>
-        <td>{{ '-' }}</td>
-        <td>{{ data.startDate | date:'d.MM.yyyy' }}</td>
-        <td>{{ data.endDate | date:'d.MM.yyyy' }}</td>
-        <td>{{ data.workDate | date:'d.MM.yyyy'  }}</td>
+        <td>{{ "-" }}</td>
+        <td>{{ "-" }}</td>
+        <td>{{ data.startDate | date: "d.MM.yyyy" }}</td>
+        <td>{{ data.endDate | date: "d.MM.yyyy" }}</td>
+        <td>{{ data.workDate | date: "d.MM.yyyy" }}</td>
         <td>{{ data.okpd2Code }}</td>
         <td>{{ data.tnVedCode }}</td>
       </tr>
     </tbody>
   </nz-table>
+  <div nz-row class="passportListTablePagination">
+    <div nz-col nzSpan="4">
+      <div>Всего найдено элементов: {{ totalPageCount }}</div>
+    </div>
+    <div nz-col nzSpan="6" nzOffset="14">
+      <div>
+        <nz-pagination
+          (nzPageIndexChange)="pageChange($event)"
+          [nzTotal]="totalPageCount"
+          nzSize="small"
+          [nzShowTotal]="Pages"
+        ></nz-pagination>
+        <ng-template #Pages let-total>Страницы:</ng-template>
+      </div>
+    </div>
+  </div>
 </div>

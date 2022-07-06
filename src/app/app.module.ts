@@ -34,6 +34,7 @@ import { metaReducers, reducers } from 'src/store/state/store';
 import { CountEffects } from 'src/store/effects/count.effects';
 import { AuthGuard } from './auth.guard';
 import { PassportInterceptor } from './passport.interceptor';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 
 registerLocaleData(ru);
 
@@ -59,6 +60,7 @@ registerLocaleData(ru);
     NzDividerModule,
     NzTableModule,
     NzIconModule,
+    NzPaginationModule,
     
 
     StoreModule.forRoot(reducers, {
@@ -75,11 +77,15 @@ registerLocaleData(ru);
     EffectsModule.forRoot([CountEffects]),
     StoreRouterConnectingModule.forRoot(),
   ],
-  providers: [{ provide: NZ_I18N, useValue: ru_RU }, AuthGuard, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: PassportInterceptor,
-    multi: true
-  }],
+  providers: [
+    { provide: NZ_I18N, useValue: ru_RU },
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: PassportInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

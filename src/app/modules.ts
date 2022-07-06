@@ -27,16 +27,18 @@ export interface UserProfile {
 }
 
 export interface ListPassport {
-  number: number;
+  serialNumber: number;
   documentArrivalDate: string;
   endDate: string;
   id: string;
   names: string;
   okpd2Code: string;
-  organization: [{
-    lang: string;
-    value: string;
-  }]
+  organization: [
+    {
+      lang: string;
+      value: string;
+    }
+  ];
   passportNumber: number;
   startDate: string;
   tnVedCode: string;
@@ -47,12 +49,23 @@ export interface ListPassport {
   status: string;
 }
 
-
 export interface PassportResponse{
   jsonrpc: string;
   id: string;
   result: {
     items: Array<ListPassport>;
-    totalCount: number
-  }
+    totalCount: number;
+  };
 }
+
+
+export type ColumnType = "serialNumber" | "documentArrivalDate" | "passportNumber"
+| "names" | "status" | "organization" | "mediator" | "expertId" | "startDate"
+| "endDate" | "workDate" | "okpd2CodeId" | "tnVedCodeId"
+
+
+export enum Direction {
+  descend = 1,
+  ascend = -1
+}
+export type DirectionEvent = string | null 

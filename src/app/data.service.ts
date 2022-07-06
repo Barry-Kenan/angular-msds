@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User, UserProfile } from './modules';
@@ -11,8 +12,7 @@ import { PassportService } from './passport.service';
 export class AuthService {
   private url = 'https://iap_dev2.tomskasu.ru/api/';
 
-  constructor(private http: HttpClient, private router: Router, 
-    private passportService: PassportService) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   private userProfileData: UserProfile = {
     displayName: '',
@@ -47,7 +47,6 @@ export class AuthService {
       this.userProfileData = res.userProfile;
       this.router.navigate(['/table']);
       localStorage.setItem('auth-token', res.accessToken);
-      this.passportService.getListPassport();
     });
   }
 
