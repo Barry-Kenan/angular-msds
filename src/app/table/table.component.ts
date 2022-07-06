@@ -11,6 +11,8 @@ import { PassportService } from '../passport.service';
 export class TableComponent implements OnInit {
   public totalPageCount!: number;
   public listOfData: Array<ListPassport> = [];
+  public columnForPageChange! : ColumnType;
+  public directionForPageChange! : 1|-1;
 
   private setData(response: any) {
     this.listOfData = response.result.items;
@@ -18,7 +20,8 @@ export class TableComponent implements OnInit {
     this.listOfData.map((e, i) => (e.serialNumber = i + 1));
   }
 
-  constructor(public passportService: PassportService) {}
+  constructor(public passportService: PassportService) {
+  }
 
   ngOnInit(): void {
     this.passportService
@@ -30,7 +33,7 @@ export class TableComponent implements OnInit {
 
   pageChange(evt: any) {
     this.passportService
-      .getListPassport('serialNumber', 1, evt-1)
+      .getListPassport(this.columnForPageChange, this.directionForPageChange, evt-1)
       .subscribe((res: any) => {
         this.setData(res);
       });
@@ -44,6 +47,8 @@ export class TableComponent implements OnInit {
       .subscribe((res: any) => {
         this.setData(res);
       });
+    this.columnForPageChange = column;
+    this.directionForPageChange = directionVal
   }
 
   sortSerialNumber(direction: DirectionEvent) {
