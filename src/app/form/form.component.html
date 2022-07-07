@@ -1,5 +1,53 @@
-<div nz-row nzJustify="center" class="form-content">
+<div class="login">
+  <div nz-row nzJustify="center" class="login-content">
+    <div nz-col [nzLg]="7" [nzMd]="16" [nzXs]="24">
+      <form
+        nz-form
+        [formGroup]="newPassportForm"
+        class="login-form"
+        (ngSubmit)="submitForm()"
+      >
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your username!">
+            <nz-date-picker
+              formControlName="formDate"
+              style="width: 100%"
+            ></nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+
+        <div nz-row>
+          <div nz-col [nzSpan]="9" [nzOffset]="1">
+            <button
+              nz-button
+              nzSize="large"
+              (click)="resetForm($event)"
+              class="login-form-button-cancel login-form-button"
+            >
+              Отмена
+            </button>
+          </div>
+          <div nz-col [nzSpan]="9" [nzOffset]="4">
+            <button
+              nz-button
+              nzSize="large"
+              class="login-form-button-open login-form-button"
+              [nzType]="'primary'"
+            >
+              Войти
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- <div nz-row nzJustify="center" class="form-content">
   <div nz-col nzSpan="12">
+    <form nz-form
+    [formGroup]="form"
+    (ngSubmit)="submitForm()">
     <div>
       Дата поступления документа
       <nz-date-picker
@@ -76,26 +124,27 @@
     </div>
     <br />
     <div nz-row>
-      <div nz-col [nzSpan]="8" [nzOffset]="6">
+      <div nz-col [nzSpan]="9" [nzOffset]="1">
         <button
           nz-button
-          class="login-form-button login-form-margin"
-          [nzType]="'primary'"
+          nzSize="large"
+          (click)="resetForm($event)"
+          class="login-form-button-cancel login-form-button"
         >
           Отмена
         </button>
       </div>
-      <div nz-col [nzSpan]="8">
+      <div nz-col [nzSpan]="9" [nzOffset]="4">
         <button
           nz-button
-          class="login-form-button login-form-margin"
+          nzSize="large"
+          class="login-form-button-open login-form-button "
           [nzType]="'primary'"
         >
-          Сохранить
+          Войти
         </button>
       </div>
     </div>
+  </form>
   </div>
-</div>
-<br />
-<hr />
+</div> -->

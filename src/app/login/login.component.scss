@@ -1,0 +1,78 @@
+.login {
+  text-align: center;
+  height: 100%;
+
+  .login-content {
+    position: absolute;
+    top: 25%;
+    right: 0;
+    left: 0;
+  }
+
+  .login-form-margin {
+    margin-bottom: 24px;
+  }
+
+  .login-form-button {
+    width: 100%;
+  }
+
+  .login-form-input {
+    text-align: left;
+    font-size: 20px;
+  }
+
+  .login-form-icons {
+    color: white;
+    font-size: 25px;
+    background-color: #1e5588;
+    border-radius: 8%;
+  }
+
+  .login-form-title1 {
+    font-size: 30px;
+    color: #1e5588;
+    margin-bottom: 30px;
+  }
+
+  .login-form-title2 {
+    font-size: 15px;
+    text-align: left;
+    color: #1e5588;
+  }
+
+  .login-form-checkbox {
+    font-size: 16px;
+  }
+}
+
+
+
+::ng-deep .login-form-button-open {
+  background-color: #1e5588;
+  border-color: #1e5588;
+  color: white;
+
+  &:hover {
+    background-color: #1e5588;
+    opacity: 0.8;
+    border-color: #1e5588;
+  }
+}
+
+::ng-deep .login-form-button-cancel {
+  background-color: white;
+  border-color: #1e5588;
+
+  &:hover {
+    background-color: white;
+    opacity: 0.5;
+    border-color: #1e5588;
+    color: #1e5588;
+  }
+}
+
+
+::ng-deep .login-form-input:focus {
+  background-color: rgb(205, 205, 224);
+}

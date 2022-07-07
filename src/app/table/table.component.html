@@ -5,6 +5,7 @@
     nzBordered
     [nzScroll]="{ x: '1200px', y: '650px' }"
     [nzFrontPagination]="false"
+    [nzPageSize] = 700
   >
     <thead>
       <tr>
@@ -112,7 +113,7 @@
         <td>{{ data.serialNumber }}</td>
         <td>{{ data.documentArrivalDate | date: "d.MM.yyyy" }}</td>
         <td>{{ data.passportNumber }}</td>
-        <td>{{ data.names }}</td>
+        <td><span nz-typography><a>{{ data.names }}<Link /></a></span></td>
         <td>{{ data.status }}</td>
         <td>{{ data.organization[0].value }}</td>
         <td>{{ "-" }}</td>

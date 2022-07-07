@@ -6,11 +6,11 @@ import { PassportService } from '../passport.service';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css'],
+  styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  public totalPageCount!: number;
   public listOfData: Array<ListPassport> = [];
+  public totalPageCount!: number;
   public columnForPageChange! : ColumnType;
   public directionForPageChange! : 1|-1;
 

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { ColumnType, Direction } from './modules';
 
 @Injectable({
@@ -9,7 +8,7 @@ import { ColumnType, Direction } from './modules';
 export class PassportService {
   private url = 'https://iap_dev2.tomskasu.ru/api/worker/list_passport';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   private body = (column: ColumnType, direction: 1 | -1, page: number) => {
     return {

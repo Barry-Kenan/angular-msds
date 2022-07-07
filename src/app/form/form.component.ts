@@ -1,20 +1,31 @@
 import { Component } from '@angular/core';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // новый ПБ  *//
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css'],
+  styleUrls: ['./form.component.scss'],
 })
 export class FormComponent {
-  public date = null;
-  public selectedZ = null;
-  public selectedP = null;
-  public selectedR = null;
-  public checked = true;
+  newPassportForm!: FormGroup;
 
-  onChange(result: Date): void {
-    console.log('onChange: ', result);
+  constructor(private fb: FormBuilder) {}
+
+  resetForm(e: MouseEvent): void {
+    e.preventDefault();
+    this.newPassportForm.reset();
+  }
+
+  submitForm(): void {
+    console.log(this.newPassportForm.value);
+  }
+
+  ngOnInit(): void {
+    this.newPassportForm = this.fb.group({
+      // userName: [null, [Validators.required]],
+      // password: [null, [Validators.required]],
+      // remember: [false],
+    });
   }
 }
