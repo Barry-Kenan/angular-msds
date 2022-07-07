@@ -27,8 +27,6 @@
     "@ngrx/store-devtools": "^13.2.0",
     "ng-zorro-antd": "^13.3.2",
     "rxjs": "~7.4.0",
-    "stylelint": "^14.9.1",
-    "stylelint-config-standard": "^26.0.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
@@ -62,6 +60,8 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "prettier": "^2.7.1",
+    "stylelint": "^14.9.1",
+    "stylelint-config-standard-scss": "^4.0.0",
     "typescript": "~4.4.3"
   }
 }
