@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 import { ColumnType, Direction, DirectionEvent, ListPassport } from '../modules';
-import { PassportService } from '../passport.service';
 
 /* список ПБ  */
 @Component({
@@ -20,11 +20,11 @@ export class TableComponent implements OnInit {
     this.listOfData.map((e, i) => (e.serialNumber = i + 1));
   }
 
-  constructor(public passportService: PassportService) {
+  constructor(public dataService: DataService) {
   }
 
   ngOnInit(): void {
-    this.passportService
+    this.dataService
       .getListPassport('status', 1, 0)
       .subscribe((res: any) => {
         this.setData(res);
@@ -32,7 +32,7 @@ export class TableComponent implements OnInit {
   }
 
   pageChange(evt: any) {
-    this.passportService
+    this.dataService
       .getListPassport(this.columnForPageChange, this.directionForPageChange, evt-1)
       .subscribe((res: any) => {
         this.setData(res);
@@ -42,7 +42,7 @@ export class TableComponent implements OnInit {
   sortChecking(column: ColumnType, direction: string | null, pageSize: number) {
     const directionVal =
       direction === 'ascend' ? Direction.ascend : Direction.descend;
-    this.passportService
+    this.dataService
       .getListPassport(column, directionVal, pageSize)
       .subscribe((res: any) => {
         this.setData(res);

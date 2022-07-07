@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../data.service';
+import { DataService } from '../data.service';
 
 
 // Логин ПБ  *//
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   validateForm!: FormGroup;
 
   constructor(private fb: FormBuilder, 
-    private authService: AuthService) {}
+    private dataService: DataService) {}
 
   resetForm(e: MouseEvent): void {
     e.preventDefault();
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      this.authService.login(this.validateForm.value);
+      this.dataService.login(this.validateForm.value);
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {
