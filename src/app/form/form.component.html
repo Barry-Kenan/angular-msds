@@ -21,8 +21,9 @@
             <button
               nz-button
               nzSize="large"
-              (click)="resetForm($event)"
+              (click)="resetForm()"
               class="login-form-button-cancel login-form-button"
+              type="button"
             >
               Отмена
             </button>
@@ -33,6 +34,7 @@
               nzSize="large"
               class="login-form-button-open login-form-button"
               [nzType]="'primary'"
+              type="button"
             >
               Войти
             </button>
@@ -42,109 +44,3 @@
     </div>
   </div>
 </div>
-
-<!-- <div nz-row nzJustify="center" class="form-content">
-  <div nz-col nzSpan="12">
-    <form nz-form
-    [formGroup]="form"
-    (ngSubmit)="submitForm()">
-    <div>
-      Дата поступления документа
-      <nz-date-picker
-        [(ngModel)]="date"
-        (ngModelChange)="onChange($event)"
-        style="width: 100%"
-      ></nz-date-picker>
-    </div>
-    <br />
-    <div>
-      Техническое наименование
-      <textarea rows="1" nz-input></textarea>
-    </div>
-    <br />
-    <div>
-      Заявитель
-      <nz-select
-        nzShowSearch
-        nzAllowClear
-        nzPlaceHolder=""
-        [(ngModel)]="selectedZ"
-        style="width: 100%"
-      >
-        <nz-option nzCustomContent nzLabel="Заявитель 1" nzValue="Заявитель 1">
-          Заявитель 1
-        </nz-option>
-        <nz-option nzCustomContent nzLabel="Заявитель 2" nzValue="Заявитель 2">
-          Заявитель 2
-        </nz-option>
-        <nz-option nzCustomContent nzLabel="Заявитель 3" nzValue="Заявитель 3">
-          Заявитель 3
-        </nz-option>
-      </nz-select>
-    </div>
-    <br />
-    <div>
-      <label nz-checkbox [(ngModel)]="checked">Посредник</label>
-    </div>
-    <br />
-    <div>
-      Посредник
-      <nz-select
-        nzShowSearch
-        nzAllowClear
-        nzPlaceHolder=""
-        [(ngModel)]="selectedP"
-        style="width: 100%"
-      >
-        <nz-option nzCustomContent nzLabel="Посредник 1" nzValue="Посредник 1">
-          Посредник 1
-        </nz-option>
-        <nz-option nzCustomContent nzLabel="Посредник 2" nzValue="Посредник 2">
-          Посредник 2
-        </nz-option>
-      </nz-select>
-    </div>
-    <br />
-    <div>
-      Регулярность
-      <nz-select
-        nzShowSearch
-        nzAllowClear
-        nzPlaceHolder=""
-        [(ngModel)]="selectedR"
-        style="width: 100%"
-      >
-        <nz-option nzCustomContent nzLabel="Регулярно" nzValue="Регулярно">
-          Регулярно
-        </nz-option>
-        <nz-option nzCustomContent nzLabel="Разово" nzValue="Разово">
-          Разово
-        </nz-option>
-      </nz-select>
-    </div>
-    <br />
-    <div nz-row>
-      <div nz-col [nzSpan]="9" [nzOffset]="1">
-        <button
-          nz-button
-          nzSize="large"
-          (click)="resetForm($event)"
-          class="login-form-button-cancel login-form-button"
-        >
-          Отмена
-        </button>
-      </div>
-      <div nz-col [nzSpan]="9" [nzOffset]="4">
-        <button
-          nz-button
-          nzSize="large"
-          class="login-form-button-open login-form-button "
-          [nzType]="'primary'"
-        >
-          Войти
-        </button>
-      </div>
-    </div>
-  </form>
-  </div>
-</div> -->

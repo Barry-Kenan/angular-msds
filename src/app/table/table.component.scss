@@ -4,15 +4,16 @@
   th:nth-child(n) {
     font-weight: bold;
   }
+
   tr:nth-child(odd) {
     background-color: #f9f9f9;
   }
+
   td {
     text-align: center;
   }
-  .passportListTablePagination{
+
+  .passportListTablePagination {
     margin-top: 30px;
   }
-  
 }
-

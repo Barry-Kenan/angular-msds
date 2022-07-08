@@ -16,8 +16,15 @@
       },
       "extends": [
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:jsdoc/recommended",
+        "airbnb-base/legacy",
+        "airbnb-base",
+        "airbnb-typescript/base"
       ],
+      "env": {
+        "browser":true,
+        "es6":true
+      },
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
@@ -34,7 +41,51 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "import/prefer-default-export": "off",
+        "linebreak-style":"off",
+        "@typescript-eslint/comma-dangle": "off",
+        "class-methods-use-this": "off",
+        "jsdoc/require-param-type": "off",
+        "jsdoc/newline-after-description": "off",
+        "jsdoc/require-returns-type": "off",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "explicit",
+            "overrides": {
+              "accessors": "explicit",
+              "constructors": "off",
+              "methods": "explicit",
+              "properties": "explicit",
+              "parameterProperties": "explicit"
+            }
+          }
+        ],
+        "@typescript-eslint/member-ordering": [
+          "error",
+          {
+            "default": [
+              "signature",
+              "public-field",
+              "protected-field",
+              "private-field",
+              "constructor",
+              "public-method",
+              "protected-method",
+              "private-method"
+            ]
+          }
+        ],
+        "max-len": [
+          "error",
+          {
+            "code": 120,
+            "ignorePattern": "^import\\s.+\\sfrom\\s.+;$",
+            "ignoreUrls": true,
+            "ignoreComments": true
+          }
+        ]  
       }
     },
     {
@@ -44,15 +95,15 @@
       "extends": [
         "plugin:@angular-eslint/template/recommended"
       ],
-      "rules": {}
-    },
-    {
-      "files": [
-        "*.ts"
-      ],
-      "extends": [
-        "plugin:ngrx/recommended"
-      ]
+      "rules": {
+        "@angular-eslint/template/accessibility-alt-text": "error",
+        "@angular-eslint/template/banana-in-box": "error",
+        "@angular-eslint/template/button-has-type" : "error",
+        "@angular-eslint/template/eqeqeq" : "error",
+        "@angular-eslint/template/no-call-expression" : "error",
+        "@angular-eslint/template/no-duplicate-attributes" : "error",
+        "max-len": ["error",{ "code": 120 }]
+      }
     }
   ]
 }

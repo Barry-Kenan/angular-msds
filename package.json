@@ -9,7 +9,9 @@
     "test": "ng test",
     "prepare": "husky install",
     "lint": "ng lint",
-    "lint-fix": "ng lint --fix"
+    "lint:fix": "ng lint --fix",
+    "lint:style": "stylelint **/*.scss",
+    "stylelint:fix": "stylelint **/*.scss --fix"
   },
   "private": true,
   "dependencies": {
@@ -21,10 +23,6 @@
     "@angular/platform-browser": "~13.0.0-next.0",
     "@angular/platform-browser-dynamic": "~13.0.0-next.0",
     "@angular/router": "~13.0.0-next.0",
-    "@ngrx/effects": "^13.2.0",
-    "@ngrx/router-store": "^13.2.0",
-    "@ngrx/store": "^13.2.0",
-    "@ngrx/store-devtools": "^13.2.0",
     "ng-zorro-antd": "^13.3.2",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
@@ -39,18 +37,20 @@
     "@angular-eslint/template-parser": "13.5.0",
     "@angular/cli": "~13.0.0",
     "@angular/compiler-cli": "~13.0.0-next.0",
-    "@ngrx/eslint-plugin": "^14.0.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "5.27.1",
     "@typescript-eslint/parser": "5.27.1",
     "eslint": "^8.17.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jsdoc": "^39.3.3",
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-ngrx": "^2.0.0",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
     "husky": "^8.0.1",
     "jasmine-core": "~3.10.0",
@@ -59,9 +59,22 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "prettier": "^2.7.1",
+    "postcss": "8",
+    "prettier": "2.7.1",
     "stylelint": "^14.9.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^26.0.0",
     "stylelint-config-standard-scss": "^4.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-prettier": "^2.0.0",
+    "stylelint-scss": "^4.2.0",
     "typescript": "~4.4.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "YOUR_COMMAND_HERE",
+      "pre-push": "YOUR_COMMAND_HERE"
+    }
   }
 }

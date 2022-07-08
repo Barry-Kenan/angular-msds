@@ -26,7 +26,13 @@ export interface UserProfile {
   subdivision: string | null;
 }
 
+/**
+ *
+ */
 export interface ListPassport {
+  /**
+   *
+   */
   serialNumber: number;
   documentArrivalDate: string;
   endDate: string;
@@ -49,7 +55,7 @@ export interface ListPassport {
   status: string;
 }
 
-export interface PassportResponse{
+export interface PassportResponse {
   jsonrpc: string;
   id: string;
   result: {
@@ -58,14 +64,56 @@ export interface PassportResponse{
   };
 }
 
-
-export type ColumnType = "serialNumber" | "documentArrivalDate" | "passportNumber"
-| "names" | "status" | "organization" | "mediator" | "expertId" | "startDate"
-| "endDate" | "workDate" | "okpd2CodeId" | "tnVedCodeId"
-
+export type ColumnType =
+  | 'serialNumber'
+  | 'documentArrivalDate'
+  | 'passportNumber'
+  | 'names'
+  | 'status'
+  | 'organization'
+  | 'mediator'
+  | 'expertId'
+  | 'startDate'
+  | 'endDate'
+  | 'workDate'
+  | 'okpd2CodeId'
+  | 'tnVedCodeId';
 
 export enum Direction {
   descend = 1,
-  ascend = -1
+  ascend = -1,
 }
-export type DirectionEvent = string | null 
+export type DirectionEvent = string | null;
+
+export interface RequestBody {
+  id: '384c601d-875d-4797-b50b-ea796a9d4f36';
+  jsonrpc: '2.0';
+  params: [
+    {
+      Contains: true;
+      ExtraOptions: [
+        {
+          Name: 'sort';
+          Value: '';
+        }
+      ];
+      Pagination: {
+        Page: number;
+        PageSize: number;
+      };
+      SearchString: {
+        lang: 'ru';
+        Value: '';
+      };
+      TableSortParams: {
+        Columns: [
+          {
+            Column: string;
+            Direction: 1 | -1 | null;
+          }
+        ];
+      };
+    }
+  ];
+  method: string;
+}

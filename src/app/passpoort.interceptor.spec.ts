@@ -4,9 +4,7 @@ import { PassportInterceptor } from './passport.interceptor';
 
 describe('PassportInterceptor', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    providers: [
-      PassportInterceptor
-      ]
+    providers: [PassportInterceptor],
   }));
 
   it('should be created', () => {

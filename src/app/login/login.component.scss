@@ -2,7 +2,7 @@
   text-align: center;
   height: 100%;
 
-  .login-content {
+  &-content {
     position: absolute;
     top: 25%;
     right: 0;
@@ -36,7 +36,7 @@
   }
 
   .login-form-title2 {
-    font-size: 15px;
+    font-size: 16px;
     text-align: left;
     color: #1e5588;
   }
@@ -44,35 +44,4 @@
   .login-form-checkbox {
     font-size: 16px;
   }
-}
-
-
-
-::ng-deep .login-form-button-open {
-  background-color: #1e5588;
-  border-color: #1e5588;
-  color: white;
-
-  &:hover {
-    background-color: #1e5588;
-    opacity: 0.8;
-    border-color: #1e5588;
-  }
-}
-
-::ng-deep .login-form-button-cancel {
-  background-color: white;
-  border-color: #1e5588;
-
-  &:hover {
-    background-color: white;
-    opacity: 0.5;
-    border-color: #1e5588;
-    color: #1e5588;
-  }
-}
-
-
-::ng-deep .login-form-input:focus {
-  background-color: rgb(205, 205, 224);
 }

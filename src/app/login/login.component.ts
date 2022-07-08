@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../data.service';
 
-
 // Логин ПБ  *//
 @Component({
   selector: 'app-login',
@@ -10,21 +9,19 @@ import { DataService } from '../data.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  validateForm!: FormGroup;
+  public validateForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, 
-    private dataService: DataService) {}
+  constructor(private fb: FormBuilder, private dataService: DataService) {}
 
-  resetForm(e: MouseEvent): void {
-    e.preventDefault();
+  public resetForm(): void {
     this.validateForm.reset();
   }
 
-  submitForm(): void {
+  public submitForm(): void {
     if (this.validateForm.valid) {
       this.dataService.login(this.validateForm.value);
     } else {
-      Object.values(this.validateForm.controls).forEach((control) => {
+      Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
           control.markAsTouched();
           control.markAsDirty();
@@ -34,7 +31,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.validateForm = this.fb.group({
       userName: [null, [Validators.required]],
       password: [null, [Validators.required]],
