@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "lint:style": "stylelint **/*.scss",
-    "stylelint:fix": "stylelint **/*.scss --fix"
+    "lint:style:fix": "stylelint **/*.scss --fix"
   },
   "private": true,
   "dependencies": {
@@ -59,6 +59,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "lint-staged": "^13.0.3",
     "postcss": "8",
     "prettier": "2.7.1",
     "stylelint": "^14.9.1",
@@ -73,8 +74,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "YOUR_COMMAND_HERE",
-      "pre-push": "YOUR_COMMAND_HERE"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "ng lint --fix",
+      "git add"
+    ]
   }
 }

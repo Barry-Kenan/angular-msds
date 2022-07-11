@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // новый ПБ  *//
 @Component({
@@ -7,16 +7,33 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
 })
-export class FormComponent {
+export class FormComponent implements OnInit {
   public newPassportForm!: FormGroup;
 
+  public check = false;
+
   constructor(private fb: FormBuilder) {}
+
+  public checked(e: boolean) {
+    this.check = e;
+  }
+
+  public submitForm(): void {
+    console.log(this.newPassportForm.value);
+  }
 
   public resetForm(): void {
     this.newPassportForm.reset();
   }
 
-  public submitForm(): void {
-    return this.newPassportForm.value;
+  public ngOnInit(): void {
+    this.newPassportForm = this.fb.group({
+      datePicker: [null, [Validators.required]],
+      note: [null],
+      selectDeclarer: [null],
+      checkbox: [false],
+      selectIntermediary: [null],
+      selectRegularity: [null],
+    });
   }
 }
