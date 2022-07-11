@@ -70,16 +70,5 @@
     "stylelint-prettier": "^2.0.0",
     "stylelint-scss": "^4.2.0",
     "typescript": "~4.4.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.ts": [
-      "ng lint --fix",
-      "git add"
-    ]
   }
 }
