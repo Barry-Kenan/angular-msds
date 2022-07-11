@@ -26,13 +26,13 @@ import { AuthGuard } from './auth.guard';
 import { PassportInterceptor } from './passport.interceptor';
 import { TableComponent } from './table/table.component';
 import { FormComponent } from './form/form.component';
-import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
+import { LoginModule } from './login/login.module';
 
 registerLocaleData(ru);
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, FormComponent, TableComponent],
+  declarations: [AppComponent, FormComponent, TableComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -55,6 +55,7 @@ registerLocaleData(ru);
     NzIconModule,
     NzPaginationModule,
     NzMessageModule,
+    LoginModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU },

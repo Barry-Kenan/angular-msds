@@ -8,17 +8,11 @@
             <p class="login-form-title2">Логин</p>
             <nz-input-group class="login-inputGroup">
               <nz-row>
-                <nz-col [nzLg]="2" [nzMd]="2" [nzXs]="4" class="login-form-icons"
-                  ><i nz-icon nzType="user"></i
-                ></nz-col>
+                <nz-col [nzLg]="2" [nzMd]="2" [nzXs]="4" class="login-form-icons">
+                  <i nz-icon nzType="user"></i>
+                </nz-col>
                 <nz-col [nzLg]="22" [nzMd]="22" [nzXs]="20" class="login-input-container">
-                  <input
-                    type="text"
-                    nz-input
-                    nzSize="large"
-                    formControlName="userName"
-                    class="login-form-input"
-                  />
+                  <input type="text" nz-input nzSize="large" formControlName="userName" class="login-form-input" />
                 </nz-col>
               </nz-row>
             </nz-input-group>
@@ -29,17 +23,9 @@
             <p class="login-form-title2">Пароль</p>
             <nz-input-group>
               <nz-row>
-                <nz-col [nzLg]="2" [nzMd]="2" [nzXs]="4" class="login-form-icons"
-                  ><i nz-icon nzType="lock"></i
-                ></nz-col>
+                <nz-col [nzLg]="2" [nzMd]="2" [nzXs]="4" class="login-form-icons"><i nz-icon nzType="lock"></i></nz-col>
                 <nz-col [nzLg]="22" [nzMd]="22" [nzXs]="20" class="login-input-container">
-                  <input
-                    type="password"
-                    nz-input
-                    nzSize="large"
-                    formControlName="password"
-                    class="login-form-input"
-                  />
+                  <input type="password" nz-input nzSize="large" formControlName="password" class="login-form-input" />
                 </nz-col>
               </nz-row>
             </nz-input-group>
@@ -47,33 +33,17 @@
         </nz-form-item>
         <div nz-row class="login-form-margin" nzJustify="center">
           <div nz-col [nzSpan]="10">
-            <label nz-checkbox class="login-form-checkbox" formControlName="remember">
-              Оставаться в системе
-            </label>
+            <label nz-checkbox class="login-form-checkbox" formControlName="remember"> Оставаться в системе </label>
           </div>
         </div>
         <div nz-row>
           <div nz-col [nzSpan]="9" [nzOffset]="1">
-            <button
-              nz-button
-              nzSize="large"
-              (click)="resetForm()"
-              class="login-form-button-cancel login-form-button"
-              type="button"
-            >
+            <button nz-button nzSize="large" (click)="resetForm()" class="login-form-button" type="button">
               Отмена
             </button>
           </div>
           <div nz-col [nzSpan]="9" [nzOffset]="4">
-            <button
-              nz-button
-              nzSize="large"
-              class="login-form-button-open login-form-button"
-              [nzType]="'primary'"
-              type="submit"
-            >
-              Войти
-            </button>
+            <button nz-button nzSize="large" class="login-form-button" [nzType]="'primary'" type="submit">Войти</button>
           </div>
         </div>
       </form>

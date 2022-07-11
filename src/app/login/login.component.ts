@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     if (this.validateForm.valid) {
       this.dataService.login(this.validateForm.value);
     } else {
-      Object.values(this.validateForm.controls).forEach(control => {
+      Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsTouched();
           control.markAsDirty();
