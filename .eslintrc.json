@@ -13,7 +13,8 @@
         "plugin:jsdoc/recommended",
         "airbnb-base/legacy",
         "airbnb-base",
-        "airbnb-typescript/base"
+        "airbnb-typescript/base",
+        "prettier"
       ],
       "env": {
         "browser": true,
@@ -80,7 +81,7 @@
             "ignoreComments": true
           }
         ],
-        "no-console": "error"
+        "no-console": "warn"
       }
     },
     {
