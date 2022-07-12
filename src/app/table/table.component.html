@@ -3,107 +3,74 @@
     #sortTable
     [nzData]="listOfData"
     nzBordered
-    [nzScroll]="{ x: '1200px', y: '650px' }"
-    [nzFrontPagination]="false"
-    [nzPageSize] = 700
-  >
+    [nzScroll]="{ x: '100vh', y: '70vh' }"
+    [nzFrontPagination]="false">
     <thead>
       <tr>
         <th
           [nzSortFn]="true"
           (nzSortOrderChange)="sortSerialNumber($event)"
           [nzSortDirections]="['descend', 'ascend']"
-          nzWidth="60px"
-        >
+          nzWidth="60px">
           №
         </th>
         <th
           [nzSortFn]="true"
           (nzSortOrderChange)="sortDocumentArrivalDate($event)"
           [nzSortDirections]="['descend', 'ascend']"
-          nzWidth="120px"
-        >
+          nzWidth="120px">
           Дата поступления документов
         </th>
         <th
           [nzSortFn]="true"
           (nzSortOrderChange)="sortPassportNumber($event)"
-          [nzSortDirections]="['descend', 'ascend']"
-        >
+          [nzSortDirections]="['descend', 'ascend']">
           Номер ПБ
         </th>
-        <th
-          [nzSortFn]="true"
-          (nzSortOrderChange)="sortNames($event)"
-          [nzSortDirections]="['descend', 'ascend']"
-        >
+        <th [nzSortFn]="true" (nzSortOrderChange)="sortNames($event)" [nzSortDirections]="['descend', 'ascend']">
           Наименование
         </th>
-        <th
-          [nzSortFn]="true"
-          (nzSortOrderChange)="sortStatus($event)"
-          [nzSortDirections]="['descend', 'ascend']"
-        >
+        <th [nzSortFn]="true" (nzSortOrderChange)="sortStatus($event)" [nzSortDirections]="['descend', 'ascend']">
           Статус
         </th>
         <th
           [nzSortFn]="true"
           (nzSortOrderChange)="sortOrganization($event)"
           [nzSortDirections]="['descend', 'ascend']"
-          nzWidth="200px"
-        >
+          nzWidth="200px">
           Заявитель
         </th>
-        <th
-          [nzSortFn]="true"
-          (nzSortOrderChange)="sortMediator($event)"
-          [nzSortDirections]="['descend', 'ascend']"
-        >
+        <th [nzSortFn]="true" (nzSortOrderChange)="sortMediator($event)" [nzSortDirections]="['descend', 'ascend']">
           Посредник
         </th>
-        <th
-          [nzSortFn]="true"
-          (nzSortOrderChange)="sortExpertId($event)"
-          [nzSortDirections]="['descend', 'ascend']"
-        >
+        <th [nzSortFn]="true" (nzSortOrderChange)="sortExpertId($event)" [nzSortDirections]="['descend', 'ascend']">
           Эксперт
         </th>
         <th
           [nzSortFn]="true"
           (nzSortOrderChange)="sortStartDate($event)"
           [nzSortDirections]="['descend', 'ascend']"
-          nzWidth="140px"
-        >
+          nzWidth="140px">
           Действителен от
         </th>
         <th
           [nzSortFn]="true"
           (nzSortOrderChange)="sortEndDate($event)"
           [nzSortDirections]="['descend', 'ascend']"
-          nzWidth="140px"
-        >
+          nzWidth="140px">
           Действителен до
         </th>
         <th
           [nzSortFn]="true"
           (nzSortOrderChange)="sortWorkDate($event)"
           [nzSortDirections]="['descend', 'ascend']"
-          nzWidth="140px"
-        >
+          nzWidth="140px">
           Дата выполнения работ
         </th>
-        <th
-          [nzSortFn]="true"
-          (nzSortOrderChange)="sortOkpd2CodeId($event)"
-          [nzSortDirections]="['descend', 'ascend']"
-        >
+        <th [nzSortFn]="true" (nzSortOrderChange)="sortOkpd2CodeId($event)" [nzSortDirections]="['descend', 'ascend']">
           Код ОКПД 2
         </th>
-        <th
-          [nzSortFn]="true"
-          (nzSortOrderChange)="sortTnVedCodeId($event)"
-          [nzSortDirections]="['descend', 'ascend']"
-        >
+        <th [nzSortFn]="true" (nzSortOrderChange)="sortTnVedCodeId($event)" [nzSortDirections]="['descend', 'ascend']">
           Код ТН ВЭД ЕАЭС
         </th>
       </tr>
@@ -111,16 +78,20 @@
     <tbody>
       <tr *ngFor="let data of sortTable.data">
         <td>{{ data.serialNumber }}</td>
-        <td>{{ data.documentArrivalDate | date: "d.MM.yyyy" }}</td>
+        <td>{{ data.documentArrivalDate | date: 'd.MM.yyyy' }}</td>
         <td>{{ data.passportNumber }}</td>
-        <td><span nz-typography><a>{{ data.names }}<Link /></a></span></td>
+        <td>
+          <span nz-typography
+            ><a>{{ data.names }}<Link /></a
+          ></span>
+        </td>
         <td>{{ data.status }}</td>
         <td>{{ data.organization[0].value }}</td>
-        <td>{{ "-" }}</td>
-        <td>{{ "-" }}</td>
-        <td>{{ data.startDate | date: "d.MM.yyyy" }}</td>
-        <td>{{ data.endDate | date: "d.MM.yyyy" }}</td>
-        <td>{{ data.workDate | date: "d.MM.yyyy" }}</td>
+        <td>{{ '-' }}</td>
+        <td>{{ '-' }}</td>
+        <td>{{ data.startDate | date: 'd.MM.yyyy' }}</td>
+        <td>{{ data.endDate | date: 'd.MM.yyyy' }}</td>
+        <td>{{ data.workDate | date: 'd.MM.yyyy' }}</td>
         <td>{{ data.okpd2Code }}</td>
         <td>{{ data.tnVedCode }}</td>
       </tr>
@@ -136,8 +107,7 @@
           (nzPageIndexChange)="pageChange($event)"
           [nzTotal]="totalPageCount"
           nzSize="small"
-          [nzShowTotal]="Pages"
-        ></nz-pagination>
+          [nzShowTotal]="Pages"></nz-pagination>
         <ng-template #Pages let-total>Страницы:</ng-template>
       </div>
     </div>

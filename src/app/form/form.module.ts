@@ -1,17 +1,18 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzSelectModule } from 'ng-zorro-antd/select';
-import { FormComponent } from './form.component';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { FullPassportFormComponent } from './full-passport-form/full-passport-form.component';
+import { NewPassportFormComponent } from './new-passport-form/new-passport-form.component';
 
 @NgModule({
-  declarations: [FormComponent],
+  declarations: [NewPassportFormComponent, FullPassportFormComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -21,8 +22,8 @@ import { FormComponent } from './form.component';
     NzGridModule,
     NzCheckboxModule,
     NzInputModule,
-    NzDatePickerModule,
     NzSelectModule,
+    NzDatePickerModule,
   ],
 })
 export class FormModule {}

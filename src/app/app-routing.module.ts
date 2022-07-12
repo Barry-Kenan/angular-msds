@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
-
-import { FormComponent } from './form/form.component';
+import { NewPassportFormComponent } from './form/new-passport-form/new-passport-form.component';
 import { LoginComponent } from './login/login.component';
 import { TableComponent } from './table/table.component';
 
@@ -14,7 +13,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'login', component: LoginComponent },
-  { path: 'form', component: FormComponent, canActivate: [AuthGuard] },
+  { path: 'form', component: NewPassportFormComponent, canActivate: [AuthGuard] },
   { path: 'table', component: TableComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' },
 ];

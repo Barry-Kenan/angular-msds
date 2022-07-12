@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import {
-  ColumnType, Direction, DirectionEvent, ListPassport
-} from '../models';
+import { ColumnType, Direction, DirectionEvent, ListPassport } from '../models';
 
 /* список ПБ  */
 @Component({
@@ -28,6 +26,7 @@ export class TableComponent implements OnInit {
   }
 
   public pageChange(evt: any) {
+    console.log('wfewf');
     this.dataService
       .getListPassport(this.columnForPageChange, this.directionForPageChange, evt - 1)
       .subscribe((res: any) => {
