@@ -3,9 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { catchError, throwError } from 'rxjs';
-import {
-  User, UserProfile, ColumnType, Direction, RequestBody
-} from './models';
+import { User, UserProfile, ColumnType, Direction, RequestBody } from './models';
 
 /* Сервис для логина */
 
@@ -42,7 +40,7 @@ export class DataService {
       )
       .subscribe((res: any) => {
         this.userProfileData = res.userProfile;
-        this.router.navigate(['/table']);
+        this.router.navigate(['/']);
         localStorage.setItem('auth-token', res.accessToken);
       });
   }
