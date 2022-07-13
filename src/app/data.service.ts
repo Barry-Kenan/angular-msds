@@ -70,7 +70,7 @@ export class DataService {
           },
         ],
         pagination: {
-          page: page,
+          page,
           pageSize: 10,
         },
         searchString: {
