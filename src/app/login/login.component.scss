@@ -10,16 +10,13 @@
   }
 
   &-form-margin {
-    margin-bottom: 24px;
+    margin-bottom: 5%;
   }
 
-  &-form-button {
-    width: 100%;
-  }
+
 
   &-form-input {
     text-align: left;
-    font-size: 20px;
   }
 
   &-form-icons {
@@ -31,14 +28,16 @@
 
   &-form-title1 {
     font-size: 30px;
-    color: #1e5588;
     margin-bottom: 30px;
   }
 
-  label {
-    font-size: 16px;
+  &-form-title2 {
     display: block;
     text-align: left;
-    color: #1e5588;
+  }
+
+  button {
+    width: 80%;
+    height: 140%;
   }
 }
