@@ -5,17 +5,21 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { catchError, throwError } from 'rxjs';
 import { User, UserProfile, ColumnType, Direction, RequestBody } from './models';
 
-/* Сервис для логина */
+/**
+ * Сервис для логина
+ */
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  public url = 'https://iap_dev2.tomskasu.ru/api/';
+  public url: string;
 
   public userProfileData!: UserProfile;
 
-  constructor(private http: HttpClient, private router: Router, private message: NzMessageService) {}
+  constructor(private http: HttpClient, private router: Router, private message: NzMessageService) {
+    this.url = 'https://iap_dev2.tomskasu.ru/api/';
+  }
 
   public getListPassport(column: ColumnType, direction: Direction, page: number) {
     const url = `${this.url}worker/list_passport`;
