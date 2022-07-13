@@ -1,5 +1,0 @@
-{
-  "*.ts": "ng lint --fix",
-  "*.html": "ng lint --fix",
-  "*.scss": "stylelint **/*.scss --fix"
-}
