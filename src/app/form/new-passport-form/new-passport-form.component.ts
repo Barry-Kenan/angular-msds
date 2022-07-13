@@ -23,7 +23,7 @@ export class NewPassportFormComponent implements OnInit {
   }
 
   public submitForm(): void {
-    console.log(this.newPassportForm.value);
+    return this.newPassportForm.value;
   }
 
   public resetForm(): void {
