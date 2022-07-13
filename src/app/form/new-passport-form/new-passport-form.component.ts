@@ -12,9 +12,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class NewPassportFormComponent implements OnInit {
   public newPassportForm!: FormGroup;
 
-  public check: boolean = false;
+  public check: boolean;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
+    this.check = false;
+  }
 
   public checked(e: boolean) {
     this.check = e;
