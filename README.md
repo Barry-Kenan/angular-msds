@@ -1,9 +1,16 @@
 # Iap Trainee
 
+## Запуск проекта
 
-
-## Start project 
 yarn start
 
-## Start tests
+## Запуск тестов
+
 yarn test
+
+## Линтинг
+
+yarn lint
+yarn lint:fix
+yarn lint:style
+yarn lint:stlye:fix
