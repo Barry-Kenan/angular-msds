@@ -11,17 +11,20 @@ import { DataService } from '../data.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  /**
-   * f
-   */
   public validateForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private dataService: DataService) {}
 
+  /**
+   * Очистка формы
+   */
   public resetForm(): void {
     this.validateForm.reset();
   }
 
+  /**
+   * Отправка формы
+   */
   public submitForm(): void {
     if (this.validateForm.valid) {
       this.dataService.login(this.validateForm.value);
