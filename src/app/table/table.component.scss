@@ -1,7 +1,8 @@
-.passportListTable {
+.passport-list-table {
   padding: 50px;
+  height: 100%;
 
-  th:nth-child(n) {
+  th {
     font-weight: bold;
   }
 
@@ -13,7 +14,7 @@
     text-align: center;
   }
 
-  .passportListTablePagination {
+  &-pagination {
     margin-top: 30px;
   }
 }
