@@ -3,26 +3,26 @@ export interface RequestBody {
   jsonrpc: '2.0';
   params: [
     {
-      Contains: true;
-      ExtraOptions: [
+      contains: true;
+      extraOptions: [
         {
-          Name: 'sort';
-          Value: '';
+          name: 'sort';
+          value: '';
         }
       ];
-      Pagination: {
-        Page: number;
-        PageSize: number;
+      pagination: {
+        page: number;
+        pageSize: number;
       };
-      SearchString: {
+      searchString: {
         lang: 'ru';
-        Value: '';
+        value: '';
       };
-      TableSortParams: {
-        Columns: [
+      tableSortParams: {
+        columns: [
           {
-            Column: string;
-            Direction: 1 | -1 | null;
+            column: string;
+            direction: 1 | -1 | null;
           }
         ];
       };

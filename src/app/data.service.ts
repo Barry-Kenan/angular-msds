@@ -57,31 +57,31 @@ export class DataService {
     return this.http.post(url, body);
   }
 
-  private body = (column: ColumnType, direction: 1 | -1, page: number): RequestBody => ({
+  private body = (columns: ColumnType, directions: 1 | -1, page: number): RequestBody => ({
     id: '384c601d-875d-4797-b50b-ea796a9d4f36',
     jsonrpc: '2.0',
     params: [
       {
-        Contains: true,
-        ExtraOptions: [
+        contains: true,
+        extraOptions: [
           {
-            Name: 'sort',
-            Value: '',
+            name: 'sort',
+            value: '',
           },
         ],
-        Pagination: {
-          Page: page,
-          PageSize: 10,
+        pagination: {
+          page: page,
+          pageSize: 10,
         },
-        SearchString: {
+        searchString: {
           lang: 'ru',
-          Value: '',
+          value: '',
         },
-        TableSortParams: {
-          Columns: [
+        tableSortParams: {
+          columns: [
             {
-              Column: column,
-              Direction: direction,
+              column: columns,
+              direction: directions,
             },
           ],
         },
