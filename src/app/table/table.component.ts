@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ColumnType, Direction, DirectionEvent, ListPassport } from '../models';
 
-/* список ПБ  */
+/**
+ * список ПБ
+ */
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
