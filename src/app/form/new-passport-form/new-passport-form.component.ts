@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+/**
+ * Новый ПБ
+ */
 @Component({
   selector: 'app-new-passport-form',
   templateUrl: './new-passport-form.component.html',
   styleUrls: ['./new-passport-form.component.scss'],
 })
-export class NewPassportFormComponent {
+export class NewPassportFormComponent implements OnInit {
   public newPassportForm!: FormGroup;
 
-  public check = false;
+  public check: boolean = false;
 
   constructor(private fb: FormBuilder) {}
 
