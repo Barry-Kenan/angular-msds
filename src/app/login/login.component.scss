@@ -35,13 +35,10 @@
     margin-bottom: 30px;
   }
 
-  &-form-title2 {
+  label {
     font-size: 16px;
+    display: block;
     text-align: left;
     color: #1e5588;
-  }
-
-  &-form-checkbox {
-    font-size: 16px;
   }
 }
