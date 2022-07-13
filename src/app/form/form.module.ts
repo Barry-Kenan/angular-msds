@@ -8,6 +8,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NewPassportFormComponent } from './new-passport-form/new-passport-form.component';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { NewPassportFormComponent } from './new-passport-form/new-passport-form.
     NzInputModule,
     NzSelectModule,
     NzDatePickerModule,
+    NzDividerModule,
   ],
 })
 export class FormModule {}

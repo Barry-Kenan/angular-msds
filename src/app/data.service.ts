@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { catchError, throwError } from 'rxjs';
-import { RequestBody } from './models/request-body';
-import { Direction } from './models/direction';
 import { ColumnType } from './models/column-type';
+import { Direction } from './models/direction';
+import { RequestBody } from './models/request-body';
 import { UserProfile } from './models/user-profile';
 import { User } from './User';
 
@@ -28,8 +28,8 @@ export class DataService {
   public getListPassport(column: ColumnType, direction: Direction, page: number) {
     const url = `${this.url}worker/list_passport`;
     const body = this.body(column, direction, page);
-    
-return this.postAPI(url, body);
+
+    return this.postAPI(url, body);
   }
 
   public login(user: User) {
@@ -44,8 +44,8 @@ return this.postAPI(url, body);
       .pipe(
         catchError((err: any) => {
           this.message.error('Некорректные учётные данные пользователя', { nzDuration: 2000 });
-          
-return throwError(err);
+
+          return throwError(err);
         })
       )
       .subscribe((res: any) => {

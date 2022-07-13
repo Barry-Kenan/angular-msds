@@ -1,77 +1,23 @@
-<div class="passport-list-table">
+<div class="passport-list">
+  <div class="passport-list-title">
+    <h1>Список ПБ</h1>
+  </div>
+  <button type="button" nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="navigate()">+</button>
   <nz-table
+    class="passport-list-table"
     #sortTable
+    nzOuterBordered
     [nzData]="listOfData"
-    nzBordered
-    [nzScroll]="{ x: '100vh', y: '70vh' }"
+    [nzScroll]="{ x: '100vh', y: '65vh' }"
     [nzFrontPagination]="false">
     <thead>
       <tr>
         <th
+          *ngFor="let column of listOfColumn; trackBy: trackByName"
           [nzSortFn]="true"
-          (nzSortOrderChange)="sortSerialNumber($event)"
           [nzSortDirections]="['descend', 'ascend']"
-          nzWidth="60px">
-          №
-        </th>
-        <th
-          [nzSortFn]="true"
-          (nzSortOrderChange)="sortDocumentArrivalDate($event)"
-          [nzSortDirections]="['descend', 'ascend']"
-          nzWidth="120px">
-          Дата поступления документов
-        </th>
-        <th
-          [nzSortFn]="true"
-          (nzSortOrderChange)="sortPassportNumber($event)"
-          [nzSortDirections]="['descend', 'ascend']">
-          Номер ПБ
-        </th>
-        <th [nzSortFn]="true" (nzSortOrderChange)="sortNames($event)" [nzSortDirections]="['descend', 'ascend']">
-          Наименование
-        </th>
-        <th [nzSortFn]="true" (nzSortOrderChange)="sortStatus($event)" [nzSortDirections]="['descend', 'ascend']">
-          Статус
-        </th>
-        <th
-          [nzSortFn]="true"
-          (nzSortOrderChange)="sortOrganization($event)"
-          [nzSortDirections]="['descend', 'ascend']"
-          nzWidth="200px">
-          Заявитель
-        </th>
-        <th [nzSortFn]="true" (nzSortOrderChange)="sortMediator($event)" [nzSortDirections]="['descend', 'ascend']">
-          Посредник
-        </th>
-        <th [nzSortFn]="true" (nzSortOrderChange)="sortExpertId($event)" [nzSortDirections]="['descend', 'ascend']">
-          Эксперт
-        </th>
-        <th
-          [nzSortFn]="true"
-          (nzSortOrderChange)="sortStartDate($event)"
-          [nzSortDirections]="['descend', 'ascend']"
-          nzWidth="140px">
-          Действителен от
-        </th>
-        <th
-          [nzSortFn]="true"
-          (nzSortOrderChange)="sortEndDate($event)"
-          [nzSortDirections]="['descend', 'ascend']"
-          nzWidth="140px">
-          Действителен до
-        </th>
-        <th
-          [nzSortFn]="true"
-          (nzSortOrderChange)="sortWorkDate($event)"
-          [nzSortDirections]="['descend', 'ascend']"
-          nzWidth="140px">
-          Дата выполнения работ
-        </th>
-        <th [nzSortFn]="true" (nzSortOrderChange)="sortOkpd2CodeId($event)" [nzSortDirections]="['descend', 'ascend']">
-          Код ОКПД 2
-        </th>
-        <th [nzSortFn]="true" (nzSortOrderChange)="sortTnVedCodeId($event)" [nzSortDirections]="['descend', 'ascend']">
-          Код ТН ВЭД ЕАЭС
+          (nzSortOrderChange)="column.sort($event)">
+          {{ column.title }}
         </th>
       </tr>
     </thead>
@@ -87,29 +33,28 @@
         </td>
         <td>{{ data.status }}</td>
         <td>{{ data.organization[0].value }}</td>
-        <td>{{ '-' }}</td>
-        <td>{{ '-' }}</td>
+        <td>{{ data.mediator }}</td>
+        <td>{{ data.expert }}</td>
         <td>{{ data.startDate | date: 'd.MM.yyyy' }}</td>
         <td>{{ data.endDate | date: 'd.MM.yyyy' }}</td>
         <td>{{ data.workDate | date: 'd.MM.yyyy' }}</td>
         <td>{{ data.okpd2Code }}</td>
         <td>{{ data.tnVedCode }}</td>
       </tr>
+      <tr>
+        <td [colSpan]="3">
+          <div>Всего найдено элементов:{{ totalPageCount }}</div>
+        </td>
+        <td [colSpan]="7"></td>
+        <td [colSpan]="3">
+          <nz-pagination
+            (nzPageIndexChange)="pageChange($event)"
+            [nzTotal]="totalPageCount"
+            nzSize="small"
+            [nzShowTotal]="Pages"></nz-pagination>
+        </td>
+      </tr>
     </tbody>
+    <ng-template #Pages let-total>Страницы:</ng-template>
   </nz-table>
-  <div nz-row class="passport-list-table-pagination">
-    <div nz-col nzSpan="4">
-      <div>Всего найдено элементов: {{ totalPageCount }}</div>
-    </div>
-    <div nz-col nzSpan="6" nzOffset="14">
-      <div>
-        <nz-pagination
-          (nzPageIndexChange)="pageChange($event)"
-          [nzTotal]="totalPageCount"
-          nzSize="small"
-          [nzShowTotal]="Pages"></nz-pagination>
-        <ng-template #Pages let-total>Страницы:</ng-template>
-      </div>
-    </div>
-  </div>
 </div>

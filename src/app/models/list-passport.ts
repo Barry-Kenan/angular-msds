@@ -12,6 +12,8 @@ export interface ListPassport {
     }
   ];
   passportNumber: number;
+  mediator: string;
+  expert: string;
   startDate: string;
   tnVedCode: string;
   workDate: string;

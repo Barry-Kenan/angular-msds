@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from '../data.service';
-import { DirectionEvent } from '../models/direction-event';
-import { Direction } from '../models/direction';
+import { ColumnItems } from '../models/column-items';
 import { ColumnType } from '../models/column-type';
+import { Direction } from '../models/direction';
 import { ListPassport } from '../models/list-passport';
 
 /**
@@ -16,14 +17,77 @@ import { ListPassport } from '../models/list-passport';
 export class TableComponent implements OnInit {
   public listOfData: Array<ListPassport>;
 
+  public listOfColumn: Array<ColumnItems> = [
+    {
+      title: '№',
+      sort: (evt: any) => this.sortChecking(evt, 'serialNumber'),
+    },
+    {
+      title: 'Дата поступления документов',
+      sort: (evt: any) => this.sortChecking(evt, 'documentArrivalDate'),
+    },
+    {
+      title: 'Номер ПБ',
+      sort: (evt: any) => this.sortChecking(evt, 'passportNumber'),
+    },
+    {
+      title: 'Наименование',
+      sort: (evt: any) => this.sortChecking(evt, 'names'),
+    },
+    {
+      title: 'Статус',
+      sort: (evt: any) => this.sortChecking(evt, 'status'),
+    },
+    {
+      title: 'Заявитель',
+      sort: (evt: any) => this.sortChecking(evt, 'organization'),
+    },
+    {
+      title: 'Посредник',
+      sort: (evt: any) => this.sortChecking(evt, 'mediator'),
+    },
+    {
+      title: 'Эксперт',
+      sort: (evt: any) => this.sortChecking(evt, 'expertId'),
+    },
+    {
+      title: 'Действителен от',
+      sort: (evt: any) => this.sortChecking(evt, 'startDate'),
+    },
+    {
+      title: 'Действителен до',
+      sort: (evt: any) => this.sortChecking(evt, 'endDate'),
+    },
+    {
+      title: 'Дата выполнения работ',
+      sort: (evt: any) => this.sortChecking(evt, 'workDate'),
+    },
+    {
+      title: 'Код ОКПД 2',
+      sort: (evt: any) => this.sortChecking(evt, 'okpd2CodeId'),
+    },
+    {
+      title: 'Код ТН ВЭД ЕАЭС',
+      sort: (evt: any) => this.sortChecking(evt, 'tnVedCodeId'),
+    },
+  ];
+
   public totalPageCount!: number;
 
   public columnForPageChange!: ColumnType;
 
   public directionForPageChange!: 1 | -1;
 
-  constructor(public dataService: DataService) {
+  constructor(public dataService: DataService, private router: Router) {
     this.listOfData = [];
+  }
+
+  public trackByName(_: number, item: ColumnItems): string {
+    return item.title;
+  }
+
+  public navigate() {
+    this.router.navigate(['/form']);
   }
 
   public ngOnInit(): void {
@@ -40,65 +104,13 @@ export class TableComponent implements OnInit {
       });
   }
 
-  public sortChecking(column: ColumnType, direction: string | null, pageSize: number) {
+  public sortChecking(direction: string | null, column: ColumnType) {
     const directionVal = direction === 'ascend' ? Direction.ascend : Direction.descend;
-    this.dataService.getListPassport(column, directionVal, pageSize).subscribe((res: any) => {
+    this.dataService.getListPassport(column, directionVal, 0).subscribe((res: any) => {
       this.setData(res);
     });
     this.columnForPageChange = column;
     this.directionForPageChange = directionVal;
-  }
-
-  public sortSerialNumber(direction: DirectionEvent) {
-    this.sortChecking('serialNumber', direction, 0);
-  }
-
-  public sortDocumentArrivalDate(direction: DirectionEvent) {
-    this.sortChecking('documentArrivalDate', direction, 0);
-  }
-
-  public sortPassportNumber(direction: DirectionEvent) {
-    this.sortChecking('passportNumber', direction, 0);
-  }
-
-  public sortNames(direction: DirectionEvent) {
-    this.sortChecking('names', direction, 0);
-  }
-
-  public sortStatus(direction: DirectionEvent) {
-    this.sortChecking('status', direction, 0);
-  }
-
-  public sortOrganization(direction: DirectionEvent) {
-    this.sortChecking('organization', direction, 0);
-  }
-
-  public sortMediator(direction: DirectionEvent) {
-    this.sortChecking('mediator', direction, 0);
-  }
-
-  public sortExpertId(direction: DirectionEvent) {
-    this.sortChecking('expertId', direction, 0);
-  }
-
-  public sortStartDate(direction: DirectionEvent) {
-    this.sortChecking('startDate', direction, 0);
-  }
-
-  public sortEndDate(direction: DirectionEvent) {
-    this.sortChecking('endDate', direction, 0);
-  }
-
-  public sortWorkDate(direction: DirectionEvent) {
-    this.sortChecking('workDate', direction, 0);
-  }
-
-  public sortOkpd2CodeId(direction: DirectionEvent) {
-    this.sortChecking('okpd2CodeId', direction, 0);
-  }
-
-  public sortTnVedCodeId(direction: DirectionEvent) {
-    this.sortChecking('tnVedCodeId', direction, 0);
   }
 
   private setData(response: any) {
@@ -106,6 +118,85 @@ export class TableComponent implements OnInit {
     this.totalPageCount = response.result.totalCount;
     this.listOfData.forEach((e, ind) => {
       e.serialNumber = ind + 1;
+      switch (e.status) {
+        case '0': {
+          this.listOfData[ind].status = 'Черновик заявки';
+          break;
+        }
+        case '1': {
+          this.listOfData[ind].status = 'Заявка на рассмотрении';
+          break;
+        }
+        case '2': {
+          this.listOfData[ind].status = 'На уточнении';
+          break;
+        }
+        case '3': {
+          this.listOfData[ind].status = 'Ожидание оплаты и договора';
+          break;
+        }
+        case '4': {
+          this.listOfData[ind].status = 'Ожидание договора';
+          break;
+        }
+        case '5': {
+          this.listOfData[ind].status = 'Подтверждение договора';
+          break;
+        }
+        case '6': {
+          this.listOfData[ind].status = 'Ожидание оплаты и подтверждения договора';
+          break;
+        }
+        case '7': {
+          this.listOfData[ind].status = 'Ожидание оплаты';
+          break;
+        }
+        case '8': {
+          this.listOfData[ind].status = 'На экспертизе';
+          break;
+        }
+        case '9': {
+          this.listOfData[ind].status = 'Отказ';
+          break;
+        }
+        case '10': {
+          this.listOfData[ind].status = 'На экспертизе(2я редакция)';
+          break;
+        }
+        case '11': {
+          this.listOfData[ind].status = 'На экспертизе(3я редакция)';
+          break;
+        }
+        case '12': {
+          this.listOfData[ind].status = 'окончательный отказ';
+          break;
+        }
+        case '13': {
+          this.listOfData[ind].status = 'Зарегистрирован (ожидание оригиналов)';
+          break;
+        }
+        case '14': {
+          this.listOfData[ind].status = 'окончательно зарегистрирован';
+          break;
+        }
+        case '15': {
+          this.listOfData[ind].status = 'sadfas';
+          break;
+        }
+        case '16': {
+          this.listOfData[ind].status = 'sadfas';
+          break;
+        }
+        case '17': {
+          this.listOfData[ind].status = 'Приостановлен';
+          break;
+        }
+        case '18':
+          this.listOfData[ind].status = 'Повторный отказ';
+          break;
+        default:
+          break;
+      }
     });
   }
 }

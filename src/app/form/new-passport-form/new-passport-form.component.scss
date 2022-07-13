@@ -1,5 +1,5 @@
 .new-passport-form {
-    margin-top: 50px;
+    max-height: 100vh;
 
     &-title {
         font-size: 18px;
@@ -12,10 +12,9 @@
 
     button {
         width: 100%;
-        font-size: 18px;
     }
 
     div {
-        margin-top: 40px;
+        margin-top: 5vh;
     }
 }

@@ -1,20 +1,37 @@
-.passport-list-table {
-  padding: 50px;
+.passport-list {
   height: 100%;
+
+
+  &-title {
+    height: 76px;
+    margin-bottom: 1%;
+    background-color: #F6F6F6;
+
+    h1 {
+      padding-top: 1%;
+      padding-left: 3%;
+    }
+  }
+
+  &-table {
+    margin: 4%;
+  }
 
   th {
     font-weight: bold;
+    background-color: #D8D8D8;
   }
 
   tr:nth-child(odd) {
-    background-color: #f9f9f9;
+    background-color: #F6F6F6;
   }
 
   td {
     text-align: center;
   }
 
-  &-pagination {
-    margin-top: 30px;
+  button {
+    margin: 0 5% 1% 0;
+    float: right;
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 /**
  * Новый ПБ
@@ -14,7 +15,7 @@ export class NewPassportFormComponent implements OnInit {
 
   public check: boolean;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.check = false;
   }
 
@@ -28,6 +29,7 @@ export class NewPassportFormComponent implements OnInit {
 
   public resetForm(): void {
     this.newPassportForm.reset();
+    this.router.navigate(['/']);
   }
 
   public ngOnInit(): void {
