@@ -6,6 +6,7 @@
   <nz-table
     class="passport-list-table"
     #sortTable
+    nzBordered
     nzOuterBordered
     [nzData]="listOfData"
     [nzScroll]="{ x: '100vh', y: '65vh' }"
@@ -16,7 +17,8 @@
           *ngFor="let column of listOfColumn; trackBy: trackByName"
           [nzSortFn]="true"
           [nzSortDirections]="['descend', 'ascend']"
-          (nzSortOrderChange)="column.sort($event)">
+          (nzSortOrderChange)="column.sort($event)"
+          [nzWidth]="column.width">
           {{ column.title }}
         </th>
       </tr>
@@ -26,11 +28,7 @@
         <td>{{ data.serialNumber }}</td>
         <td>{{ data.documentArrivalDate | date: 'd.MM.yyyy' }}</td>
         <td>{{ data.passportNumber }}</td>
-        <td>
-          <span nz-typography
-            ><a>{{ data.names }}<Link /></a
-          ></span>
-        </td>
+        <td>{{ data.names }}</td>
         <td>{{ data.status }}</td>
         <td>{{ data.organization[0].value }}</td>
         <td>{{ data.mediator }}</td>
@@ -45,8 +43,8 @@
         <td [colSpan]="3">
           <div>Всего найдено элементов:{{ totalPageCount }}</div>
         </td>
-        <td [colSpan]="7"></td>
-        <td [colSpan]="3">
+        <td [colSpan]="6"></td>
+        <td [colSpan]="4">
           <nz-pagination
             (nzPageIndexChange)="pageChange($event)"
             [nzTotal]="totalPageCount"

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { ColumnItems } from '../models/column-items';
-import { ColumnType } from '../models/column-type';
+import { Column } from '../models/column-type';
 import { Direction } from '../models/direction';
 import { ListPassport } from '../models/list-passport';
 
@@ -20,61 +20,74 @@ export class TableComponent implements OnInit {
   public listOfColumn: Array<ColumnItems> = [
     {
       title: '№',
+      width: '3%',
       sort: (evt: any) => this.sortChecking(evt, 'serialNumber'),
     },
     {
       title: 'Дата поступления документов',
+      width: '7%',
       sort: (evt: any) => this.sortChecking(evt, 'documentArrivalDate'),
     },
     {
       title: 'Номер ПБ',
+      width: '7%',
       sort: (evt: any) => this.sortChecking(evt, 'passportNumber'),
     },
     {
       title: 'Наименование',
+      width: '8%',
       sort: (evt: any) => this.sortChecking(evt, 'names'),
     },
     {
       title: 'Статус',
+      width: '7%',
       sort: (evt: any) => this.sortChecking(evt, 'status'),
     },
     {
       title: 'Заявитель',
+      width: '7%',
       sort: (evt: any) => this.sortChecking(evt, 'organization'),
     },
     {
       title: 'Посредник',
+      width: '7%',
       sort: (evt: any) => this.sortChecking(evt, 'mediator'),
     },
     {
       title: 'Эксперт',
+      width: '7%',
       sort: (evt: any) => this.sortChecking(evt, 'expertId'),
     },
     {
       title: 'Действителен от',
+      width: '7%',
       sort: (evt: any) => this.sortChecking(evt, 'startDate'),
     },
     {
       title: 'Действителен до',
+      width: '7%',
       sort: (evt: any) => this.sortChecking(evt, 'endDate'),
     },
     {
       title: 'Дата выполнения работ',
+      width: '7%',
       sort: (evt: any) => this.sortChecking(evt, 'workDate'),
     },
     {
       title: 'Код ОКПД 2',
+      width: '7%',
       sort: (evt: any) => this.sortChecking(evt, 'okpd2CodeId'),
     },
     {
       title: 'Код ТН ВЭД ЕАЭС',
+      width: '7%',
       sort: (evt: any) => this.sortChecking(evt, 'tnVedCodeId'),
     },
   ];
 
   public totalPageCount!: number;
 
-  public columnForPageChange!: ColumnType;
+  public columnForPageChange!: Column;
 
   public directionForPageChange!: 1 | -1;
 
@@ -104,7 +117,7 @@ export class TableComponent implements OnInit {
       });
   }
 
-  public sortChecking(direction: string | null, column: ColumnType) {
+  public sortChecking(direction: string | null, column: Column) {
     const directionVal = direction === 'ascend' ? Direction.ascend : Direction.descend;
     this.dataService.getListPassport(column, directionVal, 0).subscribe((res: any) => {
       this.setData(res);
