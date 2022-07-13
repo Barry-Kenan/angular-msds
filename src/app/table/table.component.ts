@@ -15,8 +15,14 @@ import { ListPassport } from '../models/list-passport';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
+  /**
+   * data для заполнения таблицы
+   */
   public listOfData: Array<ListPassport>;
 
+  /**
+   * список столбцов (название, ширина, функция для сортировки)
+   */
   public listOfColumn: Array<ColumnItems> = [
     {
       title: '№',
@@ -85,20 +91,38 @@ export class TableComponent implements OnInit {
     },
   ];
 
+  /**
+   * количество страниц
+   */
   public totalPageCount!: number;
 
+  /**
+   * название столбца (для пагинации по последней сортировки)
+   */
   public columnForPageChange!: Column;
 
+  /**
+   * direction (для пагинации по последней сортировки)
+   */
   public directionForPageChange!: 1 | -1;
 
   constructor(public dataService: DataService, private router: Router) {
     this.listOfData = [];
   }
 
+  /**
+   *
+   * @param _ индекс
+   * @param item название столбцов
+   * @returns trackBy для *ngfor (чтобы не отрисовал каждый раз)
+   */
   public trackByName(_: number, item: ColumnItems): string {
     return item.title;
   }
 
+  /**
+   * навигация (переход н форму для создание ПБ)
+   */
   public navigate() {
     this.router.navigate(['/form']);
   }
@@ -109,7 +133,11 @@ export class TableComponent implements OnInit {
     });
   }
 
-  public pageChange(evt: any) {
+  /**
+   * для пагинации
+   * @param evt страницы (от 1 начинается)
+   */
+  public pageChange(evt: number) {
     this.dataService
       .getListPassport(this.columnForPageChange, this.directionForPageChange, evt - 1)
       .subscribe((res: any) => {
@@ -117,6 +145,11 @@ export class TableComponent implements OnInit {
       });
   }
 
+  /**
+   * функция для сортировки
+   * @param direction ascend | descend
+   * @param column название столбца
+   */
   public sortChecking(direction: string | null, column: Column) {
     const directionVal = direction === 'ascend' ? Direction.ascend : Direction.descend;
     this.dataService.getListPassport(column, directionVal, 0).subscribe((res: any) => {
@@ -126,6 +159,10 @@ export class TableComponent implements OnInit {
     this.directionForPageChange = directionVal;
   }
 
+  /**
+   * функция для записи data для заполнения таблицы
+   * @param response response)
+   */
   private setData(response: any) {
     this.listOfData = response.result.items;
     this.totalPageCount = response.result.totalCount;

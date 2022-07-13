@@ -13,20 +13,35 @@ import { Router } from '@angular/router';
 export class NewPassportFormComponent implements OnInit {
   public newPassportForm!: FormGroup;
 
+  /**
+   * состояние checkbox
+   */
   public check: boolean;
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.check = false;
   }
 
+  /**
+   *
+   * @param e event:boolean
+   * изменяет значение check
+   */
   public checked(e: boolean) {
     this.check = e;
   }
 
+  /**
+   *
+   * @returns отправка формы
+   */
   public submitForm(): void {
     return this.newPassportForm.value;
   }
 
+  /**
+   * очистка формы и перенаправление на страницу Table
+   */
   public resetForm(): void {
     this.newPassportForm.reset();
     this.router.navigate(['/']);
