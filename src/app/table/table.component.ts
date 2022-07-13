@@ -11,7 +11,7 @@ import { ColumnType, Direction, DirectionEvent, ListPassport } from '../models';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  public listOfData: Array<ListPassport> = [];
+  public listOfData: Array<ListPassport>;
 
   public totalPageCount!: number;
 
@@ -19,7 +19,9 @@ export class TableComponent implements OnInit {
 
   public directionForPageChange!: 1 | -1;
 
-  constructor(public dataService: DataService) {}
+  constructor(public dataService: DataService) {
+    this.listOfData = [];
+  }
 
   public ngOnInit(): void {
     this.dataService.getListPassport('status', 1, 0).subscribe((res: any) => {
@@ -28,7 +30,6 @@ export class TableComponent implements OnInit {
   }
 
   public pageChange(evt: any) {
-    console.log('wfewf');
     this.dataService
       .getListPassport(this.columnForPageChange, this.directionForPageChange, evt - 1)
       .subscribe((res: any) => {
