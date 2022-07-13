@@ -10,7 +10,8 @@ export class PassportInterceptor implements HttpInterceptor {
     if (request.url === 'https://iap_dev2.tomskasu.ru/api/worker/list_passport') {
       return next.handle(this.addAuthToken(request));
     }
-    return next.handle(request);
+    
+return next.handle(request);
   }
 
   public addAuthToken(request: HttpRequest<any>) {

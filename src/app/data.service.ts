@@ -28,7 +28,8 @@ export class DataService {
   public getListPassport(column: ColumnType, direction: Direction, page: number) {
     const url = `${this.url}worker/list_passport`;
     const body = this.body(column, direction, page);
-    return this.postAPI(url, body);
+    
+return this.postAPI(url, body);
   }
 
   public login(user: User) {
@@ -43,7 +44,8 @@ export class DataService {
       .pipe(
         catchError((err: any) => {
           this.message.error('Некорректные учётные данные пользователя', { nzDuration: 2000 });
-          return throwError(err);
+          
+return throwError(err);
         })
       )
       .subscribe((res: any) => {
