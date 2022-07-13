@@ -3,7 +3,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { catchError, throwError } from 'rxjs';
-import { User, UserProfile, ColumnType, Direction, RequestBody } from './models';
+import { RequestBody } from './models/request-body';
+import { Direction } from './models/direction';
+import { ColumnType } from './models/column-type';
+import { UserProfile } from './models/user-profile';
+import { User } from './User';
 
 /**
  * Сервис для логина

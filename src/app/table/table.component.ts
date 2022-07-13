@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { ColumnType, Direction, DirectionEvent, ListPassport } from '../models';
+import { DirectionEvent } from '../models/direction-event';
+import { Direction } from '../models/direction';
+import { ColumnType } from '../models/column-type';
+import { ListPassport } from '../models/list-passport';
 
 /**
  * список ПБ
