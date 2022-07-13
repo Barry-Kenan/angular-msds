@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { catchError, throwError } from 'rxjs';
-import { ColumnType } from './models/column-type';
+import { Column } from './models/column-type';
 import { Direction } from './models/direction';
 import { RequestBody } from './models/request-body';
 import { UserProfile } from './models/user-profile';
@@ -25,7 +25,7 @@ export class DataService {
     this.url = 'https://iap_dev2.tomskasu.ru/api/';
   }
 
-  public getListPassport(column: ColumnType, direction: Direction, page: number) {
+  public getListPassport(column: Column, direction: Direction, page: number) {
     const url = `${this.url}worker/list_passport`;
     const body = this.body(column, direction, page);
 
@@ -59,7 +59,7 @@ export class DataService {
     return this.http.post(url, body);
   }
 
-  private body = (columns: ColumnType, directions: 1 | -1, page: number): RequestBody => ({
+  private body = (columns: Column, directions: 1 | -1, page: number): RequestBody => ({
     id: '384c601d-875d-4797-b50b-ea796a9d4f36',
     jsonrpc: '2.0',
     params: [

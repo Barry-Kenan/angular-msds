@@ -1,3 +1,7 @@
+/**
+ * тип списка ПБ
+ */
+
 export interface ListPassport {
   serialNumber: number;
   documentArrivalDate: string;

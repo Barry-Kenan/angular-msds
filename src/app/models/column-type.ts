@@ -1,4 +1,8 @@
-export type ColumnType =
+/**
+ * столбцы таблицы ПБ
+ */
+
+export type Column =
   | 'serialNumber'
   | 'documentArrivalDate'
   | 'passportNumber'
