@@ -1,0 +1,21 @@
+export const statusName = new Map<string, string>();
+
+statusName.set('0', 'Черновик заявки');
+statusName.set('1', 'Заявка на рассмотрении');
+statusName.set('2', 'На уточнении');
+statusName.set('3', 'Ожидание оплаты и договора');
+statusName.set('4', 'Ожидание договора');
+statusName.set('5', 'Подтверждение договора');
+statusName.set('6', 'Ожидание оплаты и подтверждения договора');
+statusName.set('7', 'Ожидание оплаты');
+statusName.set('8', 'На экспертизе');
+statusName.set('9', 'Отказ');
+statusName.set('10', 'На экспертизе(2я редакция)');
+statusName.set('11', 'На экспертизе(3я редакция)');
+statusName.set('12', 'Окончательный отказ');
+statusName.set('13', 'Зарегистрирован (ожидание оригиналов)');
+statusName.set('14', 'Окончательно зарегистрирован');
+statusName.set('15', '');
+statusName.set('16', '');
+statusName.set('17', 'Приостановлен');
+statusName.set('18', 'Повторный отказ');
