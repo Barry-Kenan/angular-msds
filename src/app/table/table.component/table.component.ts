@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../../data.service';
 import { ColumnItems } from '../../models/column-items';
-import { ColumnName } from '../../models/column-type';
+import { ColumnName } from '../../models/column-name';
 import { Direction } from '../../models/direction';
 import { ListPassport } from '../../models/list-passport';
+import { tableConst } from '../consts/table.consts';
 
 /**
  * список ПБ
@@ -23,73 +24,7 @@ export class TableComponent implements OnInit {
   /**
    * список столбцов (название, ширина, функция для сортировки)
    */
-  public listOfColumn: Array<ColumnItems> = [
-    {
-      title: '№',
-      width: '3%',
-      sort: (evt: any) => this.sortChecking(evt, ColumnName.SerialNumber),
-    },
-    {
-      title: 'Дата поступления документов',
-      width: '7%',
-      sort: (evt: any) => this.sortChecking(evt, ColumnName.DocumentArrivalDate),
-    },
-    {
-      title: 'Номер ПБ',
-      width: '7%',
-      sort: (evt: any) => this.sortChecking(evt, ColumnName.PassportNumber),
-    },
-    {
-      title: 'Наименование',
-      width: '8%',
-      sort: (evt: any) => this.sortChecking(evt, ColumnName.Names),
-    },
-    {
-      title: 'Статус',
-      width: '7%',
-      sort: (evt: any) => this.sortChecking(evt, ColumnName.Status),
-    },
-    {
-      title: 'Заявитель',
-      width: '7%',
-      sort: (evt: any) => this.sortChecking(evt, ColumnName.Organization),
-    },
-    {
-      title: 'Посредник',
-      width: '7%',
-      sort: (evt: any) => this.sortChecking(evt, ColumnName.Mediator),
-    },
-    {
-      title: 'Эксперт',
-      width: '7%',
-      sort: (evt: any) => this.sortChecking(evt, ColumnName.ExpertId),
-    },
-    {
-      title: 'Действителен от',
-      width: '7%',
-      sort: (evt: any) => this.sortChecking(evt, ColumnName.StartDate),
-    },
-    {
-      title: 'Действителен до',
-      width: '7%',
-      sort: (evt: any) => this.sortChecking(evt, ColumnName.EndDate),
-    },
-    {
-      title: 'Дата выполнения работ',
-      width: '7%',
-      sort: (evt: any) => this.sortChecking(evt, ColumnName.WorkDate),
-    },
-    {
-      title: 'Код ОКПД 2',
-      width: '7%',
-      sort: (evt: any) => this.sortChecking(evt, ColumnName.Okpd2CodeId),
-    },
-    {
-      title: 'Код ТН ВЭД ЕАЭС',
-      width: '7%',
-      sort: (evt: any) => this.sortChecking(evt, ColumnName.TnVedCodeId),
-    },
-  ];
+  public listOfColumn: Array<ColumnItems>;
 
   /**
    * количество страниц
@@ -108,6 +43,10 @@ export class TableComponent implements OnInit {
 
   constructor(public dataService: DataService, private router: Router) {
     this.listOfData = [];
+    this.listOfColumn = tableConst.map(item => ({
+      ...item,
+      sort: (evt: any) => this.sortChecking(evt, item.columnName),
+    }));
   }
 
   /**
@@ -157,10 +96,6 @@ export class TableComponent implements OnInit {
     });
     this.columnForPageChange = column;
     this.directionForPageChange = directionVal;
-  }
-
-  public sort(direction: string | null, column: ColumnName) {
-    return this.sortChecking(direction, column);
   }
 
   /**

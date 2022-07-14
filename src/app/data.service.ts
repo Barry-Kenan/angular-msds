@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { ColumnName } from './models/column-type';
+import { ColumnName } from './models/column-name';
 import { Direction } from './models/direction';
 import { PassportResponse } from './models/passport-response';
 import { RequestBody } from './models/request-body';

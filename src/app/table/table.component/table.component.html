@@ -17,7 +17,7 @@
           *ngFor="let column of listOfColumn; trackBy: trackByName"
           [nzSortFn]="true"
           [nzSortDirections]="['descend', 'ascend']"
-          (nzSortOrderChange)="column.sort($event)"
+          (nzSortOrderChange)="column?.sort($event)"
           [nzWidth]="column.width">
           {{ column.title }}
         </th>
