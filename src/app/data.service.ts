@@ -2,12 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { catchError, throwError } from 'rxjs';
-import { Column } from './models/column-type';
+import { catchError, map, Observable, throwError } from 'rxjs';
+import { ColumnName } from './models/column-type';
 import { Direction } from './models/direction';
+import { PassportResponse } from './models/passport-response';
 import { RequestBody } from './models/request-body';
+import { statusName } from './table/consts/status-name';
 import { UserProfile } from './models/user-profile';
 import { User } from './User';
+import { ListPassport } from './models/list-passport';
 
 /**
  * Сервис для логина
@@ -32,11 +35,22 @@ export class DataService {
    * @param page страницы от 0
    * @returns список ПБ
    */
-  public getListPassport(column: Column, direction: Direction, page: number) {
+  public getListPassport(column: ColumnName, direction: Direction, page: number): Observable<any> {
     const url = `${this.url}worker/list_passport`;
     const body = this.body(column, direction, page);
 
-    return this.postAPI(url, body);
+    return this.postAPI(url, body).pipe(
+      map((res: PassportResponse) => {
+        const { totalCount } = res.result;
+        const items = res.result.items.map((item: ListPassport, index: number) => ({
+          ...item,
+          serialNumber: index + 1,
+          status: statusName.get(item.status),
+        }));
+
+        return { items, totalCount };
+      })
+    );
   }
 
   /**
@@ -73,18 +87,17 @@ export class DataService {
    * @param body тело запроса
    * @returns пост метод
    */
-  private postAPI(url: string, body: any) {
+  private postAPI(url: string, body: any): Observable<any> {
     return this.http.post(url, body);
   }
 
   /**
-   *
-   * @param columns столбцы
+   * @param column столбцы
    * @param directions для сортировки 1|-1
    * @param page страница от 0
    * @returns тело запроса
    */
-  private body = (columns: Column, directions: 1 | -1, page: number): RequestBody => ({
+  private body = (column: ColumnName, directions: 1 | -1, page: number): RequestBody => ({
     id: '384c601d-875d-4797-b50b-ea796a9d4f36',
     jsonrpc: '2.0',
     params: [
@@ -107,7 +120,7 @@ export class DataService {
         tableSortParams: {
           columns: [
             {
-              column: columns,
+              column,
               direction: directions,
             },
           ],
