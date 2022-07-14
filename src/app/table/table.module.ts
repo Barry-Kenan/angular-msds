@@ -5,7 +5,7 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
-import { TableComponent } from './table.component';
+import { TableComponent } from './table.component/table.component';
 
 @NgModule({
   declarations: [TableComponent],
