@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { User } from 'src/models/user';
-import { url } from 'src/environments/environment';
+import { environment } from 'src/environments/environment';
+import { List } from 'src/models/list';
 import { ColumnName } from '../../../models/column-name';
 import { Direction } from '../../../models/direction';
 import { PassportResponse } from '../../../models/passport-response';
@@ -21,18 +22,11 @@ import { ListPassport } from '../../../models/list-passport';
 })
 export class DataService {
   /**
-   * url адрес
-   */
-  public url: string;
-
-  /**
    * user data пользователя
    */
   public userProfileData!: UserProfile;
 
-  constructor(private http: HttpClient, private router: Router, private message: NzMessageService) {
-    this.url = url;
-  }
+  constructor(private http: HttpClient, private router: Router, private message: NzMessageService) {}
 
   /**
    * метод для получения списка ПБ
@@ -41,7 +35,7 @@ export class DataService {
    * @param page страницы от 0
    * @returns объект с items и totalCount
    */
-  public getListPassport(column: ColumnName, direction: Direction, page: number): Observable<any> {
+  public getListPassport(column: ColumnName, direction: Direction, page: number): Observable<List<ListPassport>> {
     const params = [
       {
         contains: true,
@@ -71,14 +65,16 @@ export class DataService {
     ];
     const method = 'list_passport';
 
-    return this.postRPC(params, method).pipe(
+    return this.postRPC<PassportResponse>(params, method).pipe(
       map((res: PassportResponse) => {
         const { totalCount } = res.result;
-        const items = res.result.items.map((item: ListPassport, index: number) => ({
-          ...item,
-          serialNumber: index + 1,
-          status: statusName.get(item.status),
-        }));
+        const items = res.result.items.map((item: ListPassport, index: number) => {
+          const test = item;
+          test.serialNumber = index + 1;
+          test.status = statusName.get(item.status) || '';
+
+          return test;
+        });
 
         return { items, totalCount };
       })
@@ -116,25 +112,26 @@ export class DataService {
    * @returns пост запрос на login
    */
   private postRequest(body: any) {
-    const postUrl = `${this.url}login`;
+    const postUrl = `${environment.host}login`;
 
     return this.http.post(postUrl, body);
   }
 
   /**
-   * @param params параметры
-   * @param method методы
-   * @returns пост запрос JSON-RPC
+   * Post-запрос для JSON-RPC
+   * @param params Параметры
+   * @param method Метод
+   * @returns Результат запроса
    */
-  private postRPC(params: any, method: string): Observable<any> {
-    const postUrl = `${this.url}worker/list_passport`;
+  private postRPC<T>(params: any, method: string): Observable<T> {
+    const postUrl = `${environment.host}worker/${method}`;
     const body = {
-      id: '384c601d-875d-4797-b50b-ea796a9d4f36',
+      id: 1,
       jsonrpc: '2.0',
       params,
       method,
     };
 
-    return this.http.post(postUrl, body);
+    return this.http.post<T>(postUrl, body);
   }
 }
