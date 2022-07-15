@@ -39,10 +39,16 @@ export class TableComponent implements OnInit {
   /**
    * direction (для пагинации по последней сортировки)
    */
-  public directionForPageChange!: 1 | -1;
+  public directionForPageChange!: Direction;
 
   constructor(public dataService: DataService, private router: Router) {
+    /**
+     * присвоение данных таблицы
+     */
     this.listOfData = [];
+    /**
+     * присвоение функций и данных для столбцов
+     */
     this.listOfColumn = tableConst.map(item => ({
       ...item,
       sort: (evt: any) => this.sortChecking(evt, item.columnName),
