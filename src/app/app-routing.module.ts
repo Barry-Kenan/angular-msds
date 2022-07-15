@@ -4,7 +4,9 @@ import { LoginComponent } from 'src/modules/login/components/login.components/lo
 import { TableComponent } from 'src/modules/table/components/table.component/table.component';
 import { AuthGuard } from './guards/auth.guard/auth.guard';
 import { NewPassportFormComponent } from '../modules/new-passport-form/components/new-passport-form.component/new-passport-form.component';
-
+/**
+ * Роутинг
+ */
 const routes: Routes = [
   {
     path: '',

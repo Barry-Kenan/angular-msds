@@ -10,34 +10,37 @@
   }
 
   &-form-margin {
-    margin-bottom: 5%;
+    margin-bottom: 7%;
   }
 
-
-
-  &-form-input {
-    text-align: left;
-  }
-
-  &-form-icons {
-    color: white;
-    font-size: 25px;
-    background-color: #1e5588;
-    border-radius: 8%;
-  }
-
-  &-form-title1 {
+  &-form-title {
     font-size: 30px;
-    margin-bottom: 30px;
+    color: #324a5e;
   }
 
-  &-form-title2 {
+  &-form-inputs-name {
     display: block;
     text-align: left;
   }
 
+  &-form-icons {
+    height: 54px;
+    background-color: #1e5588;
+    border-radius: 8%;
+  }
+
+  input {
+    text-align: left;
+    height: 54px;
+  }
+
+  svg {
+    margin: 25%;
+  }
+
   button {
     width: 80%;
-    height: 140%;
+    height: 125%;
+    border-radius: 7%;
   }
 }

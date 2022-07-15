@@ -6,6 +6,9 @@ export const environment = {
   production: false,
 };
 
+/**
+ * url адрес
+ */
 export const url = 'https://iap_dev2.tomskasu.ru/api/';
 
 /*

@@ -20,8 +20,14 @@ import { ListPassport } from '../../../models/list-passport';
   providedIn: 'root',
 })
 export class DataService {
+  /**
+   * url адрес
+   */
   public url: string;
 
+  /**
+   * user data пользователя
+   */
   public userProfileData!: UserProfile;
 
   constructor(private http: HttpClient, private router: Router, private message: NzMessageService) {
@@ -29,11 +35,10 @@ export class DataService {
   }
 
   /**
-   *
    * @param column столбцы
    * @param direction 1 | -1
    * @param page страницы от 0
-   * @returns список ПБ
+   * @returns метод для получения списка ПБ
    */
   public getListPassport(column: ColumnName, direction: Direction, page: number): Observable<any> {
     const params = [
@@ -80,7 +85,6 @@ export class DataService {
   }
 
   /**
-   *
    * @param user логин пароль ремембер
    * @returns запрос логин
    */

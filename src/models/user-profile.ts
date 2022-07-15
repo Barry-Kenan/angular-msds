@@ -1,5 +1,5 @@
 /**
- *
+ * тип для данных пользователя
  */
 export interface UserProfile {
   displayName: string;
