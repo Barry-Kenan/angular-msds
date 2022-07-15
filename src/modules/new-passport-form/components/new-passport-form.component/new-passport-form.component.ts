@@ -23,9 +23,8 @@ export class NewPassportFormComponent implements OnInit {
   }
 
   /**
-   *
+   *изменяет значение check
    * @param e event:boolean
-   * изменяет значение check
    */
   public checked(e: boolean) {
     this.check = e;
