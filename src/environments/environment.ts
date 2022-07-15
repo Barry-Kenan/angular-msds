@@ -4,12 +4,8 @@
 
 export const environment = {
   production: false,
+  host: 'https://iap_dev2.tomskasu.ru/api/',
 };
-
-/**
- * url адрес
- */
-export const url = 'https://iap_dev2.tomskasu.ru/api/';
 
 /*
  * For easier debugging in development mode, you can import the following file
