@@ -95,7 +95,7 @@ export class TableComponent implements OnInit {
    * @param direction ascend | descend
    * @param column название столбца
    */
-  public sortChecking(direction: string | null, column: ColumnName) {
+  public sortChecking(direction: string, column: ColumnName) {
     const directionVal = direction === 'ascend' ? Direction.ascend : Direction.descend;
     this.dataService.getListPassport(column, directionVal, 0).subscribe((res: any) => {
       this.setData(res);
