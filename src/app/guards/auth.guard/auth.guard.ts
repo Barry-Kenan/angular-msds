@@ -9,7 +9,8 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router) {}
 
   /**
-   * @returns проверка токена в localStorage
+   * проверка токена в localStorage
+   * @returns true или false
    */
   public canActivate(): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     if (localStorage.getItem('auth-token') !== null) {

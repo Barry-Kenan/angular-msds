@@ -2,7 +2,7 @@
  * тип формы логина
  */
 export interface User {
-  userName: string;
-  password: string;
-  remember: boolean;
+  userName: string; // Логин
+  password: string; // Пароль
+  remember: boolean; // Запомнить
 }
