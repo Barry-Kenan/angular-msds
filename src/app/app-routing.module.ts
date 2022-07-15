@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './guards/auth.guard/auth.guard';
 import { NewPassportFormComponent } from './form/new-passport-form/new-passport-form.component';
 import { LoginComponent } from './login/login.component';
 import { TableComponent } from './table/table.component/table.component';
