@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { User } from 'src/models/user';
-import { ColumnName } from '../models/column-name';
-import { Direction } from '../models/direction';
-import { PassportResponse } from '../models/passport-response';
-import { RequestBody } from '../models/request-body';
-import { statusName } from './table/consts/status-name';
-import { UserProfile } from '../models/user-profile';
-import { ListPassport } from '../models/list-passport';
+import { ColumnName } from '../../../models/column-name';
+import { Direction } from '../../../models/direction';
+import { PassportResponse } from '../../../models/passport-response';
+import { RequestBody } from '../../../models/request-body';
+import { statusName } from '../../table/consts/status-name';
+import { UserProfile } from '../../../models/user-profile';
+import { ListPassport } from '../../../models/list-passport';
 
 /**
  * Сервис для логина

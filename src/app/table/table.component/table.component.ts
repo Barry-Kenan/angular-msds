@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from '../../data.service';
+import { DataService } from '../../services/data.service/data.service';
 import { ColumnItems } from '../../../models/column-items';
 import { ColumnName } from '../../../models/column-name';
 import { Direction } from '../../../models/direction';

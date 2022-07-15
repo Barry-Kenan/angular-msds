@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DataService } from '../data.service';
+import { DataService } from '../services/data.service/data.service';
 
 /**
  * Логин ПБ
