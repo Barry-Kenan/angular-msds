@@ -7,7 +7,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzFormModule } from 'ng-zorro-antd/form';
-import { LoginComponent } from './login.component';
+import { LoginComponent } from './components/login.components/login.component';
 
 @NgModule({
   declarations: [LoginComponent],

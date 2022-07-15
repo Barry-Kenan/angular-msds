@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './guards/auth.guard/auth.guard';
 import { PassportInterceptor } from './interceptors/passport.interceptor/passport.interceptor';
 import { AppComponent } from './app.component';
-import { LoginModule } from './login/login.module';
+import { LoginModule } from '../modules/login/login.module';
 import { TableModule } from './table/table.module';
 import { FormModule } from './form/form.module';
 
