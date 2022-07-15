@@ -35,10 +35,11 @@ export class DataService {
   }
 
   /**
+   * метод для получения списка ПБ
    * @param column столбцы
    * @param direction 1 | -1
    * @param page страницы от 0
-   * @returns метод для получения списка ПБ
+   * @returns объект с items и totalCount
    */
   public getListPassport(column: ColumnName, direction: Direction, page: number): Observable<any> {
     const params = [

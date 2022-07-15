@@ -1,6 +1,8 @@
 import { ColumnItems } from 'src/models/column-items';
 import { ColumnName } from 'src/models/column-name';
-
+/**
+ * данные столбцов таблицы список ПБ(title: название, width: ширина, columName: столбцы)
+ */
 export const tableConst: Array<ColumnItems> = [
   {
     title: '№',

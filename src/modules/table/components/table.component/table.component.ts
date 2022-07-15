@@ -56,10 +56,10 @@ export class TableComponent implements OnInit {
   }
 
   /**
-   *
+   * trackBy для *ngfor (чтобы не отрисовал каждый раз)
    * @param _ индекс
    * @param item название столбцов
-   * @returns trackBy для *ngfor (чтобы не отрисовал каждый раз)
+   * @returns item.title как ключ
    */
   public trackByName(_: number, item: ColumnItems): string {
     return item.title;

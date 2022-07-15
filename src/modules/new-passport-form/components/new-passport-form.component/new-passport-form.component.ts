@@ -47,6 +47,9 @@ export class NewPassportFormComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    /**
+     * валидация
+     */
     this.newPassportForm = this.fb.group({
       datePicker: [null, [Validators.required]],
       note: [null],
