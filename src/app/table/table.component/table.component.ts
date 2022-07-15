@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../../data.service';
-import { ColumnItems } from '../../models/column-items';
-import { ColumnName } from '../../models/column-name';
-import { Direction } from '../../models/direction';
-import { ListPassport } from '../../models/list-passport';
+import { ColumnItems } from '../../../models/column-items';
+import { ColumnName } from '../../../models/column-name';
+import { Direction } from '../../../models/direction';
+import { ListPassport } from '../../../models/list-passport';
 import { tableConst } from '../consts/table.consts';
 
 /**

@@ -1,5 +1,5 @@
-import { ColumnItems } from 'src/app/models/column-items';
-import { ColumnName } from 'src/app/models/column-name';
+import { ColumnItems } from 'src/models/column-items';
+import { ColumnName } from 'src/models/column-name';
 
 export const tableConst: Array<ColumnItems> = [
   {
