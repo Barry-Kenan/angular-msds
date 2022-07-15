@@ -9,7 +9,7 @@ import { NZ_I18N, ru_RU } from 'ng-zorro-antd/i18n';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './auth.guard';
-import { PassportInterceptor } from './passport.interceptor';
+import { PassportInterceptor } from './interceptors/passport.interceptor/passport.interceptor';
 import { AppComponent } from './app.component';
 import { LoginModule } from './login/login.module';
 import { TableModule } from './table/table.module';
