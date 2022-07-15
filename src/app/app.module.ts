@@ -12,7 +12,7 @@ import { AuthGuard } from './guards/auth.guard/auth.guard';
 import { PassportInterceptor } from './interceptors/passport.interceptor/passport.interceptor';
 import { AppComponent } from './app.component';
 import { LoginModule } from '../modules/login/login.module';
-import { TableModule } from './table/table.module';
+import { TableModule } from '../modules/table/table.module';
 import { FormModule } from './form/form.module';
 
 registerLocaleData(ru);

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from 'src/modules/login/components/login.components/login.component';
+import { TableComponent } from 'src/modules/table/components/table.component/table.component';
 import { AuthGuard } from './guards/auth.guard/auth.guard';
 import { NewPassportFormComponent } from './form/new-passport-form/new-passport-form.component';
-import { TableComponent } from './table/table.component/table.component';
 
 const routes: Routes = [
   {
