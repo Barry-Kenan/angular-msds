@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from '../../../../services/data.service/data.service';
 import { ColumnItems } from '../../../../../models/column-items';
 import { ColumnName } from '../../../../../models/column-name';
 import { Direction } from '../../../../../models/direction';
 import { ListPassport } from '../../../../../models/list-passport';
 import { tableConst } from '../../consts/table.consts';
+import { TableService } from '../../services/table.service/table.service';
 
 /**
  * список ПБ
@@ -41,7 +41,7 @@ export class TableComponent implements OnInit {
    */
   public directionForPageChange!: Direction;
 
-  constructor(public dataService: DataService, private router: Router) {
+  constructor(public tableService: TableService, private router: Router) {
     /**
      * присвоение данных таблицы
      */
@@ -73,7 +73,7 @@ export class TableComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.dataService.getListPassport(ColumnName.Status, 1, 0).subscribe((res: any) => {
+    this.tableService.getListPassport(ColumnName.Status, 1, 0).subscribe((res: any) => {
       this.setData(res);
     });
   }
@@ -83,7 +83,7 @@ export class TableComponent implements OnInit {
    * @param evt страницы (от 1 начинается)
    */
   public pageChange(evt: number) {
-    this.dataService
+    this.tableService
       .getListPassport(this.columnForPageChange, this.directionForPageChange, evt - 1)
       .subscribe((res: any) => {
         this.setData(res);
@@ -97,7 +97,7 @@ export class TableComponent implements OnInit {
    */
   public sortChecking(direction: string, column: ColumnName) {
     const directionVal = direction === 'ascend' ? Direction.ascend : Direction.descend;
-    this.dataService.getListPassport(column, directionVal, 0).subscribe((res: any) => {
+    this.tableService.getListPassport(column, directionVal, 0).subscribe((res: any) => {
       this.setData(res);
     });
     this.columnForPageChange = column;
