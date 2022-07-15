@@ -10,8 +10,7 @@
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "lint:style": "stylelint **/*.scss",
-    "lint:style:fix": "stylelint **/*.scss --fix",
-    "pre-commit": "lint-staged"
+    "lint:style:fix": "stylelint **/*.scss --fix"
   },
   "private": true,
   "dependencies": {
