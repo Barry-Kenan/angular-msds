@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from 'src/modules/login/components/login.components/login.component';
-import { TableComponent } from 'src/modules/table/components/table.component/table.component';
+import { LoginComponent } from 'src/app/modules/login/components/login.components/login.component';
+import { TableComponent } from 'src/app/modules/table/components/table.component/table.component';
 import { AuthGuard } from './guards/auth.guard/auth.guard';
-import { NewPassportFormComponent } from '../modules/new-passport-form/components/new-passport-form.component/new-passport-form.component';
+import { NewPassportFormComponent } from './modules/new-passport-form/components/new-passport-form.component/new-passport-form.component';
 /**
  * Роутинг
  */

@@ -9,7 +9,7 @@ import { List } from 'src/models/list';
 import { ColumnName } from '../../../models/column-name';
 import { Direction } from '../../../models/direction';
 import { PassportResponse } from '../../../models/passport-response';
-import { statusName } from '../../../modules/table/consts/status-name';
+import { statusName } from '../../modules/table/consts/status-name';
 import { UserProfile } from '../../../models/user-profile';
 import { ListPassport } from '../../../models/list-passport';
 
