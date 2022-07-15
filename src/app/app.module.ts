@@ -13,7 +13,7 @@ import { PassportInterceptor } from './interceptors/passport.interceptor/passpor
 import { AppComponent } from './app.component';
 import { LoginModule } from '../modules/login/login.module';
 import { TableModule } from '../modules/table/table.module';
-import { FormModule } from './form/form.module';
+import { FormModule } from '../modules/new-passport-form/form.module';
 
 registerLocaleData(ru);
 

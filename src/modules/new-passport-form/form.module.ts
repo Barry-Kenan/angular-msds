@@ -9,7 +9,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
-import { NewPassportFormComponent } from './new-passport-form/new-passport-form.component';
+import { NewPassportFormComponent } from './components/new-passport-form.component/new-passport-form.component';
 
 @NgModule({
   declarations: [NewPassportFormComponent],
