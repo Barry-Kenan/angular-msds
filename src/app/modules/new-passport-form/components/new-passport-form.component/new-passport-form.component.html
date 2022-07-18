@@ -1,5 +1,8 @@
-<div nz-row nzJustify="center" class="new-passport-form">
-  <div nz-col [nzLg]="{ span: 14 }" [nzXs]="{ span: 23 }">
+<div nz-row class="new-passport">
+  <div nz-col [nzSpan]="24" class="new-passport-title">
+    <h1>Новый ПБ</h1>
+  </div>
+  <div nz-col [nzLg]="{ span: 12, offset: 6 }" [nzXs]="{ span: 23 }">
     <form nz-form [formGroup]="newPassportForm" (ngSubmit)="submitForm()">
       <div class="new-passport-form-title">Дата поступления документа</div>
       <nz-form-item>
@@ -27,8 +30,8 @@
         </nz-select>
       </nz-form-item>
       <nz-form-item>
-        <label nz-checkbox formControlName="checkbox" (ngModelChange)="checked($event)">
-          <div class="new-passport-form-title">Посредник</div>
+        <label nz-checkbox id="new-passport-form-checkbox" formControlName="checkbox" (ngModelChange)="checked($event)">
+          <p id="new-passport-form-checkbox-title">Посредник</p>
         </label>
       </nz-form-item>
       <nz-form-item>
@@ -48,11 +51,11 @@
           <nz-option nzValue="Разово" nzLabel="Разово"></nz-option>
         </nz-select>
       </nz-form-item>
-      <div nz-row>
-        <div nz-col [nzLg]="{ span: 4, offset: 7 }" [nzXs]="{ span: 11 }">
+      <div nz-row nzJustify="center" class="new-passport-form-buttons">
+        <div nz-col [nzLg]="{ span: 4 }" [nzMd]="{ span: 8 }" [nzXs]="{ span: 11 }">
           <button nz-button nzSize="large" (click)="resetForm()" type="button">Отмена</button>
         </div>
-        <div nz-col [nzLg]="{ span: 4, offset: 2 }" [nzXs]="{ span: 11, offset: 2 }">
+        <div nz-col [nzLg]="{ span: 4, offset: 2 }" [nzMd]="{ span: 8, offset: 2 }" [nzXs]="{ span: 11, offset: 2 }">
           <button nz-button nzSize="large" [nzType]="'primary'" type="submit">Сохранить</button>
         </div>
       </div>

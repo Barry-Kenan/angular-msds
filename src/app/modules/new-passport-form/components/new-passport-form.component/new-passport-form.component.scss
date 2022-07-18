@@ -1,20 +1,47 @@
-.new-passport-form {
-  max-height: 100vh;
+.new-passport {
+  max-height: 100%;
 
   &-title {
-    font-size: 18px;
+    background-color: #f6f6f6;
+    height: 100%;
+    margin-bottom: 5%;
+
+    h1 {
+      font-size: 180%;
+      padding-top: 1%;
+      padding-left: 3%;
+      color: #324a5e;
+    }
   }
 
-  &-select {
-    width: 100%;
-    margin: 0;
+  #new-passport-form-checkbox-title {
+    font-size: 18px;
   }
 
   button {
     width: 100%;
+    height: 125%;
+    border-radius: 7%;
   }
 
-  div {
-    margin-top: 5vh;
+  .new-passport-form {
+    &-title {
+      font-size: 18px;
+    }
+
+    &-select {
+      width: 100%;
+      margin: 0;
+    }
   }
+}
+
+
+::ng-deep #new-passport-form-checkbox .ant-checkbox-checked .ant-checkbox-inner {
+  background: #1f6842;
+}
+
+::ng-deep #new-passport-form-checkbox .ant-checkbox-inner {
+  width: 24px;
+  height: 24px;
 }

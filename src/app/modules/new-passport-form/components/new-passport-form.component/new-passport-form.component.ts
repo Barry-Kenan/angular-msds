@@ -52,7 +52,7 @@ export class NewPassportFormComponent implements OnInit {
      */
     this.newPassportForm = this.fb.group({
       datePicker: [null, [Validators.required]],
-      note: [null],
+      note: [null, [Validators.required]],
       selectDeclarer: [null],
       checkbox: [false],
       selectIntermediary: [null],
