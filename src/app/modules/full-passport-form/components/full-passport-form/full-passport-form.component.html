@@ -1,0 +1,251 @@
+<div class="full-passport">
+  <div class="full-passport-title">
+    <h1>Новый тестовый объект</h1>
+  </div>
+  <div class="full-passport-name">
+    <label>Основная информация</label>
+  </div>
+  <hr />
+  <div nz-row class="full-passport-form">
+    <div nz-col [nzSpan]="22" [nzOffset]="1">
+      <form nz-form [formGroup]="fullPassportForm" (ngSubmit)="submitForm()">
+        <div nz-row nzGutter="50">
+          <div nz-col nzSpan="6">
+            <label>Действителен от</label>
+            <nz-form-item>
+              <nz-form-control>
+                <nz-date-picker
+                  formControlName="datePicker"
+                  class="full-passport-form-select"
+                  nzSize="large"
+                  nzPlaceHolder="дд.мм.гггг"
+                  nzFormat="d.MM.yyyy">
+                </nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+            <label>Действителен до</label>
+            <nz-form-item>
+              <nz-form-control>
+                <nz-date-picker
+                  formControlName="datePicker"
+                  class="full-passport-form-select"
+                  nzSize="large"
+                  nzPlaceHolder="дд.мм.гггг"
+                  nzFormat="d.MM.yyyy">
+                </nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+            <label>Номер предыдущего ПБ</label>
+            <nz-form-item>
+              <nz-form-control>
+                <input type="text" nz-input formControlName="note" nzSize="large" />
+              </nz-form-control>
+            </nz-form-item>
+            <label>Тип предприятия</label>
+            <nz-form-item>
+              <nz-select formControlName="selectDeclarer" class="full-passport-form-select" nzSize="large">
+                <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
+                <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
+              </nz-select>
+            </nz-form-item>
+            <label>Техническое наименование </label>
+            <nz-form-item>
+              <nz-form-control>
+                <input type="text" nz-input formControlName="note" nzSize="large" />
+              </nz-form-control>
+            </nz-form-item>
+            <label>Химическое наименование </label>
+            <nz-form-item>
+              <nz-form-control>
+                <input type="text" nz-input formControlName="note" nzSize="large" />
+              </nz-form-control>
+            </nz-form-item>
+            <label>Синонимы</label>
+            <nz-form-item>
+              <nz-form-control>
+                <input type="text" nz-input formControlName="note" nzSize="large" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="6">
+            <label>Торговое наименование </label>
+            <nz-form-item>
+              <nz-form-control>
+                <input type="text" nz-input formControlName="note" nzSize="large" />
+              </nz-form-control>
+            </nz-form-item>
+            <label>Обозначение НД </label>
+            <nz-form-item>
+              <nz-select formControlName="selectDeclarer" class="full-passport-form-select" nzSize="large">
+                <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
+                <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
+              </nz-select>
+            </nz-form-item>
+            <label>Шифр НД </label>
+            <nz-form-item>
+              <nz-form-control>
+                <input type="text" nz-input formControlName="note" nzSize="large" />
+              </nz-form-control>
+            </nz-form-item>
+            <label>Код ОКПД 2 </label>
+            <nz-form-item>
+              <nz-select formControlName="selectDeclarer" class="full-passport-form-select" nzSize="large">
+                <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
+                <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
+              </nz-select>
+            </nz-form-item>
+            <label>Код ТН ВЭД ЕАЭС </label>
+            <nz-form-item>
+              <nz-select formControlName="selectDeclarer" class="full-passport-form-select" nzSize="large">
+                <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
+                <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
+              </nz-select>
+            </nz-form-item>
+            <label>Посредник</label>
+            <nz-form-item>
+              <nz-form-control>
+                <input type="text" nz-input formControlName="note" nzSize="large" />
+              </nz-form-control>
+            </nz-form-item>
+            <label>Заявитель</label>
+            <nz-form-item>
+              <nz-form-control>
+                <input type="text" nz-input formControlName="note" nzSize="large" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="6">
+            <label>Способ оплаты</label>
+            <nz-form-item>
+              <nz-select formControlName="selectDeclarer" class="full-passport-form-select" nzSize="large">
+                <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
+                <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
+              </nz-select>
+            </nz-form-item>
+            <label>Срочность</label>
+            <nz-form-item>
+              <nz-select formControlName="selectDeclarer" class="full-passport-form-select" nzSize="large">
+                <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
+                <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
+              </nz-select>
+            </nz-form-item>
+            <label>Дата поступления документов </label>
+            <nz-form-item>
+              <nz-form-control>
+                <nz-date-picker
+                  formControlName="datePicker"
+                  class="full-passport-form-select"
+                  nzSize="large"
+                  nzPlaceHolder="дд.мм.гггг"
+                  nzFormat="d.MM.yyyy">
+                </nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+            <label>Дата следующей редакции </label>
+            <nz-form-item>
+              <nz-form-control>
+                <nz-date-picker
+                  formControlName="datePicker"
+                  class="full-passport-form-select"
+                  nzSize="large"
+                  nzPlaceHolder="дд.мм.гггг"
+                  nzFormat="d.MM.yyyy">
+                </nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+            <label>Дата поступления оплаты </label>
+            <nz-form-item>
+              <nz-form-control>
+                <nz-date-picker
+                  formControlName="datePicker"
+                  class="full-passport-form-select"
+                  nzSize="large"
+                  nzPlaceHolder="дд.мм.гггг"
+                  nzFormat="d.MM.yyyy">
+                </nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+            <label>Дата выполнения работы </label>
+            <nz-form-item>
+              <nz-form-control>
+                <nz-date-picker
+                  formControlName="datePicker"
+                  class="full-passport-form-select"
+                  nzSize="large"
+                  nzPlaceHolder="дд.мм.гггг"
+                  nzFormat="d.MM.yyyy">
+                </nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+            <label>Регулярность </label>
+            <nz-form-item>
+              <nz-form-control>
+                <input type="text" nz-input formControlName="note" nzSize="large" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="6">
+            <div nz-row>
+              <div nz-col nzSpan="12">
+                <nz-form-item>
+                  <label nz-checkbox id="login-form-checkbox" formControlName="remember">Перерегистрация ПБ</label>
+                </nz-form-item>
+                <nz-form-item>
+                  <label nz-checkbox id="login-form-checkbox" formControlName="remember">Отказ</label>
+                </nz-form-item>
+                <nz-form-item>
+                  <label nz-checkbox id="login-form-checkbox" formControlName="remember">Подтвердить ПБ</label>
+                </nz-form-item>
+                <nz-form-item>
+                  <label nz-checkbox id="login-form-checkbox" formControlName="remember">Приостановить ПБ</label>
+                </nz-form-item>
+              </div>
+              <div nz-col nzSpan="12"></div>
+              <div nz-col nzSpan="24">
+                <label>Степень опасности химической продукции по ГОСТ 12.1.007 </label>
+                <nz-form-item>
+                  <nz-select formControlName="selectDeclarer" class="full-passport-form-select" nzSize="large">
+                    <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
+                    <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
+                  </nz-select> </nz-form-item
+                ><label>Сигнальное слово</label>
+                <nz-form-item>
+                  <nz-select formControlName="selectDeclarer" class="full-passport-form-select" nzSize="large">
+                    <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
+                    <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
+                  </nz-select> </nz-form-item
+                ><label>Эксперт</label>
+                <nz-form-item>
+                  <nz-select formControlName="selectDeclarer" class="full-passport-form-select" nzSize="large">
+                    <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
+                    <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
+                  </nz-select>
+                </nz-form-item>
+                <label>Номер ПБ</label>
+                <div nz-row>
+                  <div nz-col nzSpan="15">
+                    <nz-form-item>
+                      <nz-form-control>
+                        <input type="text" nz-input formControlName="note" nzSize="large" />
+                      </nz-form-control>
+                    </nz-form-item>
+                  </div>
+                  <div nz-col nzSpan="8" nzOffset="1">
+                    <button nz-button nzSize="large" type="submit">Получить</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div nz-row nzJustify="center">
+          <div nz-col [nzSpan]="1">
+            <button nz-button nzSize="large" class="login-form-button" [nzType]="'primary'" type="submit">
+              Сохранить
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

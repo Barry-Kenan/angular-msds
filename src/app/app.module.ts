@@ -13,7 +13,8 @@ import { PassportInterceptor } from './interceptors/passport.interceptor/passpor
 import { AppComponent } from './app.component';
 import { LoginModule } from './modules/login/login.module';
 import { TableModule } from './modules/table/table.module';
-import { FormModule } from './modules/new-passport-form/form.module';
+import { FormModule } from './modules/new-passport-form/new-passport-form.module';
+import { FullPassportFormModule } from './modules/full-passport-form/full-passport-form.module';
 
 registerLocaleData(ru);
 
@@ -30,6 +31,7 @@ registerLocaleData(ru);
     LoginModule,
     TableModule,
     FormModule,
+    FullPassportFormModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU },
