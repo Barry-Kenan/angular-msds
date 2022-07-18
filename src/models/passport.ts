@@ -4,7 +4,7 @@ import { Organization } from './organization';
  * тип списка ПБ
  */
 
-export interface ListPassport {
+export interface Passport {
   serialNumber: number; // Порядковый номер в таблице
   documentArrivalDate: string; // Дата поступления документов
   endDate: string; // Действителен до

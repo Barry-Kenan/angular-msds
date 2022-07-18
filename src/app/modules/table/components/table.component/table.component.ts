@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ColumnItems } from '../../../../../models/column-items';
 import { ColumnName } from '../../../../../models/column-name';
 import { Direction } from '../../../../../models/direction';
-import { ListPassport } from '../../../../../models/list-passport';
+import { Passport } from '../../../../../models/passport';
 import { tableConst } from '../../consts/table.consts';
 import { TableService } from '../../services/table.service/table.service';
 
@@ -19,7 +19,7 @@ export class TableComponent implements OnInit {
   /**
    * data для заполнения таблицы
    */
-  public listOfData: Array<ListPassport>;
+  public listOfData: Array<Passport>;
 
   /**
    * список столбцов (название, ширина, функция для сортировки)

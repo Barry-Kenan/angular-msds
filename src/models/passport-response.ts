@@ -1,4 +1,4 @@
-import { ListPassport } from './list-passport';
+import { Passport } from './passport';
 import { List } from './list';
 
 /**
@@ -7,5 +7,5 @@ import { List } from './list';
 export interface PassportResponse {
   jsonrpc: string;
   id: number;
-  result: List<ListPassport>;
+  result: List<Passport>;
 }

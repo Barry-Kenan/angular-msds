@@ -4,7 +4,7 @@ import { RequestService } from 'src/app/modules/shared/services/request.service/
 import { ColumnName } from 'src/models/column-name';
 import { Direction } from 'src/models/direction';
 import { List } from 'src/models/list';
-import { ListPassport } from 'src/models/list-passport';
+import { Passport } from 'src/models/passport';
 import { PassportResponse } from 'src/models/passport-response';
 import { UserProfile } from 'src/models/user-profile';
 import { statusName } from '../../consts/status-name';
@@ -31,7 +31,7 @@ export class TableService {
    * @param page страницы от 0
    * @returns объект с items и totalCount
    */
-  public getListPassport(column: ColumnName, direction: Direction, page: number): Observable<List<ListPassport>> {
+  public getListPassport(column: ColumnName, direction: Direction, page: number): Observable<List<Passport>> {
     const params = [
       {
         contains: true,
@@ -64,7 +64,7 @@ export class TableService {
     return this.requestService.postRPC<PassportResponse>(params, method).pipe(
       map((res: PassportResponse) => {
         const { totalCount } = res.result;
-        const items = res.result.items.map((item: ListPassport, index: number) => {
+        const items = res.result.items.map((item: Passport, index: number) => {
           const test = item;
           test.serialNumber = index + 1;
           test.status = statusName.get(item.status) || '';
