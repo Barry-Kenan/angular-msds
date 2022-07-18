@@ -10,7 +10,7 @@
     <div nz-col [nzSpan]="22" [nzOffset]="1">
       <form nz-form [formGroup]="fullPassportForm" (ngSubmit)="submitForm()">
         <div nz-row nzGutter="50">
-          <div nz-col nzSpan="6">
+          <div nz-col [nzLg]="{ span: 6 }" [nzXs]="{ span: 12 }">
             <label>Действителен от</label>
             <nz-form-item>
               <nz-form-control>
@@ -67,7 +67,7 @@
               </nz-form-control>
             </nz-form-item>
           </div>
-          <div nz-col nzSpan="6">
+          <div nz-col [nzLg]="{ span: 6 }" [nzXs]="{ span: 12 }">
             <label>Торговое наименование </label>
             <nz-form-item>
               <nz-form-control>
@@ -114,7 +114,7 @@
               </nz-form-control>
             </nz-form-item>
           </div>
-          <div nz-col nzSpan="6">
+          <div nz-col [nzLg]="{ span: 6 }" [nzXs]="{ span: 12 }">
             <label>Способ оплаты</label>
             <nz-form-item>
               <nz-select formControlName="selectDeclarer" class="full-passport-form-select" nzSize="large">
@@ -184,7 +184,7 @@
               </nz-form-control>
             </nz-form-item>
           </div>
-          <div nz-col nzSpan="6">
+          <div nz-col [nzLg]="{ span: 6 }" [nzXs]="{ span: 12 }">
             <div nz-row>
               <div nz-col nzSpan="12">
                 <nz-form-item>
@@ -222,15 +222,15 @@
                   </nz-select>
                 </nz-form-item>
                 <label>Номер ПБ</label>
-                <div nz-row>
-                  <div nz-col nzSpan="15">
+                <div nz-row nzGutter="8">
+                  <div nz-col nzSpan="17">
                     <nz-form-item>
                       <nz-form-control>
                         <input type="text" nz-input formControlName="note" nzSize="large" />
                       </nz-form-control>
                     </nz-form-item>
                   </div>
-                  <div nz-col nzSpan="8" nzOffset="1">
+                  <div nz-col nzSpan="2">
                     <button nz-button nzSize="large" type="submit">Получить</button>
                   </div>
                 </div>
