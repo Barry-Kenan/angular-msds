@@ -26,21 +26,38 @@
   &-form-icons {
     height: 54px;
     background-color: #1e5588;
-    border-radius: 8%;
+    border-radius: 5%;
   }
+
+
 
   input {
     text-align: left;
     height: 54px;
   }
 
-  svg {
-    margin: 25%;
+  img {
+    margin: 30%;
   }
 
   button {
-    width: 80%;
+    width: 90%;
     height: 125%;
     border-radius: 7%;
   }
+
+
+}
+
+::ng-deep #login-form-checkbox .ant-checkbox-checked .ant-checkbox-inner {
+  background: #1f6842;
+}
+
+::ng-deep #login-form-checkbox .ant-checkbox-checked .ant-checkbox-inner::after {
+  margin-left: 9%;
+}
+
+::ng-deep #login-form-checkbox .ant-checkbox-inner {
+  width: 24px;
+  height: 24px;
 }
