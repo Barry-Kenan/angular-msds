@@ -1,58 +1,70 @@
 <div class="passport-list">
-  <div class="passport-list-title">
-    <h1>Список ПБ</h1>
+  <div nz-row class="passport-list-row-margin">
+    <div nz-col [nzSpan]="24" class="passport-list-title">
+      <h1>Список ПБ</h1>
+    </div>
   </div>
-  <button type="button" nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="navigate()">+</button>
-  <nz-table
-    class="passport-list-table"
-    #sortTable
-    nzBordered
-    nzOuterBordered
-    [nzData]="listOfData"
-    [nzScroll]="{ x: '100vh', y: '65vh' }"
-    [nzFrontPagination]="false">
-    <thead>
-      <tr>
-        <th
-          *ngFor="let column of listOfColumn; trackBy: trackByName"
-          [nzSortFn]="true"
-          [nzSortDirections]="['descend', 'ascend']"
-          (nzSortOrderChange)="column?.sort($event)"
-          [nzWidth]="column.width">
-          {{ column.title }}
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of sortTable.data">
-        <td>{{ data.serialNumber }}</td>
-        <td>{{ data.documentArrivalDate | date: 'd.MM.yyyy' }}</td>
-        <td>{{ data.passportNumber }}</td>
-        <td>{{ data.names }}</td>
-        <td>{{ data.status }}</td>
-        <td>{{ data.organization[0].value }}</td>
-        <td>{{ data.mediator }}</td>
-        <td>{{ data.expert }}</td>
-        <td>{{ data.startDate | date: 'd.MM.yyyy' }}</td>
-        <td>{{ data.endDate | date: 'd.MM.yyyy' }}</td>
-        <td>{{ data.workDate | date: 'd.MM.yyyy' }}</td>
-        <td>{{ data.okpd2Code }}</td>
-        <td>{{ data.tnVedCode }}</td>
-      </tr>
-      <tr>
-        <td [colSpan]="3">
-          <div>Всего найдено элементов:{{ totalPageCount }}</div>
-        </td>
-        <td [colSpan]="6"></td>
-        <td [colSpan]="4">
-          <nz-pagination
-            (nzPageIndexChange)="pageChange($event)"
-            [nzTotal]="totalPageCount"
-            nzSize="small"
-            [nzShowTotal]="Pages"></nz-pagination>
-        </td>
-      </tr>
-    </tbody>
-    <ng-template #Pages let-total>Страницы:</ng-template>
-  </nz-table>
+  <div nz-row class="passport-list-row-margin">
+    <div nz-col [nzSpan]="2" [nzOffset]="22">
+      <button type="button" nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="navigate()">+</button>
+    </div>
+  </div>
+  <div nz-row class="passport-list-row-margin">
+    <div nz-col [nzSpan]="22" [nzOffset]="1">
+      <nz-table
+        id="passport-list-table"
+        #sortTable
+        nzBordered
+        nzOuterBordered
+        [nzData]="listOfData"
+        [nzScroll]="{ x: '100vh', y: '65vh' }"
+        [nzFrontPagination]="false">
+        <thead>
+          <tr>
+            <th
+              *ngFor="let column of listOfColumn; trackBy: trackByName"
+              [nzSortFn]="true"
+              [nzSortDirections]="['descend', 'ascend']"
+              (nzSortOrderChange)="column?.sort($event)"
+              [nzWidth]="column.width">
+              {{ column.title }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of sortTable.data">
+            <td>{{ data.serialNumber }}</td>
+            <td>{{ data.documentArrivalDate | date: 'd.MM.yyyy' }}</td>
+            <td>{{ data.passportNumber }}</td>
+            <td>{{ data.names }}</td>
+            <td>
+              {{ data.status }}
+            </td>
+            <td>{{ data.organization[0].value }}</td>
+            <td>{{ data.mediator }}</td>
+            <td>{{ data.expert }}</td>
+            <td>{{ data.startDate | date: 'd.MM.yyyy' }}</td>
+            <td>{{ data.endDate | date: 'd.MM.yyyy' }}</td>
+            <td>{{ data.workDate | date: 'd.MM.yyyy' }}</td>
+            <td>{{ data.okpd2Code }}</td>
+            <td>{{ data.tnVedCode }}</td>
+          </tr>
+          <tr>
+            <td [colSpan]="3">
+              <div>Всего найдено элементов:{{ totalPageCount }}</div>
+            </td>
+            <td [colSpan]="6"></td>
+            <td [colSpan]="4">
+              <nz-pagination
+                (nzPageIndexChange)="pageChange($event)"
+                [nzTotal]="totalPageCount"
+                nzSize="small"
+                [nzShowTotal]="Pages"></nz-pagination>
+            </td>
+          </tr>
+        </tbody>
+        <ng-template #Pages let-total>Страницы:</ng-template>
+      </nz-table>
+    </div>
+  </div>
 </div>

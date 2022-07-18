@@ -26,7 +26,7 @@ export const tableConst: Array<ColumnItems> = [
   },
   {
     title: 'Статус',
-    width: '7%',
+    width: '8%',
     columnName: ColumnName.Status,
   },
   {
@@ -46,12 +46,12 @@ export const tableConst: Array<ColumnItems> = [
   },
   {
     title: 'Действителен от',
-    width: '7%',
+    width: '8%',
     columnName: ColumnName.StartDate,
   },
   {
     title: 'Действителен до',
-    width: '7%',
+    width: '8%',
     columnName: ColumnName.EndDate,
   },
   {

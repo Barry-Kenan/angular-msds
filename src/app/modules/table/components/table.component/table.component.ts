@@ -4,6 +4,7 @@ import { ColumnItems } from '../../../../../models/column-items';
 import { ColumnName } from '../../../../../models/column-name';
 import { Direction } from '../../../../../models/direction';
 import { Passport } from '../../../../../models/passport';
+import { statusName } from '../../consts/status-name';
 import { tableConst } from '../../consts/table.consts';
 import { TableService } from '../../services/table.service/table.service';
 
@@ -16,6 +17,11 @@ import { TableService } from '../../services/table.service/table.service';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
+  /**
+   * Map статуса в таблице
+   */
+  public statusName: Map<string, string>;
+
   /**
    * data для заполнения таблицы
    */
@@ -34,7 +40,7 @@ export class TableComponent implements OnInit {
   /**
    * название столбца (для пагинации по последней сортировки)
    */
-  public columnForPageChange!: ColumnName;
+  public columnForPageChange: ColumnName;
 
   /**
    * direction (для пагинации по последней сортировки)
@@ -43,9 +49,17 @@ export class TableComponent implements OnInit {
 
   constructor(public tableService: TableService, private router: Router) {
     /**
+     * присваивание статуса
+     */
+    this.statusName = statusName;
+    /**
      * присвоение данных таблицы
      */
     this.listOfData = [];
+    /**
+     *значение для пагинации
+     */
+    this.columnForPageChange = ColumnName.Status;
     /**
      * присвоение функций и данных для столбцов
      */
@@ -102,6 +116,27 @@ export class TableComponent implements OnInit {
     });
     this.columnForPageChange = column;
     this.directionForPageChange = directionVal;
+  }
+
+  public classColor(status: string) {
+    if (
+      status === statusName.get('1') ||
+      status === statusName.get('5') ||
+      status === statusName.get('8') ||
+      status === statusName.get('14')
+    ) {
+      return { green: true };
+    }
+    if (
+      status === statusName.get('2') ||
+      status === statusName.get('9') ||
+      status === statusName.get('10') ||
+      status === statusName.get('18')
+    ) {
+      return { red: true };
+    }
+
+    return { yellow: true };
   }
 
   /**

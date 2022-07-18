@@ -2,18 +2,24 @@
   height: 100%;
 
   &-title {
-    height: 10%;
-    margin-bottom: 1%;
     background-color: #f6f6f6;
+    height: 100%;
 
     h1 {
+      font-size: 180%;
       padding-top: 1%;
       padding-left: 3%;
+      color: #324a5e;
     }
   }
 
-  &-table {
-    margin: 4%;
+  &-row-margin {
+    margin-bottom: 1%;
+  }
+
+  #passport-list-table {
+    position: fixed;
+    width: 92%;
   }
 
   .red {
@@ -31,6 +37,7 @@
   th {
     font-weight: bold;
     text-align: center;
+    color: #324a5e;
     background-color: #d8d8d8;
   }
 
@@ -42,8 +49,4 @@
     text-align: center;
   }
 
-  button {
-    margin: 0 5% 1% 0;
-    float: right;
-  }
 }
