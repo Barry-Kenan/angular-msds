@@ -56,7 +56,7 @@ export class NewPassportFormComponent implements OnInit {
       organization: [null],
       mediator: [false],
       mediatorValue: [null],
-      regularity: [null],
+      singleOrMultiple: [null],
     });
   }
 }
