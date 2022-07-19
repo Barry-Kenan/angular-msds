@@ -120,15 +120,21 @@ export class TableComponent implements OnInit {
   }
 
   /**
-   * для изменения цвета статуса в таблице
+   * условия для изменения цвета статуса в таблице
    * @param status data.status
-   * @returns класс string
+   * @returns string(green, red, yellow)
    */
   public classColor(status: string): string {
-    if (statusColorGreen.map(item => statusName.get(item)).includes(status)) {
+    /**
+     * проверка массивов на совпадение
+     */
+    const isGreen = statusColorGreen.map(item => statusName.get(item)).includes(status);
+    const isRed = statusColorRed.map(item => statusName.get(item)).includes(status);
+
+    if (isGreen) {
       return 'green';
     }
-    if (statusColorRed.map(item => statusName.get(item)).includes(status)) {
+    if (isRed) {
       return 'red';
     }
 
