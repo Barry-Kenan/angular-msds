@@ -25,16 +25,13 @@
 
   &-form-icons {
     background-color: #1e5588;
+    padding: 3%;
     border-radius: 5%;
   }
 
   input {
     text-align: left;
     height: 100%;
-  }
-
-  img {
-    margin: 30%;
   }
 
   button {
@@ -44,6 +41,7 @@
   }
 }
 
+/* stylelint-disable */
 ::ng-deep .ant-checkbox-checked .ant-checkbox-inner {
   background: #1f6842;
 }
@@ -57,7 +55,8 @@
   height: 24px;
 }
 
-
 ::ng-deep .ant-checkbox-wrapper span:nth-last-of-type(1) {
   margin-bottom: -15%;
 }
+
+/* stylelint-enable */

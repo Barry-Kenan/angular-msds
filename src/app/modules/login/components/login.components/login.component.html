@@ -1,6 +1,6 @@
 <div class="login">
   <div nz-row nzJustify="center" class="login-content">
-    <div nz-col [nzLg]="6" [nzMd]="10" [nzXs]="14">
+    <div nz-col [nzLg]="7" [nzMd]="8" [nzSm]="11" [nzXs]="14">
       <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
         <h1 class="login-form-title login-form-margin">Вход в систему</h1>
         <nz-form-item>
@@ -9,7 +9,7 @@
             <nz-input-group class="login-inputGroup">
               <nz-row>
                 <nz-col [nzLg]="3" [nzXs]="4" class="login-form-icons">
-                  <img src="./../../../../../assets/icons/Login.svg" alt="login-icon" />
+                  <img src="assets/icons/Login.svg" alt="login-icon" />
                 </nz-col>
                 <nz-col [nzLg]="21" [nzXs]="20" class="login-input-container">
                   <input type="text" nz-input nzSize="large" formControlName="userName" />
@@ -24,7 +24,7 @@
             <nz-input-group>
               <nz-row>
                 <nz-col [nzLg]="3" [nzXs]="4" class="login-form-icons">
-                  <img src="./../../../../../assets/icons/Password.svg" alt="password-icon" />
+                  <img src="assets/icons/Password.svg" alt="password-icon" />
                 </nz-col>
                 <nz-col [nzLg]="21" [nzXs]="20" class="login-input-container">
                   <input type="password" nz-input nzSize="large" formControlName="password" />
