@@ -25,7 +25,7 @@ export class PassportInterceptor implements HttpInterceptor {
    * @returns добавляет header с токеном
    */
   public addAuthToken(request: HttpRequest<any>) {
-    const AuthToken = localStorage.getItem('auth-token');
+    const AuthToken = localStorage.getItem('authToken');
 
     return request.clone({
       setHeaders: {

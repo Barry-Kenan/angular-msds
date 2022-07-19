@@ -44,7 +44,7 @@ export class LoginService {
       .subscribe((res: any) => {
         this.userProfileData = res.userProfile;
         this.router.navigate(['/']);
-        localStorage.setItem('auth-token', res.accessToken);
+        localStorage.setItem('authToken', res.accessToken);
       });
   }
 }
