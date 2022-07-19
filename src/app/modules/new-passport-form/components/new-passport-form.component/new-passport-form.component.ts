@@ -51,12 +51,12 @@ export class NewPassportFormComponent implements OnInit {
      * валидация
      */
     this.newPassportForm = this.fb.group({
-      datePicker: [null, [Validators.required]],
-      note: [null, [Validators.required]],
-      selectDeclarer: [null],
-      checkbox: [false],
-      selectIntermediary: [null],
-      selectRegularity: [null],
+      documentArrivalDate: [null, [Validators.required]],
+      names: [null, [Validators.required]],
+      organization: [null],
+      mediator: [false],
+      mediatorValue: [null],
+      regularity: [null],
     });
   }
 }

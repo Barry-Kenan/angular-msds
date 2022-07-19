@@ -2,13 +2,13 @@
   <div nz-col [nzSpan]="24" class="new-passport-title">
     <h1>Новый ПБ</h1>
   </div>
-  <div nz-col [nzLg]="{ span: 12, offset: 6 }" [nzXs]="{ span: 23 }">
+  <div nz-col [nzLg]="{ span: 12, offset: 6 }" [nzXs]="{ span: 22, offset: 1 }">
     <form nz-form [formGroup]="newPassportForm" (ngSubmit)="submitForm()">
       <div class="new-passport-form-title">Дата поступления документа</div>
       <nz-form-item>
-        <nz-form-control>
+        <nz-form-control nzErrorTip="please input">
           <nz-date-picker
-            formControlName="datePicker"
+            formControlName="documentArrivalDate"
             class="new-passport-form-select"
             nzSize="large"
             nzPlaceHolder="дд.мм.гггг"
@@ -18,25 +18,25 @@
       </nz-form-item>
       <div class="new-passport-form-title">Техническое наименование</div>
       <nz-form-item>
-        <nz-form-control>
-          <input type="text" nz-input formControlName="note" nzSize="large" />
+        <nz-form-control nzHasFeedback nzErrorTip="Заполните техническое наименование ">
+          <input type="text" nz-input formControlName="names" nzSize="large" />
         </nz-form-control>
       </nz-form-item>
       <div class="new-passport-form-title">Заявитель</div>
       <nz-form-item>
-        <nz-select formControlName="selectDeclarer" class="new-passport-form-select" nzSize="large">
+        <nz-select formControlName="organization" class="new-passport-form-select" nzSize="large">
           <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
           <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
         </nz-select>
       </nz-form-item>
       <nz-form-item>
-        <label nz-checkbox id="new-passport-form-checkbox" formControlName="checkbox" (ngModelChange)="checked($event)">
+        <label nz-checkbox id="new-passport-form-checkbox" formControlName="mediator" (ngModelChange)="checked($event)">
           <p id="new-passport-form-checkbox-title">Посредник</p>
         </label>
       </nz-form-item>
       <nz-form-item>
         <nz-select
-          formControlName="selectIntermediary"
+          formControlName="mediatorValue"
           [nzDisabled]="!check"
           class="new-passport-form-select"
           nzSize="large">
@@ -46,7 +46,7 @@
       </nz-form-item>
       <div class="new-passport-form-title">Регулярность</div>
       <nz-form-item>
-        <nz-select formControlName="selectRegularity" class="new-passport-form-select" nzSize="large">
+        <nz-select formControlName="regularity" class="new-passport-form-select" nzSize="large">
           <nz-option nzValue="Регулярно" nzLabel="Регулярно"></nz-option>
           <nz-option nzValue="Разово" nzLabel="Разово"></nz-option>
         </nz-select>

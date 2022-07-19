@@ -36,9 +36,12 @@
   }
 }
 
-
 ::ng-deep #new-passport-form-checkbox .ant-checkbox-checked .ant-checkbox-inner {
   background: #1f6842;
+}
+
+::ng-deep #new-passport-form-checkbox .ant-checkbox-checked .ant-checkbox-inner::after {
+  margin-left: 9%;
 }
 
 ::ng-deep #new-passport-form-checkbox .ant-checkbox-inner {
