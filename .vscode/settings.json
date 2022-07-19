@@ -1,6 +1,6 @@
 {
-  "scss.validate": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "scss.validate": false,
+  "stylelint.validate": ["scss"],
   "editor.formatOnSave": true,
   "editor.formatOnPaste": false,
 
