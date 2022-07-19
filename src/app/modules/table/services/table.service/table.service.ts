@@ -6,7 +6,6 @@ import { Direction } from 'src/models/direction';
 import { List } from 'src/models/list';
 import { Passport } from 'src/models/passport';
 import { PassportResponse } from 'src/models/passport-response';
-import { UserProfile } from 'src/models/user-profile';
 import { statusName } from '../../consts/status-name';
 
 /**
@@ -17,11 +16,6 @@ import { statusName } from '../../consts/status-name';
   providedIn: 'root',
 })
 export class TableService {
-  /**
-   * user data пользователя
-   */
-  public userProfileData!: UserProfile;
-
   constructor(private requestService: RequestService) {}
 
   /**
