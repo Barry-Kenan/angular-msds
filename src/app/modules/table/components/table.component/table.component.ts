@@ -75,7 +75,7 @@ export class TableComponent implements OnInit {
   /**
    * навигация (переход н форму для создание ПБ)
    */
-  public navigate() {
+  public navigate(): void {
     this.router.navigate(['/form']);
   }
 
@@ -89,7 +89,7 @@ export class TableComponent implements OnInit {
    * для пагинации
    * @param evt страницы (от 1 начинается)
    */
-  public pageChange(evt: number) {
+  public pageChange(evt: number): void {
     this.tableService
       .getListPassport(this.columnForPageChange, this.directionForPageChange, evt - 1)
       .subscribe((res: any) => {
@@ -102,7 +102,7 @@ export class TableComponent implements OnInit {
    * @param direction ascend | descend
    * @param column название столбца
    */
-  public sortChecking(direction: string, column: ColumnName) {
+  public sortChecking(direction: string, column: ColumnName): void {
     const directionVal = direction === 'ascend' ? Direction.ascend : Direction.descend;
     this.tableService.getListPassport(column, directionVal, 0).subscribe((res: any) => {
       this.setData(res);
