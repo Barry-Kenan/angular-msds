@@ -4,6 +4,7 @@ import { ColumnItems } from '../../../../../models/column-items';
 import { ColumnName } from '../../../../../models/column-name';
 import { Direction } from '../../../../../models/direction';
 import { Passport } from '../../../../../models/passport';
+import { statusColorGreen, statusColorRed } from '../../consts/status-color';
 import { statusName } from '../../consts/status-name';
 import { tableConst } from '../../consts/table.consts';
 import { TableService } from '../../services/table.service/table.service';
@@ -121,27 +122,17 @@ export class TableComponent implements OnInit {
   /**
    * для изменения цвета статуса в таблице
    * @param status data.status
-   * @returns класс
+   * @returns класс string
    */
-  public classColor(status: string) {
-    if (
-      status === statusName.get('1') ||
-      status === statusName.get('5') ||
-      status === statusName.get('8') ||
-      status === statusName.get('14')
-    ) {
-      return { green: true };
+  public classColor(status: string): string {
+    if (statusColorGreen.map(item => statusName.get(item)).includes(status)) {
+      return 'green';
     }
-    if (
-      status === statusName.get('2') ||
-      status === statusName.get('9') ||
-      status === statusName.get('10') ||
-      status === statusName.get('18')
-    ) {
-      return { red: true };
+    if (statusColorRed.map(item => statusName.get(item)).includes(status)) {
+      return 'red';
     }
 
-    return { yellow: true };
+    return 'yellow';
   }
 
   /**
