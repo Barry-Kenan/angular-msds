@@ -25,6 +25,19 @@ export class FullPassportFormComponent implements OnInit {
      * валидация
      */
     this.fullPassportForm = this.fb.group({
+      startDate: [null],
+      endDate: [null],
+      passportNumber: [null],
+      names: [null],
+      tradeNames: [null],
+      chemistryNames: [null],
+      synonym: [null],
+      normativeDocTypeId: [null],
+      normativeDocCode: [null],
+      okpd2CodeId: [null],
+      tnVedCodeId: [null],
+      mediatorId: [null],
+
       datePicker: [null, [Validators.required]],
       note: [null],
       selectDeclarer: [null],

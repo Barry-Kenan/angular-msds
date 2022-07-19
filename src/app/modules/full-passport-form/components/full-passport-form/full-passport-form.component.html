@@ -15,7 +15,7 @@
             <nz-form-item>
               <nz-form-control>
                 <nz-date-picker
-                  formControlName="datePicker"
+                  formControlName="startDate"
                   class="full-passport-form-select"
                   nzSize="large"
                   nzPlaceHolder="дд.мм.гггг"
@@ -27,7 +27,7 @@
             <nz-form-item>
               <nz-form-control>
                 <nz-date-picker
-                  formControlName="datePicker"
+                  formControlName="endDate"
                   class="full-passport-form-select"
                   nzSize="large"
                   nzPlaceHolder="дд.мм.гггг"
@@ -38,7 +38,7 @@
             <label>Номер предыдущего ПБ</label>
             <nz-form-item>
               <nz-form-control>
-                <input type="text" nz-input formControlName="note" nzSize="large" />
+                <input type="text" nz-input formControlName="passportNumber" nzSize="large" />
               </nz-form-control>
             </nz-form-item>
             <label>Тип предприятия</label>
@@ -51,19 +51,19 @@
             <label>Техническое наименование </label>
             <nz-form-item>
               <nz-form-control>
-                <input type="text" nz-input formControlName="note" nzSize="large" />
+                <input type="text" nz-input formControlName="names" nzSize="large" />
               </nz-form-control>
             </nz-form-item>
             <label>Химическое наименование </label>
             <nz-form-item>
               <nz-form-control>
-                <input type="text" nz-input formControlName="note" nzSize="large" />
+                <input type="text" nz-input formControlName="chemistryNames" nzSize="large" />
               </nz-form-control>
             </nz-form-item>
             <label>Синонимы</label>
             <nz-form-item>
               <nz-form-control>
-                <input type="text" nz-input formControlName="note" nzSize="large" />
+                <input type="text" nz-input formControlName="synonym" nzSize="large" />
               </nz-form-control>
             </nz-form-item>
           </div>
@@ -71,12 +71,12 @@
             <label>Торговое наименование </label>
             <nz-form-item>
               <nz-form-control>
-                <input type="text" nz-input formControlName="note" nzSize="large" />
+                <input type="text" nz-input formControlName="tradeNames" nzSize="large" />
               </nz-form-control>
             </nz-form-item>
             <label>Обозначение НД </label>
             <nz-form-item>
-              <nz-select formControlName="selectDeclarer" class="full-passport-form-select" nzSize="large">
+              <nz-select formControlName="normativeDocTypeId" class="full-passport-form-select" nzSize="large">
                 <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
                 <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
               </nz-select>
@@ -84,19 +84,19 @@
             <label>Шифр НД </label>
             <nz-form-item>
               <nz-form-control>
-                <input type="text" nz-input formControlName="note" nzSize="large" />
+                <input type="text" nz-input formControlName="normativeDocCode" nzSize="large" />
               </nz-form-control>
             </nz-form-item>
             <label>Код ОКПД 2 </label>
             <nz-form-item>
-              <nz-select formControlName="selectDeclarer" class="full-passport-form-select" nzSize="large">
+              <nz-select formControlName="okpd2CodeId" class="full-passport-form-select" nzSize="large">
                 <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
                 <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
               </nz-select>
             </nz-form-item>
             <label>Код ТН ВЭД ЕАЭС </label>
             <nz-form-item>
-              <nz-select formControlName="selectDeclarer" class="full-passport-form-select" nzSize="large">
+              <nz-select formControlName="tnVedCodeId" class="full-passport-form-select" nzSize="large">
                 <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
                 <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
               </nz-select>
@@ -104,7 +104,7 @@
             <label>Посредник</label>
             <nz-form-item>
               <nz-form-control>
-                <input type="text" nz-input formControlName="note" nzSize="large" />
+                <input type="text" nz-input formControlName="mediatorId" nzSize="large" />
               </nz-form-control>
             </nz-form-item>
             <label>Заявитель</label>
@@ -186,7 +186,7 @@
           </div>
           <div nz-col [nzLg]="{ span: 6 }" [nzXs]="{ span: 12 }">
             <div nz-row>
-              <div nz-col nzSpan="12">
+              <div nz-col [nzLg]="{ span: 12 }" [nzXs]="{ span: 24 }">
                 <nz-form-item>
                   <label nz-checkbox id="login-form-checkbox" formControlName="remember">Перерегистрация ПБ</label>
                 </nz-form-item>
@@ -200,7 +200,7 @@
                   <label nz-checkbox id="login-form-checkbox" formControlName="remember">Приостановить ПБ</label>
                 </nz-form-item>
               </div>
-              <div nz-col nzSpan="12"></div>
+              <div nz-col [nzLg]="{ span: 12 }" [nzXs]="{ span: 24 }"></div>
               <div nz-col nzSpan="24">
                 <label>Степень опасности химической продукции по ГОСТ 12.1.007 </label>
                 <nz-form-item>
