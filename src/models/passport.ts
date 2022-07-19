@@ -3,23 +3,73 @@ import { Organization } from './organization';
 /**
  * тип списка ПБ
  */
-
 export interface Passport {
-  serialNumber: number; // Порядковый номер в таблице
-  documentArrivalDate: string; // Дата поступления документов
-  endDate: string; // Действителен до
-  id: string; // id
-  names: string; // Наименование
-  okpd2Code: string; // Код ОКПД 2
-  organization: [Organization]; // Заявитель
-  passportNumber: number; // Номер ПБ
-  mediator: string; // Посредник
-  expert: string; // Эксперт
-  startDate: string; // Действителен от
-  tnVedCode: string; // Код ТН ВЭД ЕАЭС
-  workDate: string; // Дата выполнения работ
-  decline: boolean; //
-  accepted: boolean; //
-  createUserId: string; //
-  status: string; // Статус
+  /**
+   * Порядковый номер в таблице
+   */
+  serialNumber: number;
+  /**
+   * Дата поступления документов
+   */
+  documentArrivalDate: string;
+  /**
+   * Действителен до
+   */
+  endDate: string;
+  /**
+   * id
+   */
+  id: string;
+  /**
+   * Наименование
+   */
+  names: string;
+  /**
+   * Код ОКПД 2
+   */
+  okpd2Code: string;
+  /**
+   * Заявитель
+   */
+  organization: [Organization];
+  /**
+   * Номер ПБ
+   */
+  passportNumber: number;
+  /**
+   * Посредник
+   */
+  mediator: string;
+  /**
+   * Эксперт
+   */
+  expert: string;
+  /**
+   * Действителен от
+   */
+  startDate: string;
+  /**
+   * Код ТН ВЭД ЕАЭС
+   */
+  tnVedCode: string;
+  /**
+   * Дата выполнения работ
+   */
+  workDate: string;
+  /**
+   *
+   */
+  decline: boolean;
+  /**
+   *
+   */
+  accepted: boolean;
+  /**
+   *
+   */
+  createUserId: string;
+  /**
+   * Статус
+   */
+  status: string;
 }
