@@ -1,13 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 /**
  * interceptor для добавления токена
  */
 @Injectable()
 export class PassportInterceptor implements HttpInterceptor {
+  /**
+   * перехватчик который добавляет токен
+   * @param request 	Объект исходящего запроса для обработки
+   * @param next 	Следующий перехватчик в цепочке или серверная часть, если в цепочке не осталось перехватчиков.
+   * @returns Observable
+   */
   public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (request.url === 'https://iap_dev2.tomskasu.ru/api/worker/list_passport') {
+    if (request.url === `${environment.host}worker/list_passport`) {
       return next.handle(this.addAuthToken(request));
     }
 
