@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-passport-form.component.scss'],
 })
 export class NewPassportFormComponent implements OnInit {
+  /**
+   * Форма для нового ПБ
+   */
   public newPassportForm!: FormGroup;
 
   /**
@@ -24,14 +27,14 @@ export class NewPassportFormComponent implements OnInit {
 
   /**
    *изменяет значение check
-   * @param e event:boolean
+   * @param evt event:boolean
    */
-  public checked(e: boolean) {
-    this.check = e;
+  public checked(evt: boolean) {
+    this.check = evt;
   }
 
   /**
-   *
+   *отправка формы
    * @returns отправка формы
    */
   public submitForm(): void {
@@ -47,9 +50,7 @@ export class NewPassportFormComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    /**
-     * валидация
-     */
+    // валидация
     this.newPassportForm = this.fb.group({
       documentArrivalDate: [null, [Validators.required]],
       names: [null, [Validators.required]],
