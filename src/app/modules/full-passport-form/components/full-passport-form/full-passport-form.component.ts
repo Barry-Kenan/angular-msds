@@ -37,6 +37,12 @@ export class FullPassportFormComponent implements OnInit {
       okpd2CodeId: [null],
       tnVedCodeId: [null],
       mediatorId: [null],
+      organizationId: [null],
+      paymentMethod: [null],
+      passportPeriod: [null],
+      documentArrivalDate: [null],
+      nextRevisionDate: [null],
+      payDay: [null],
 
       datePicker: [null, [Validators.required]],
       note: [null],

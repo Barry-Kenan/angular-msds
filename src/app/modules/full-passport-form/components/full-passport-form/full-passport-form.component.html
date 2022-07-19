@@ -110,21 +110,21 @@
             <label>Заявитель</label>
             <nz-form-item>
               <nz-form-control>
-                <input type="text" nz-input formControlName="note" nzSize="large" />
+                <input type="text" nz-input formControlName="organizationId" nzSize="large" />
               </nz-form-control>
             </nz-form-item>
           </div>
           <div nz-col [nzLg]="{ span: 6 }" [nzXs]="{ span: 12 }">
             <label>Способ оплаты</label>
             <nz-form-item>
-              <nz-select formControlName="selectDeclarer" class="full-passport-form-select" nzSize="large">
+              <nz-select formControlName="paymentMethod" class="full-passport-form-select" nzSize="large">
                 <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
                 <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
               </nz-select>
             </nz-form-item>
             <label>Срочность</label>
             <nz-form-item>
-              <nz-select formControlName="selectDeclarer" class="full-passport-form-select" nzSize="large">
+              <nz-select formControlName="passportPeriod" class="full-passport-form-select" nzSize="large">
                 <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
                 <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
               </nz-select>
@@ -133,7 +133,7 @@
             <nz-form-item>
               <nz-form-control>
                 <nz-date-picker
-                  formControlName="datePicker"
+                  formControlName="documentArrivalDate"
                   class="full-passport-form-select"
                   nzSize="large"
                   nzPlaceHolder="дд.мм.гггг"
@@ -145,7 +145,7 @@
             <nz-form-item>
               <nz-form-control>
                 <nz-date-picker
-                  formControlName="datePicker"
+                  formControlName="nextRevisionDate"
                   class="full-passport-form-select"
                   nzSize="large"
                   nzPlaceHolder="дд.мм.гггг"
@@ -157,7 +157,7 @@
             <nz-form-item>
               <nz-form-control>
                 <nz-date-picker
-                  formControlName="datePicker"
+                  formControlName="payDay"
                   class="full-passport-form-select"
                   nzSize="large"
                   nzPlaceHolder="дд.мм.гггг"
