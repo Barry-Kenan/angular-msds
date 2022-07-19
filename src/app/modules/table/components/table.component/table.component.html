@@ -1,3 +1,4 @@
+<!-- eslint-disable @angular-eslint/template/no-call-expression -->
 <div class="passport-list">
   <div nz-row class="passport-list-row-margin">
     <div nz-col [nzSpan]="24" class="passport-list-title">
@@ -37,7 +38,7 @@
             <td>{{ data.documentArrivalDate | date: 'd.MM.yyyy' }}</td>
             <td>{{ data.passportNumber }}</td>
             <td>{{ data.names }}</td>
-            <td>
+            <td [ngClass]="classColor(data.status)">
               {{ data.status }}
             </td>
             <td>{{ data.organization[0].value }}</td>

@@ -118,6 +118,11 @@ export class TableComponent implements OnInit {
     this.directionForPageChange = directionVal;
   }
 
+  /**
+   * для изменения цвета статуса в таблице
+   * @param status data.status
+   * @returns класс
+   */
   public classColor(status: string) {
     if (
       status === statusName.get('1') ||
