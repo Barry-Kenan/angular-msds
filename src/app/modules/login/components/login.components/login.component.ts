@@ -11,7 +11,10 @@ import { LoginService } from '../../services/login.service/login.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  public validateForm!: FormGroup;
+  /**
+   * форма для логина
+   */
+  public newPassportForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private loginService: LoginService) {}
 
@@ -19,17 +22,17 @@ export class LoginComponent implements OnInit {
    * Очистка формы
    */
   public resetForm(): void {
-    this.validateForm.reset();
+    this.newPassportForm.reset();
   }
 
   /**
    * Отправка формы
    */
   public submitForm(): void {
-    if (this.validateForm.valid) {
-      this.loginService.login(this.validateForm.value);
+    if (this.newPassportForm.valid) {
+      this.loginService.login(this.newPassportForm.value);
     } else {
-      Object.values(this.validateForm.controls).forEach(control => {
+      Object.values(this.newPassportForm.controls).forEach(control => {
         if (control.invalid) {
           control.markAsTouched();
           control.markAsDirty();
@@ -40,10 +43,8 @@ export class LoginComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    /**
-     * валидация
-     */
-    this.validateForm = this.fb.group({
+    // валидация
+    this.newPassportForm = this.fb.group({
       userName: [null, [Validators.required]],
       password: [null, [Validators.required]],
       remember: [false],
