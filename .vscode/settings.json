@@ -1,8 +1,5 @@
 {
-  "scss.validate": false,
-  "css.validate": false,
-  "less.validate": false,
-
+  "scss.validate": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": false,
