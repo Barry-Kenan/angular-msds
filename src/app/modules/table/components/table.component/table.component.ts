@@ -49,21 +49,13 @@ export class TableComponent implements OnInit {
   public directionForPageChange!: Direction;
 
   constructor(public tableService: TableService, private router: Router) {
-    /**
-     * присваивание статуса
-     */
+    // присваивание статуса
     this.statusName = statusName;
-    /**
-     * присвоение данных таблицы
-     */
+    // присвоение данных таблицы
     this.listOfData = [];
-    /**
-     *значение для пагинации
-     */
+    // значение для пагинации
     this.columnForPageChange = ColumnName.Status;
-    /**
-     * присвоение функций и данных для столбцов
-     */
+    //  присвоение функций и данных для столбцов
     this.listOfColumn = tableConst.map(item => ({
       ...item,
       sort: (evt: any) => this.sortChecking(evt, item.columnName),
@@ -125,9 +117,7 @@ export class TableComponent implements OnInit {
    * @returns string(green, red, yellow)
    */
   public classColor(status: string): string {
-    /**
-     * проверка массивов на совпадение
-     */
+    // проверка массивов на совпадение
     const isGreen = statusColorGreen.map(item => statusName.get(item)).includes(status);
     const isRed = statusColorRed.map(item => statusName.get(item)).includes(status);
 
