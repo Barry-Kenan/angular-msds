@@ -2,43 +2,45 @@
   text-align: center;
   height: 100%;
 
-  &-content {
+  &-form {
     position: absolute;
     top: 25%;
     right: 0;
     left: 0;
+
+    &-margin {
+      margin-bottom: 7%;
+    }
+
+    &-title {
+      font-size: 30px;
+      color: #324a5e;
+    }
+
+    &-inputs-name {
+      display: block;
+      text-align: left;
+    }
+
+    &-icons {
+      background-color: #1e5588;
+      padding: 3%;
+      border-radius: 5%;
+    }
+
+    input {
+      text-align: left;
+      height: 100%;
+    }
+
+    button {
+      width: 90%;
+      height: 125%;
+      border-radius: 7%;
+    }
   }
 
-  &-form-margin {
-    margin-bottom: 7%;
-  }
 
-  &-form-title {
-    font-size: 30px;
-    color: #324a5e;
-  }
-
-  &-form-inputs-name {
-    display: block;
-    text-align: left;
-  }
-
-  &-form-icons {
-    background-color: #1e5588;
-    padding: 3%;
-    border-radius: 5%;
-  }
-
-  input {
-    text-align: left;
-    height: 100%;
-  }
-
-  button {
-    width: 90%;
-    height: 125%;
-    border-radius: 7%;
-  }
 }
 
 ::ng-deep {

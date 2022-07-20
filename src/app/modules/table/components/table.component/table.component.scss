@@ -17,10 +17,27 @@
     margin-bottom: 1%;
   }
 
-  #passport-list-table {
+  &-table {
     position: fixed;
     width: 92%;
+
+    th {
+      font-weight: bold;
+      text-align: center;
+      color: #324a5e;
+      background-color: #d8d8d8;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #f6f6f6;
+    }
+
+    td {
+      text-align: center;
+    }
   }
+
+
 
   .red {
     color: #f27c70;
@@ -34,18 +51,4 @@
     color: #31a669;
   }
 
-  th {
-    font-weight: bold;
-    text-align: center;
-    color: #324a5e;
-    background-color: #d8d8d8;
-  }
-
-  tr:nth-child(odd) {
-    background-color: #f6f6f6;
-  }
-
-  td {
-    text-align: center;
-  }
 }

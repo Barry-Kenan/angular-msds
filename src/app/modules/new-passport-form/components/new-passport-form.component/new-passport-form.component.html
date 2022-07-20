@@ -2,7 +2,7 @@
   <div nz-col [nzSpan]="24" class="new-passport-title">
     <h1>Новый ПБ</h1>
   </div>
-  <div nz-col [nzLg]="{ span: 12, offset: 6 }" [nzXs]="{ span: 22, offset: 1 }">
+  <div nz-col class="new-passport-form" [nzLg]="{ span: 12, offset: 6 }" [nzXs]="{ span: 22, offset: 1 }">
     <form nz-form [formGroup]="newPassportForm" (ngSubmit)="submitForm()">
       <div class="new-passport-form-title">Дата поступления документа</div>
       <nz-form-item>
@@ -30,8 +30,8 @@
         </nz-select>
       </nz-form-item>
       <nz-form-item>
-        <label nz-checkbox id="new-passport-form-checkbox" formControlName="mediator" (ngModelChange)="checked($event)">
-          <p id="new-passport-form-checkbox-title">Посредник</p>
+        <label nz-checkbox formControlName="mediator" (ngModelChange)="checked($event)">
+          <label>Посредник</label>
         </label>
       </nz-form-item>
       <nz-form-item>

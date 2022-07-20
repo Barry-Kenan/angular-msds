@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   public ngOnInit(): void {
     // валидация
     this.newPassportForm = this.fb.group({
-      userName: [null, [Validators.required]],
+      login: [null, [Validators.required]],
       password: [null, [Validators.required]],
       remember: [false],
     });
