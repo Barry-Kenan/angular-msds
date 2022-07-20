@@ -60,7 +60,7 @@ export class TableService {
         const { totalCount } = res.result;
         const items = res.result.items.map((item: Passport, index: number) => {
           const test = item;
-          test.serialNumber = index + 1;
+          test.serialNumber = index + 1 + page * 10;
           test.status = statusName.get(item.status) || '';
 
           return test;
