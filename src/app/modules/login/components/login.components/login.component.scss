@@ -41,22 +41,21 @@
   }
 }
 
-/* stylelint-disable */
-::ng-deep .ant-checkbox-checked .ant-checkbox-inner {
-  background: #1f6842;
-}
+::ng-deep {
+  .ant-checkbox-inner {
+    width: 24px;
+    height: 24px;
+  }
 
-::ng-deep .ant-checkbox-checked .ant-checkbox-inner::after {
-  margin-left: 9%;
-}
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background: #1f6842;
+  }
 
-::ng-deep .ant-checkbox-inner {
-  width: 24px;
-  height: 24px;
-}
+  .ant-checkbox-checked .ant-checkbox-inner::after {
+    margin-left: 9%;
+  }
 
-::ng-deep .ant-checkbox-wrapper span:nth-last-of-type(1) {
-  margin-bottom: -15%;
+  .ant-checkbox-wrapper span:nth-last-of-type(1) {
+    margin-bottom: -15%;
+  }
 }
-
-/* stylelint-enable */
