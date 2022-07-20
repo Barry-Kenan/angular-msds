@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { NzMessageService } from 'ng-zorro-antd/message';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { User } from 'src/models/user';
 
 /**
  * Сервис для логина
@@ -13,16 +12,16 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class RequestService {
-  constructor(private http: HttpClient, private router: Router, private message: NzMessageService) {}
+  constructor(private http: HttpClient) {}
 
   /**
    * @param body тело для пост запроса
    * @returns пост запрос на login
    */
-  public postRequest(body: any) {
+  public postRequest<T>(body: User): Observable<T> {
     const postUrl = `${environment.host}login`;
 
-    return this.http.post(postUrl, body);
+    return this.http.post<T>(postUrl, body);
   }
 
   /**

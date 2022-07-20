@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { catchError, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { RequestService } from 'src/app/modules/shared/services/request.service/request.service';
 import { User } from 'src/models/user';
 
@@ -18,14 +18,14 @@ export class LoginService {
    * @param user логин пароль ремембер
    * @returns запрос логин
    */
-  public login(user: User) {
-    const body = {
-      login: user.userName,
+  public login<LoginResponse>(user: User): Observable<LoginResponse> {
+    const body: User = {
+      login: user.login,
       password: user.password,
       remember: user.remember,
     };
 
-    return this.requestService.postRequest(body).pipe(
+    return this.requestService.postRequest<LoginResponse>(body).pipe(
       catchError((err: any) => {
         this.message.error('Некорректные учётные данные пользователя', { nzDuration: 2000 });
 
