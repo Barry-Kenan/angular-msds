@@ -50,7 +50,7 @@ export class NewPassportFormComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    // валидация
+    // конструктор формы
     this.newPassportForm = this.fb.group({
       documentArrivalDate: [null, [Validators.required]],
       names: [null, [Validators.required]],
