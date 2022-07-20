@@ -5,7 +5,7 @@ export interface User {
   /**
    * Логин
    */
-  userName: string;
+  login: string;
   /**
    * Пароль
    */
