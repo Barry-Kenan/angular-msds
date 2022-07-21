@@ -1,12 +1,15 @@
-import { Names } from './names';
 /**
- * тип для формы newPassport
+ * тип для формы новый ПБ
  */
-export interface NewPassport {
+export interface NewPassportForm {
   /**
    * Дата поступления документа
    */
   documentArrivalDate: string;
+  /**
+   * Checkbox Посредник
+   */
+  isMediator: boolean;
   /**
    * Посредник
    */
@@ -14,7 +17,7 @@ export interface NewPassport {
   /**
    * Техническое наименование
    */
-  names: [Names];
+  names: string;
   /**
    * Заявитель
    */
