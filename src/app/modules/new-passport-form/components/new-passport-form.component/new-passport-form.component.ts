@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { List } from 'src/models/list';
+import { Organizations } from 'src/models/organizations';
+import { NewPassportFormService } from '../../services/new-passport-form.service';
 
 /**
  * Новый ПБ
@@ -21,7 +24,12 @@ export class NewPassportFormComponent implements OnInit {
    */
   public check: boolean;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  /**
+   * список организаций
+   */
+  public listOrganizations: any;
+
+  constructor(private fb: FormBuilder, private router: Router, public newPassportFormService: NewPassportFormService) {
     this.check = false;
   }
 
@@ -50,12 +58,18 @@ export class NewPassportFormComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.newPassportFormService.getOrganizations().subscribe((res: List<Organizations>) => {
+      this.listOrganizations = res.items;
+
+      // eslint-disable-next-line no-debugger
+      debugger;
+    });
     // конструктор формы
     this.newPassportForm = this.fb.group({
       documentArrivalDate: [null, [Validators.required]],
       names: [null, [Validators.required]],
       organizationId: [null],
-      mediator: [false],
+      isMediator: [false],
       mediatorId: [null],
       singleOrMultiple: [null],
     });

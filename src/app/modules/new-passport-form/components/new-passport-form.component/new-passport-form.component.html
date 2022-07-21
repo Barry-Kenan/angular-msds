@@ -25,12 +25,14 @@
       <div class="new-passport-form-title">Заявитель</div>
       <nz-form-item>
         <nz-select formControlName="organizationId" class="new-passport-form-select" nzSize="large">
-          <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
-          <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
+          <nz-option
+            *ngFor="let option of listOrganizations"
+            [nzValue]="option.shortNames.value"
+            [nzLabel]="option.shortNames.value"></nz-option>
         </nz-select>
       </nz-form-item>
       <nz-form-item>
-        <label nz-checkbox formControlName="mediator" (ngModelChange)="checked($event)">
+        <label nz-checkbox formControlName="isMediator" (ngModelChange)="checked($event)">
           <label>Посредник</label>
         </label>
       </nz-form-item>
