@@ -6,67 +6,67 @@ import { ColumnName } from 'src/models/column-name';
 export const tableConst: Array<ColumnItems> = [
   {
     title: '№',
-    width: '3%',
+    width: '72px',
     columnName: ColumnName.SerialNumber,
   },
   {
     title: 'Дата поступления документов',
-    width: '7%',
+    width: '120px',
     columnName: ColumnName.DocumentArrivalDate,
   },
   {
     title: 'Номер ПБ',
-    width: '7%',
+    width: '108px',
     columnName: ColumnName.PassportNumber,
   },
   {
     title: 'Наименование',
-    width: '8%',
+    width: '220px',
     columnName: ColumnName.Names,
   },
   {
     title: 'Статус',
-    width: '8%',
+    width: '144px',
     columnName: ColumnName.Status,
   },
   {
     title: 'Заявитель',
-    width: '7%',
+    width: '200px',
     columnName: ColumnName.Organization,
   },
   {
     title: 'Посредник',
-    width: '7%',
+    width: '180px',
     columnName: ColumnName.Mediator,
   },
   {
     title: 'Эксперт',
-    width: '7%',
+    width: '108px',
     columnName: ColumnName.ExpertId,
   },
   {
     title: 'Действителен от',
-    width: '8%',
+    width: '125px',
     columnName: ColumnName.StartDate,
   },
   {
     title: 'Действителен до',
-    width: '8%',
+    width: '125px',
     columnName: ColumnName.EndDate,
   },
   {
     title: 'Дата выполнения работ',
-    width: '7%',
+    width: '115px',
     columnName: ColumnName.WorkDate,
   },
   {
     title: 'Код ОКПД 2',
-    width: '7%',
+    width: '113px',
     columnName: ColumnName.Okpd2CodeId,
   },
   {
     title: 'Код ТН ВЭД ЕАЭС',
-    width: '7%',
+    width: '110px',
     columnName: ColumnName.TnVedCodeId,
   },
 ];

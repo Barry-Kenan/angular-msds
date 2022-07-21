@@ -5,10 +5,19 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { TableComponent } from './components/table.component/table.component';
 
 @NgModule({
   declarations: [TableComponent],
-  imports: [CommonModule, NzTableModule, NzPaginationModule, NzGridModule, NzButtonModule, NzTypographyModule],
+  imports: [
+    CommonModule,
+    NzTableModule,
+    NzPaginationModule,
+    NzGridModule,
+    NzButtonModule,
+    NzToolTipModule,
+    NzTypographyModule,
+  ],
 })
 export class TableModule {}
