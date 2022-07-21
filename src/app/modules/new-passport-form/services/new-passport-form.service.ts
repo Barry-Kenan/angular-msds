@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { RequestService } from 'src/app/modules/shared/services/request.service/request.service';
 import { List } from 'src/models/list';
 import { NewPassport } from 'src/models/new-passport';
+import { NewPassportForm } from 'src/models/new-passport-form';
 import { Organizations } from 'src/models/organizations';
-import { PassportResponse } from 'src/models/passport-response';
 
 /**
  * Сервис для логина
@@ -24,7 +24,7 @@ export class NewPassportFormService {
     const params = [{ searchString: null, pagination: null, contains: true }];
     const method = 'list_organization';
 
-    return this.requestService.postRPC(params, method).pipe(map((res: any) => res.result));
+    return this.requestService.postRPC(params, method);
   }
 
   /**
@@ -32,21 +32,19 @@ export class NewPassportFormService {
    * @param passport
    * @returns Observable
    */
-  public addNewPassport(passport: NewPassport): Observable<any> {
-    const params: [NewPassport] = [
-      {
-        documentArrivalDate: passport.documentArrivalDate,
-        names: [{ value: passport.names[0].value, lang: 'ru' }],
-        organizationId: passport.organizationId,
-        singleOrMultiple: passport.singleOrMultiple,
-      },
-    ];
+  public addNewPassport<T>(passport: NewPassportForm): Observable<T> {
+    const params: NewPassport = {
+      documentArrivalDate: passport.documentArrivalDate,
+      names: [{ value: passport.names, lang: 'ru' }],
+      organizationId: passport.organizationId,
+      singleOrMultiple: passport.singleOrMultiple,
+    };
     if (passport.isMediator) {
-      params[0].mediatorId = passport.mediatorId;
+      params.mediatorId = passport.mediatorId;
     }
 
     const method = 'create_passport';
 
-    return this.requestService.postRPC<PassportResponse>(params, method);
+    return this.requestService.postRPC<T>([params], method);
   }
 }
