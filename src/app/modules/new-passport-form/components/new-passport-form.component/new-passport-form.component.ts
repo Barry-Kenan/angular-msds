@@ -54,9 +54,9 @@ export class NewPassportFormComponent implements OnInit {
     this.newPassportForm = this.fb.group({
       documentArrivalDate: [null, [Validators.required]],
       names: [null, [Validators.required]],
-      organization: [null],
+      organizationId: [null],
       mediator: [false],
-      mediatorValue: [null],
+      mediatorId: [null],
       singleOrMultiple: [null],
     });
   }

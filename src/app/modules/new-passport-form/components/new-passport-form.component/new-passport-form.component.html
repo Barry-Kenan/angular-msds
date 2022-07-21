@@ -24,7 +24,7 @@
       </nz-form-item>
       <div class="new-passport-form-title">Заявитель</div>
       <nz-form-item>
-        <nz-select formControlName="organization" class="new-passport-form-select" nzSize="large">
+        <nz-select formControlName="organizationId" class="new-passport-form-select" nzSize="large">
           <nz-option nzValue="Заявитель 1" nzLabel="Заявитель 1"></nz-option>
           <nz-option nzValue="Заявитель 2" nzLabel="Заявитель 2"></nz-option>
         </nz-select>
@@ -35,11 +35,7 @@
         </label>
       </nz-form-item>
       <nz-form-item>
-        <nz-select
-          formControlName="mediatorValue"
-          [nzDisabled]="!check"
-          class="new-passport-form-select"
-          nzSize="large">
+        <nz-select formControlName="mediatorId" [nzDisabled]="!check" class="new-passport-form-select" nzSize="large">
           <nz-option nzValue="Посредник 1" nzLabel="Посредник 1"></nz-option>
           <nz-option nzValue="Посредник 2" nzLabel="Посредник 2"></nz-option>
         </nz-select>
