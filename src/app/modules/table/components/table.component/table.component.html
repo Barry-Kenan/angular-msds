@@ -14,7 +14,7 @@
       <nz-table
         class="passport-list-table"
         #sortTable
-        [nzFooter]="Footer"
+        [nzFooter]="footer"
         nzBordered
         nzSize="small"
         nzOuterBordered
@@ -53,16 +53,16 @@
             <td>{{ data.tnVedCode }}</td>
           </tr>
         </tbody>
-        <ng-template #Footer>
+        <ng-template #footer>
           <p class="total-page-count">Всего найдено элементов:{{ totalPageCount }}</p>
           <nz-pagination
             (nzPageIndexChange)="pageChange($event)"
             [nzTotal]="totalPageCount"
             nzSize="small"
-            [nzShowTotal]="Pages">
+            [nzShowTotal]="pages">
           </nz-pagination>
         </ng-template>
-        <ng-template #Pages let-total>Страницы:</ng-template>
+        <ng-template #pages let-total>Страницы:</ng-template>
       </nz-table>
     </div>
   </div>
