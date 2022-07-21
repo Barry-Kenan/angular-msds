@@ -81,6 +81,12 @@
             "ignoreComments": true
           }
         ],
+        "@typescript-eslint/explicit-function-return-type": [
+          "error",
+          {
+            "allowExpressions": true
+          }
+        ],
         "no-console": "warn",
         "newline-before-return": "error"
       }

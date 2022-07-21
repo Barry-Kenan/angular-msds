@@ -135,7 +135,7 @@ export class TableComponent implements OnInit {
    * функция для записи data для заполнения таблицы
    * @param response response
    */
-  private setData(response: any) {
+  private setData(response: any): void {
     this.listOfData = response.items;
     this.totalPageCount = response.totalCount;
   }
