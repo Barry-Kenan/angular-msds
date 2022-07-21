@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { catchError, Observable, throwError } from 'rxjs';
@@ -15,8 +16,9 @@ export class LoginService {
   constructor(private message: NzMessageService, private requestService: RequestService) {}
 
   /**
+   * Запрос логин
    * @param user логин пароль ремембер
-   * @returns запрос логин
+   * @returns Observable
    */
   public login<LoginResponse>(user: User): Observable<LoginResponse> {
     const body: User = {
@@ -26,10 +28,10 @@ export class LoginService {
     };
 
     return this.requestService.postRequest<LoginResponse>(body).pipe(
-      catchError((err: any) => {
+      catchError((err: HttpErrorResponse) => {
         this.message.error('Некорректные учётные данные пользователя', { nzDuration: 2000 });
 
-        return throwError(err);
+        return throwError(() => err);
       })
     );
   }
