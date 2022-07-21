@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Response } from 'src/models/response';
 import { User } from 'src/models/user';
 
 /**
@@ -39,6 +40,6 @@ export class RequestService {
       method,
     };
 
-    return this.http.post<T>(postUrl, body).pipe(map((res: any) => res.result));
+    return this.http.post<Response<T>>(postUrl, body).pipe(map(res => res.result));
   }
 }
