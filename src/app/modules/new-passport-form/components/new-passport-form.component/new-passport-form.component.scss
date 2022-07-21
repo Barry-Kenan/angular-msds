@@ -1,0 +1,52 @@
+.new-passport {
+  max-height: 100%;
+
+  &-title {
+    background-color: #f6f6f6;
+    height: 100%;
+    margin-bottom: 5%;
+
+    h1 {
+      font-size: 30px;
+      padding-top: 1%;
+      padding-left: 3%;
+      color: #324a5e;
+    }
+  }
+
+  &-form {
+    &-title {
+      font-size: 18px;
+    }
+
+    &-select {
+      width: 100%;
+      margin: 0;
+    }
+
+    button {
+      width: 100%;
+      height: 125%;
+      border-radius: 7%;
+    }
+
+    label {
+      font-size: 18px;
+    }
+  }
+}
+
+::ng-deep {
+  .ant-checkbox-inner {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background: #1f6842;
+  }
+
+  .ant-checkbox-checked .ant-checkbox-inner::after {
+    margin-left: 9%;
+  }
+}

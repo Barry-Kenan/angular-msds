@@ -1,0 +1,54 @@
+<div class="login">
+  <div nz-row nzJustify="center" class="login-form">
+    <div nz-col [nzLg]="7" [nzMd]="8" [nzSm]="11" [nzXs]="14">
+      <form nz-form [formGroup]="newPassportForm" (ngSubmit)="submitForm()">
+        <h1 class="login-form-title login-form-margin">Вход в систему</h1>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your username!">
+            <label class="login-form-inputs-name">Логин</label>
+            <nz-input-group class="login-inputGroup">
+              <nz-row>
+                <nz-col [nzLg]="3" [nzXs]="4" class="login-form-icons">
+                  <img src="assets/icons/Login.svg" alt="login-icon" />
+                </nz-col>
+                <nz-col [nzLg]="21" [nzXs]="20" class="login-input-container">
+                  <input type="text" nz-input nzSize="large" formControlName="login" />
+                </nz-col>
+              </nz-row>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your Password!">
+            <label class="login-form-inputs-name">Пароль</label>
+            <nz-input-group>
+              <nz-row>
+                <nz-col [nzLg]="3" [nzXs]="4" class="login-form-icons">
+                  <img src="assets/icons/Password.svg" alt="password-icon" />
+                </nz-col>
+                <nz-col [nzLg]="21" [nzXs]="20" class="login-input-container">
+                  <input type="password" nz-input nzSize="large" formControlName="password" />
+                </nz-col>
+              </nz-row>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <div nz-row class="login-form-margin" nzJustify="center">
+          <div nz-col>
+            <label nz-checkbox formControlName="remember">Оставаться в системе</label>
+          </div>
+        </div>
+        <div nz-row nzJustify="center">
+          <div nz-col [nzLg]="{ span: 9 }" [nzXs]="{ span: 11 }">
+            <button nz-button nzSize="large" (click)="resetForm()" class="login-form-button" type="button">
+              Отмена
+            </button>
+          </div>
+          <div nz-col [nzLg]="{ span: 9, offset: 2 }" [nzXs]="{ span: 11, offset: 1 }">
+            <button nz-button nzSize="large" class="login-form-button" [nzType]="'primary'" type="submit">Войти</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

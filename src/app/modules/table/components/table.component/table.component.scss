@@ -1,0 +1,54 @@
+.passport-list {
+  height: 100%;
+
+  &-title {
+    background-color: #f6f6f6;
+    height: 100%;
+
+    h1 {
+      font-size: 180%;
+      padding-top: 1%;
+      padding-left: 3%;
+      color: #324a5e;
+    }
+  }
+
+  &-row-margin {
+    margin-bottom: 1%;
+  }
+
+  &-table {
+    position: fixed;
+    width: 92%;
+
+    th {
+      font-weight: bold;
+      text-align: center;
+      color: #324a5e;
+      background-color: #d8d8d8;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #f6f6f6;
+    }
+
+    td {
+      text-align: center;
+    }
+  }
+
+
+
+  .red {
+    color: #f27c70;
+  }
+
+  .yellow {
+    color: #e6e629;
+  }
+
+  .green {
+    color: #31a669;
+  }
+
+}
