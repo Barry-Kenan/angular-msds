@@ -24,11 +24,14 @@
       </nz-form-item>
       <div class="new-passport-form-title">Заявитель</div>
       <nz-form-item>
-        <nz-select formControlName="organizationId" class="new-passport-form-select" nzSize="large">
-          <nz-option
-            *ngFor="let option of listOrganizations"
-            [nzValue]="option.shortNames.value"
-            [nzLabel]="option.shortNames.value"></nz-option>
+        <nz-select
+          formControlName="organizationId"
+          class="new-passport-form-select"
+          nzAllowClear
+          nzShowSearch
+          nzSize="large">
+          <nz-option *ngFor="let option of listOrganizations" [nzValue]="option.id" [nzLabel]="option.names[0].value">
+          </nz-option>
         </nz-select>
       </nz-form-item>
       <nz-form-item>
@@ -37,16 +40,22 @@
         </label>
       </nz-form-item>
       <nz-form-item>
-        <nz-select formControlName="mediatorId" [nzDisabled]="!check" class="new-passport-form-select" nzSize="large">
-          <nz-option nzValue="Посредник 1" nzLabel="Посредник 1"></nz-option>
-          <nz-option nzValue="Посредник 2" nzLabel="Посредник 2"></nz-option>
+        <nz-select
+          formControlName="mediatorId"
+          [nzDisabled]="!check"
+          nzAllowClear
+          nzShowSearch
+          class="new-passport-form-select"
+          nzSize="large">
+          <nz-option *ngFor="let option of listOrganizations" [nzValue]="option.id" [nzLabel]="option.names[0].value">
+          </nz-option>
         </nz-select>
       </nz-form-item>
       <div class="new-passport-form-title">Регулярность</div>
       <nz-form-item>
         <nz-select formControlName="singleOrMultiple" class="new-passport-form-select" nzSize="large">
-          <nz-option nzValue="Регулярно" nzLabel="Регулярно"></nz-option>
-          <nz-option nzValue="Разово" nzLabel="Разово"></nz-option>
+          <nz-option [nzValue]="true" nzLabel="Регулярно"></nz-option>
+          <nz-option [nzValue]="false" nzLabel="Разово"></nz-option>
         </nz-select>
       </nz-form-item>
       <div nz-row nzJustify="center" class="new-passport-form-buttons">

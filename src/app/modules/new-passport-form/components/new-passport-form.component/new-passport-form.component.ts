@@ -25,7 +25,7 @@ export class NewPassportFormComponent implements OnInit {
   public check: boolean;
 
   /**
-   * список организаций
+   * список организаций и посредников
    */
   public listOrganizations: any;
 
@@ -42,11 +42,10 @@ export class NewPassportFormComponent implements OnInit {
   }
 
   /**
-   *отправка формы
-   * @returns отправка формы
+   * Отправка формы
    */
   public submitForm(): void {
-    return this.newPassportForm.value;
+    this.newPassportFormService.addNewPassport(this.newPassportForm.value).subscribe();
   }
 
   /**
@@ -60,9 +59,6 @@ export class NewPassportFormComponent implements OnInit {
   public ngOnInit(): void {
     this.newPassportFormService.getOrganizations().subscribe((res: List<Organizations>) => {
       this.listOrganizations = res.items;
-
-      // eslint-disable-next-line no-debugger
-      debugger;
     });
     // конструктор формы
     this.newPassportForm = this.fb.group({
@@ -70,8 +66,8 @@ export class NewPassportFormComponent implements OnInit {
       names: [null, [Validators.required]],
       organizationId: [null],
       isMediator: [false],
-      mediatorId: [null],
-      singleOrMultiple: [null],
+      mediatorId: [null, [Validators.required]],
+      singleOrMultiple: [null, [Validators.required]],
     });
   }
 }
