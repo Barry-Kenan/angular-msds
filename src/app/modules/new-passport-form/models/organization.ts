@@ -1,5 +1,8 @@
-import { Names } from './names';
+import { LocalizationDto } from '../../../models/localization-dto';
 
+/**
+ * Данные организации
+ */
 export interface Organization {
   /**
    * Пользователь согласен добавить|изменить организацию как дубликат существующей.
@@ -24,7 +27,7 @@ export interface Organization {
   /**
    * Наименование полное
    */
-  names: [Names];
+  names: [LocalizationDto];
   /**
    * Код ОКПО
    */
@@ -44,7 +47,7 @@ export interface Organization {
   /**
    * Наименование организации сокращенное
    */
-  shortNames: [Names];
+  shortNames: [LocalizationDto];
   /**
    * Статус организации
    */
