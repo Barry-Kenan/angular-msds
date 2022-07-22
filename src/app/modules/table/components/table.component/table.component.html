@@ -1,0 +1,69 @@
+<div class="passport-list">
+  <div nz-row class="passport-list-row-margin">
+    <div nz-col [nzSpan]="24" class="passport-list-title">
+      <h1>Список ПБ</h1>
+    </div>
+  </div>
+  <div nz-row class="passport-list-row-margin">
+    <div nz-col [nzSpan]="2" [nzOffset]="22">
+      <button type="button" nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="navigate()">+</button>
+    </div>
+  </div>
+  <div nz-row class="passport-list-row-margin">
+    <div nz-col [nzSpan]="22" [nzOffset]="1">
+      <nz-table
+        class="passport-list-table"
+        #sortTable
+        [nzFooter]="footer"
+        nzBordered
+        nzSize="small"
+        nzOuterBordered
+        [nzData]="listOfData"
+        [nzScroll]="{ x: '100vh', y: '65vh' }"
+        [nzFrontPagination]="false">
+        <thead>
+          <tr>
+            <th
+              *ngFor="let column of listOfColumn; trackBy: trackByName"
+              [nzSortFn]="true"
+              nzTableLayout="fixed"
+              [nzSortDirections]="['descend', 'ascend']"
+              (nzSortOrderChange)="column?.sort($event)"
+              [nzWidth]="column.width">
+              {{ column.title }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of sortTable.data">
+            <td>{{ data.serialNumber }}</td>
+            <td>{{ data.documentArrivalDate | date: 'd.MM.yyyy' }}</td>
+            <td>{{ data.passportNumber }}</td>
+            <td nzEllipsis nz-tooltip [nzTooltipTitle]="data.names">{{ data.names }}</td>
+            <td [ngClass]="classColor(data.status)">
+              {{ data.status }}
+            </td>
+            <td>{{ data.organization[0].value }}</td>
+            <td>{{ data.mediator }}</td>
+            <td>{{ data.expert }}</td>
+            <td>{{ data.startDate | date: 'd.MM.yyyy' }}</td>
+            <td>{{ data.endDate | date: 'd.MM.yyyy' }}</td>
+            <td>{{ data.workDate | date: 'd.MM.yyyy' }}</td>
+            <td>{{ data.okpd2Code }}</td>
+            <td>{{ data.tnVedCode }}</td>
+          </tr>
+        </tbody>
+        <ng-template #footer>
+          <p class="total-page-count">Всего найдено элементов:{{ totalPageCount }}</p>
+          <nz-pagination
+            (nzPageIndexChange)="pageChange($event)"
+            [nzTotal]="totalPageCount"
+            nzSize="small"
+            [nzShowTotal]="pages">
+          </nz-pagination>
+        </ng-template>
+        <ng-template #pages let-total>Страницы:</ng-template>
+      </nz-table>
+    </div>
+  </div>
+</div>
