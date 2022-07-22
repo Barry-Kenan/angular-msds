@@ -1,4 +1,4 @@
-import { Organization } from 'src/app/modules/table/models/organization';
+import { LocalizationDto } from 'src/app/models/localization-dto';
 
 /**
  * тип списка ПБ
@@ -31,7 +31,7 @@ export interface Passport {
   /**
    * Заявитель
    */
-  organization: [Organization];
+  organization: [LocalizationDto];
   /**
    * Номер ПБ
    */

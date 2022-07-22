@@ -1,4 +1,4 @@
-import { Names } from 'src/app/modules/new-passport-form/models/names';
+import { LocalizationDto } from 'src/app/models/localization-dto';
 
 /**
  * тип для формы newPassport
@@ -15,7 +15,7 @@ export interface NewPassport {
   /**
    * Техническое наименование
    */
-  names: [Names];
+  names: [LocalizationDto];
   /**
    * Заявитель
    */
