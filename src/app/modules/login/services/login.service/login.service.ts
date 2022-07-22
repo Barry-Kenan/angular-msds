@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { catchError, Observable, throwError } from 'rxjs';
 import { RequestService } from 'src/app/modules/shared/services/request.service/request.service';
-import { User } from 'src/models/user';
+import { User } from 'src/app/modules/login/models/user';
 
 /**
  * Сервис для логина

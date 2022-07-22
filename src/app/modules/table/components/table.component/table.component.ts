@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ColumnItems } from '../../../../../models/column-items';
-import { ColumnName } from '../../../../../models/column-name';
-import { Direction } from '../../../../../models/direction';
-import { Passport } from '../../../../../models/passport';
+import { ColumnItems } from '../../models/column-items';
+import { Passport } from '../../models/passport';
 import { statusColorGreen, statusColorRed } from '../../consts/status-color';
 import { statusName } from '../../consts/status-name';
 import { tableConst } from '../../consts/table.consts';
 import { TableService } from '../../services/table.service/table.service';
+import { ColumnName } from '../../models/column-name';
+import { Direction } from '../../models/direction';
 
 /**
  * список ПБ

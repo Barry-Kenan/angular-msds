@@ -1,4 +1,5 @@
-import { Names } from './names';
+import { Names } from 'src/app/modules/new-passport-form/models/names';
+
 /**
  * тип для формы newPassport
  */

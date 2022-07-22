@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Response } from 'src/models/response';
-import { User } from 'src/models/user';
+import { Response } from 'src/app/models/response';
+import { User } from 'src/app/modules/login/models/user';
 
 /**
  * Сервис для логина

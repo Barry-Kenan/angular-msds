@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RequestService } from 'src/app/modules/shared/services/request.service/request.service';
-import { List } from 'src/models/list';
-import { NewPassport } from 'src/models/new-passport';
-import { NewPassportForm } from 'src/models/new-passport-form';
-import { Organizations } from 'src/models/organizations';
+import { List } from 'src/app/models/list';
+import { Organizations } from 'src/app/modules/new-passport-form/models/organizations';
+import { NewPassportForm } from '../models/new-passport-form';
+import { NewPassport } from '../models/new-passport';
 
 /**
  * Сервис для логина
@@ -29,7 +29,7 @@ export class NewPassportFormService {
 
   /**
    * метод для добавления новых паспортов
-   * @param passport
+   * @param passport данные нового паспорта
    * @returns Observable
    */
   public addNewPassport<T>(passport: NewPassportForm): Observable<T> {

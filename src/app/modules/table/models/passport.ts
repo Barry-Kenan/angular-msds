@@ -1,4 +1,4 @@
-import { Organization } from './organization';
+import { Organization } from 'src/app/modules/table/models/organization';
 
 /**
  * тип списка ПБ

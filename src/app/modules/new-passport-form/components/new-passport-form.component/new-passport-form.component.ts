@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { List } from 'src/models/list';
-import { Organizations } from 'src/models/organizations';
+import { List } from 'src/app/models/list';
+import { Organizations } from 'src/app/modules/new-passport-form/models/organizations';
 import { NewPassportFormService } from '../../services/new-passport-form.service';
 
 /**
@@ -27,10 +27,11 @@ export class NewPassportFormComponent implements OnInit {
   /**
    * список организаций и посредников
    */
-  public listOrganizations: any;
+  public listOrganizations: Array<Organizations>;
 
   constructor(private fb: FormBuilder, private router: Router, public newPassportFormService: NewPassportFormService) {
     this.check = false;
+    this.listOrganizations = [];
   }
 
   /**

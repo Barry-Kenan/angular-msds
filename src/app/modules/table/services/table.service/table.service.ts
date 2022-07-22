@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { RequestService } from 'src/app/modules/shared/services/request.service/request.service';
-import { ColumnName } from 'src/models/column-name';
-import { Direction } from 'src/models/direction';
-import { List } from 'src/models/list';
-import { Passport } from 'src/models/passport';
+import { List } from 'src/app/models/list';
+import { Passport } from 'src/app/modules/table/models/passport';
 import { statusName } from '../../consts/status-name';
+import { ColumnName } from '../../models/column-name';
+import { Direction } from '../../models/direction';
 
 /**
  * Сервис для логина
