@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { RequestService } from 'src/app/modules/shared/services/request.service/request.service';
-import { ColumnName } from 'src/models/column-name';
-import { Direction } from 'src/models/direction';
-import { List } from 'src/models/list';
-import { Passport } from 'src/models/passport';
-import { PassportResponse } from 'src/models/passport-response';
+import { List } from 'src/app/models/list';
+import { Passport } from 'src/app/modules/table/models/passport';
 import { statusName } from '../../consts/status-name';
+import { ColumnName } from '../../models/column-name';
+import { Direction } from '../../models/direction';
 
 /**
  * Сервис для логина
@@ -55,10 +54,10 @@ export class TableService {
     ];
     const method = 'list_passport';
 
-    return this.requestService.postRPC<PassportResponse>(params, method).pipe(
-      map((res: PassportResponse) => {
-        const { totalCount } = res.result;
-        const items = res.result.items.map((item: Passport, index: number) => {
+    return this.requestService.postRPC<List<Passport>>(params, method).pipe(
+      map((res: List<Passport>) => {
+        const { totalCount } = res;
+        const items = res.items.map((item: Passport, index: number) => {
           const test = item;
           test.serialNumber = index + 1 + page * 10;
           test.status = statusName.get(item.status) || '';

@@ -14,10 +14,9 @@ export class PassportInterceptor implements HttpInterceptor {
    * @returns Observable
    */
   public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const handleParam =
-      request.url === `${environment.host}worker/list_passport` ? this.addAuthToken(request) : request;
+    const handleRequest = request.url.includes(`${environment.host}worker`) ? this.addAuthToken(request) : request;
 
-    return next.handle(handleParam);
+    return next.handle(handleRequest);
   }
 
   /**

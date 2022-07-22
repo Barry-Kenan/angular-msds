@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { User } from 'src/models/user';
+import { Response } from 'src/app/models/response';
+import { User } from 'src/app/modules/login/models/user';
 
 /**
  * Сервис для логина
@@ -39,6 +40,6 @@ export class RequestService {
       method,
     };
 
-    return this.http.post<T>(postUrl, body);
+    return this.http.post<Response<T>>(postUrl, body).pipe(map(res => res.result));
   }
 }

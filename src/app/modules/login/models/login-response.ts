@@ -1,4 +1,5 @@
-import { UserProfile } from './user-profile';
+import { UserProfile } from 'src/app/models/user-profile';
+
 /**
  * response после логина
  */
