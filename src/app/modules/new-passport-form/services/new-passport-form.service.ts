@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RequestService } from 'src/app/modules/shared/services/request.service/request.service';
 import { List } from 'src/app/models/list';
-import { Organizations } from 'src/app/modules/new-passport-form/models/organizations';
+import { Organization } from 'src/app/modules/new-passport-form/models/organization';
 import { NewPassportForm } from '../models/new-passport-form';
 import { NewPassport } from '../models/new-passport';
 
 /**
- * Сервис для логина
+ * Сервис для новых паспортов
  */
 
 @Injectable({
@@ -17,10 +17,10 @@ export class NewPassportFormService {
   constructor(private requestService: RequestService) {}
 
   /**
-   * Метод для получения Заявителей
+   * Метод для получения Организаций
    * @returns Observable
    */
-  public getOrganizations(): Observable<List<Organizations>> {
+  public getOrganizations(): Observable<List<Organization>> {
     const params = [{ searchString: null, pagination: null, contains: true }];
     const method = 'list_organization';
 

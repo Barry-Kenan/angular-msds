@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { List } from 'src/app/models/list';
-import { Organizations } from 'src/app/modules/new-passport-form/models/organizations';
+import { Organization } from 'src/app/modules/new-passport-form/models/organization';
 import { NewPassportFormService } from '../../services/new-passport-form.service';
 
 /**
@@ -25,9 +25,9 @@ export class NewPassportFormComponent implements OnInit {
   public check: boolean;
 
   /**
-   * список организаций и посредников
+   * список организаций
    */
-  public listOrganizations: Array<Organizations>;
+  public listOrganizations: Array<Organization>;
 
   constructor(private fb: FormBuilder, private router: Router, public newPassportFormService: NewPassportFormService) {
     this.check = false;
@@ -58,7 +58,7 @@ export class NewPassportFormComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.newPassportFormService.getOrganizations().subscribe((res: List<Organizations>) => {
+    this.newPassportFormService.getOrganizations().subscribe((res: List<Organization>) => {
       this.listOrganizations = res.items;
     });
     // конструктор формы
