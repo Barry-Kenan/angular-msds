@@ -1,5 +1,5 @@
 /**
- * тип Names (для NewPassport)
+ * Наименование полное (для NewPassport)
  */
 export interface Names {
   value: string;
