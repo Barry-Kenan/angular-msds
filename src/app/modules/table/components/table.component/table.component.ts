@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { List } from 'src/app/models/list';
 import { ColumnItems } from '../../models/column-items';
 import { Passport } from '../../models/passport';
 import { statusColorGreen, statusColorRed } from '../../consts/status-color';
@@ -90,9 +91,7 @@ export class TableComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.tableService.getListPassport(ColumnName.Status, 1, 0).subscribe((res: any) => {
-      this.setData(res);
-    });
+    this.setData(ColumnName.Status, 1, 0);
   }
 
   /**
@@ -100,11 +99,7 @@ export class TableComponent implements OnInit {
    * @param evt страницы (от 1 начинается)
    */
   public pageChange(evt: number): void {
-    this.tableService
-      .getListPassport(this.columnForPageChange, this.directionForPageChange, evt - 1)
-      .subscribe((res: any) => {
-        this.setData(res);
-      });
+    this.setData(this.columnForPageChange, this.directionForPageChange, evt - 1);
   }
 
   /**
@@ -114,9 +109,7 @@ export class TableComponent implements OnInit {
    */
   public sortChecking(direction: string, column: ColumnName): void {
     const directionVal = direction === 'ascend' ? Direction.ascend : Direction.descend;
-    this.tableService.getListPassport(column, directionVal, 0).subscribe((res: any) => {
-      this.setData(res);
-    });
+    this.setData(column, directionVal, 0);
     this.columnForPageChange = column;
     this.directionForPageChange = directionVal;
   }
@@ -142,11 +135,15 @@ export class TableComponent implements OnInit {
   }
 
   /**
-   * функция для записи data для заполнения таблицы
-   * @param response response
+   * метод для получения и присвоения списка ПБ
+   * @param column столбцы
+   * @param direction 1 | -1
+   * @param page страницы от 0
    */
-  private setData(response: any): void {
-    this.listOfData = response.items;
-    this.totalPageCount = response.totalCount;
+  private setData(column: ColumnName, direction: Direction, page: number): void {
+    this.tableService.getListPassport(column, direction, page).subscribe((response: List<Passport>) => {
+      this.listOfData = response.items;
+      this.totalPageCount = response.totalCount;
+    });
   }
 }
