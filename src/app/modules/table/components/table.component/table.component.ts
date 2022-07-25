@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { List } from 'src/app/models/list';
-import { FullPassportService } from 'src/app/modules/full-passport-form/services/full-passport-form.service/full-passport-form.service';
 import { ColumnItems } from '../../models/column-items';
 import { Passport } from '../../models/passport';
 import { statusColorGreen, statusColorRed } from '../../consts/status-color';
@@ -20,8 +19,6 @@ import { Direction } from '../../models/direction';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  public setPassport: Function;
-
   /**
    * Map статуса в таблице
    */
@@ -52,12 +49,7 @@ export class TableComponent implements OnInit {
    */
   public directionForPageChange!: Direction;
 
-  constructor(
-    public tableService: TableService,
-    private router: Router,
-    public fulPassportService: FullPassportService
-  ) {
-    this.setPassport = this.fulPassportService.setPassport;
+  constructor(public tableService: TableService, private router: Router) {
     // присваивание статуса
     this.statusName = statusName;
     // присвоение данных таблицы

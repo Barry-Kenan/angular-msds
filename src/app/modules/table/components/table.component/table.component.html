@@ -40,10 +40,10 @@
             <td>{{ data.documentArrivalDate | date: 'd.MM.yyyy' }}</td>
             <td>{{ data.passportNumber }}</td>
             <td *ngIf="dataLength(data.names)" nzEllipsis nz-tooltip [nzTooltipTitle]="data.names">
-              {{ data.names }}
+              <a [routerLink]="['fullForm', data.id]">{{ data.names }} </a>
             </td>
             <td *ngIf="!dataLength(data.names)">
-              {{ data.names }}
+              <a [routerLink]="['fullForm', data.id]">{{ data.names }}</a>
             </td>
             <td [ngClass]="classColor(data.status)">
               {{ data.status }}

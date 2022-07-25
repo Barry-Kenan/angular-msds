@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'form', component: NewPassportFormComponent, canActivate: [AuthGuard] },
-  { path: 'form2', component: FullPassportFormComponent, canActivate: [AuthGuard] },
+  { path: 'fullForm/:id', component: FullPassportFormComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' },
 ];
 
