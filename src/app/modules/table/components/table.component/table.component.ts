@@ -63,6 +63,16 @@ export class TableComponent implements OnInit {
   }
 
   /**
+   * Метод для tooltip
+   * @param data data.names
+   * @param length длина
+   * @returns boolean
+   */
+  public dataLength(data: string, length = 30): boolean {
+    return data.length > length;
+  }
+
+  /**
    * trackBy для *ngfor (чтобы не отрисовал каждый раз)
    * @param _ индекс
    * @param item название столбцов

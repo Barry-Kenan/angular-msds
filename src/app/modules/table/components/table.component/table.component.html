@@ -39,7 +39,12 @@
             <td>{{ data.serialNumber }}</td>
             <td>{{ data.documentArrivalDate | date: 'd.MM.yyyy' }}</td>
             <td>{{ data.passportNumber }}</td>
-            <td nzEllipsis nz-tooltip [nzTooltipTitle]="data.names">{{ data.names }}</td>
+            <td *ngIf="dataLength(data.names)" nzEllipsis nz-tooltip [nzTooltipTitle]="data.names">
+              {{ data.names }}
+            </td>
+            <td *ngIf="!dataLength(data.names)">
+              {{ data.names }}
+            </td>
             <td [ngClass]="classColor(data.status)">
               {{ data.status }}
             </td>
