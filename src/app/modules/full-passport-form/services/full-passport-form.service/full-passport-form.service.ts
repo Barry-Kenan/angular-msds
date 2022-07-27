@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { RequestService } from 'src/app/modules/shared/services/request.service/request.service';
 
 /**
@@ -10,33 +10,96 @@ import { RequestService } from 'src/app/modules/shared/services/request.service/
   providedIn: 'root',
 })
 export class FullPassportService {
-  public data: any;
+  /**
+   * общие параметры для некоторых методов
+   */
+  public params = [
+    {
+      searchString: null,
+      pagination: null,
+      contains: true,
+    },
+  ];
 
-  private passportId: string;
+  constructor(private requestService: RequestService) {}
 
-  private organizationId: string;
-
-  constructor(private router: Router, private requestService: RequestService) {
-    this.data = '';
-    this.passportId = '';
-    this.organizationId = '';
+  /**
+   * Метод для чтения данных паспорта
+   * @param passportId идентификатор паспорта
+   * @returns Observable
+   */
+  public readPassport(passportId: any): Observable<any> {
+    return this.requestService.postRPC([passportId], 'read_passport');
   }
 
-  public setPassport(data: any): void {
-    this.data = data;
-    this.passportId = data.id;
-    console.log(this.data);
-    console.log(this.passportId);
-    this.router.navigate(['/form2']);
+  /**
+   * Метод для чтения данных организации
+   * @param organizationId идентификатор
+   * @returns Observable
+   */
+  public readOrganization(organizationId: any): Observable<any> {
+    return this.requestService.postRPC([organizationId], 'read_organization');
   }
 
-  public setOrganizationId(): any {
-    this.requestService.postRPC(this.passportId, 'read_passport').subscribe((res: any) => {
-      this.organizationId = res.organizationId;
-    });
+  /**
+   *
+   * @returns
+   */
+  public userLastOrgByDate(): Observable<any> {
+    return this.requestService.postRPC([], 'user_last_org_by_date');
   }
 
-  public readOrganization(): any {
-    this.requestService.postRPC(this.organizationId, 'read_organization');
+  /**
+   * метод для получения списка предыдущих ПБ
+   * @param organizationId идентификатор организации
+   * @returns Observable
+   */
+  public organizationPassport(organizationId: any): Observable<any> {
+    return this.requestService.postRPC([organizationId], 'organization_passports');
+  }
+
+  /**
+   *
+   * @returns
+   */
+  public userApplicativeOrganizations(): Observable<any> {
+    return this.requestService.postRPC(this.params, 'user_applicative_organizations');
+  }
+
+  /**
+   * Метод для получения списка экспертов
+   * @returns Observable
+   */
+  public listExpert(): Observable<any> {
+    return this.requestService.postRPC(this.params, 'list-expert');
+  }
+
+  /**
+   * Метод для получения номера ПБ
+   * @param id идентификатор ПБ
+   * @returns Observable
+   */
+  public getNextNumber(id: any): Observable<any> {
+    return this.requestService.postRPC([id], 'get_next_number');
+  }
+
+  /**
+   * Метод для получения списков НД, ОКПД2, ТН ВЭД
+   * @param param SystemDictsOKPD2, SystemDictsTNVED, SystemDictsDocumentNormativeType
+   * @returns Observable
+   */
+  public listDictionaryValue(param: string): Observable<any> {
+    const params = [
+      param,
+      {
+        contains: true,
+        pagination: null,
+        searchString: null,
+        showOnlyActivated: null,
+        tableSortParams: null,
+      },
+    ];
+
+    return this.requestService.postRPC(params, 'list_dictionary-value');
   }
 }
