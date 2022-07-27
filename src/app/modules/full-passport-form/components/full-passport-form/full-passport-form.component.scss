@@ -24,14 +24,22 @@
         }
     }
 
+    img {
+        width: 191px;
+        height: 191px;
+    }
+
     &-form {
         margin-top: 2%;
         margin-right: 1%;
-    }
 
-    &-form-select {
-        width: 100%;
-    }
+        &-select {
+            width: 100%;
+        }
 
+        &-qrcode {
+            position: relative;
+        }
+    }
 
 }
