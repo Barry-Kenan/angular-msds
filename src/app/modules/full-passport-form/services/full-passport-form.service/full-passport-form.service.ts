@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { List } from 'src/app/models/list';
+import { Organization } from 'src/app/modules/new-passport-form/models/organization';
 import { RequestService } from 'src/app/modules/shared/services/request.service/request.service';
+import { Expert } from '../../models/expert';
+import { GetNextNumber } from '../../models/get-next-number';
+import { ListDictionaryValueItem } from '../../models/list-dictionary-value-item';
+import { ReadOrganization } from '../../models/read-organization';
+import { ReadPassport } from '../../models/read-passport';
 
 /**
  * Сервис для редактирования паспорта
@@ -28,7 +35,7 @@ export class FullPassportService {
    * @param passportId идентификатор паспорта
    * @returns Observable
    */
-  public readPassport(passportId: any): Observable<any> {
+  public readPassport(passportId: string | undefined): Observable<ReadPassport> {
     return this.requestService.postRPC([passportId], 'read_passport');
   }
 
@@ -37,7 +44,7 @@ export class FullPassportService {
    * @param organizationId идентификатор
    * @returns Observable
    */
-  public readOrganization(organizationId: any): Observable<any> {
+  public readOrganization(organizationId: string): Observable<ReadOrganization> {
     return this.requestService.postRPC([organizationId], 'read_organization');
   }
 
@@ -45,7 +52,7 @@ export class FullPassportService {
    *
    * @returns
    */
-  public userLastOrgByDate(): Observable<any> {
+  public userLastOrgByDate(): Observable<Organization> {
     return this.requestService.postRPC([], 'user_last_org_by_date');
   }
 
@@ -54,7 +61,7 @@ export class FullPassportService {
    * @param organizationId идентификатор организации
    * @returns Observable
    */
-  public organizationPassport(organizationId: any): Observable<any> {
+  public organizationPassport(organizationId: string): Observable<any> {
     return this.requestService.postRPC([organizationId], 'organization_passports');
   }
 
@@ -62,7 +69,7 @@ export class FullPassportService {
    *
    * @returns
    */
-  public userApplicativeOrganizations(): Observable<any> {
+  public userApplicativeOrganizations(): Observable<List<Array<Organization>>> {
     return this.requestService.postRPC(this.params, 'user_applicative_organizations');
   }
 
@@ -70,7 +77,7 @@ export class FullPassportService {
    * Метод для получения списка экспертов
    * @returns Observable
    */
-  public listExpert(): Observable<any> {
+  public listExpert(): Observable<List<Array<Expert>>> {
     return this.requestService.postRPC(this.params, 'list-expert');
   }
 
@@ -79,7 +86,7 @@ export class FullPassportService {
    * @param id идентификатор ПБ
    * @returns Observable
    */
-  public getNextNumber(id: any): Observable<any> {
+  public getNextNumber(id: string | undefined): Observable<GetNextNumber> {
     return this.requestService.postRPC([id], 'get_next_number');
   }
 
@@ -88,7 +95,7 @@ export class FullPassportService {
    * @param param SystemDictsOKPD2, SystemDictsTNVED, SystemDictsDocumentNormativeType
    * @returns Observable
    */
-  public listDictionaryValue(param: string): Observable<any> {
+  public listDictionaryValue(param: string): Observable<List<Array<ListDictionaryValueItem>>> {
     const params = [
       param,
       {
