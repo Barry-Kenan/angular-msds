@@ -1,7 +1,19 @@
 import { LocalizationDto } from 'src/app/models/localization-dto';
 
-export interface ListDictionaryValueItem {
+/**
+ * Тип для item НД, Код ОКПД2, Код ТН ВЭД ЕАЭС
+ */
+export interface DictionaryValueItem {
+  /**
+   * деактивирован
+   */
   deactivate: boolean;
+  /**
+   * Идентификатор
+   */
   id: string;
-  names: Array<[LocalizationDto]>;
+  /**
+   * Наименование
+   */
+  names: Array<LocalizationDto>;
 }
