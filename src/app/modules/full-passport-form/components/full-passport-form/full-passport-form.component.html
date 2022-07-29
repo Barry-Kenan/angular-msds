@@ -40,15 +40,13 @@
             <label>Номер предыдущего ПБ</label>
             <nz-form-item>
               <nz-select
-                formControlName="passportNumber"
+                formControlName="reRegistrationNumber"
                 class="full-passport-form-select"
                 nzAllowClear
                 nzShowSearch
+                [nzDisabled]="!check"
                 nzSize="large">
-                <nz-option
-                  *ngFor="let item of listPrevPassport | keyvalue"
-                  [nzValue]="item.key"
-                  [nzLabel]="item.value"></nz-option>
+                <nz-option *ngFor="let item of listPrevPassport | keyvalue" [nzLabel]="item.value"></nz-option>
               </nz-select>
             </nz-form-item>
             <label>Тип предприятия</label>
@@ -239,7 +237,11 @@
             <div nz-row nzJustify="center">
               <div nz-col [nzLg]="{ span: 12 }" [nzMd]="{ span: 24 }" class="full-passport-form-checkbox">
                 <nz-form-item>
-                  <label nz-checkbox id="full-passport-form-checkbox" formControlName="remember"
+                  <label
+                    nz-checkbox
+                    id="full-passport-form-checkbox"
+                    formControlName="reRegistration"
+                    (ngModelChange)="checked($event)"
                     >Перерегистрация ПБ</label
                   >
                 </nz-form-item>
