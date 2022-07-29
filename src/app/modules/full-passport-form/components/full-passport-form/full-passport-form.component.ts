@@ -72,7 +72,7 @@ export class FullPassportFormComponent implements OnInit {
   /**
    * Список предыдущих ПБ
    */
-  public listPrevPassport!: Map<string, number>;
+  public listPrevPassport!: Map<string, string>;
 
   /**
    * Номер ПБ
@@ -139,6 +139,7 @@ export class FullPassportFormComponent implements OnInit {
     private activateRoute: ActivatedRoute,
     public fullPassportService: FullPassportService
   ) {
+    this.listOfSelectedEnterprise = [];
     this.listEnterpriseTypes = listEnterpriseTypes;
 
     this.listPaymentMethod = listPaymentMethod;
@@ -244,10 +245,15 @@ export class FullPassportFormComponent implements OnInit {
       codeQr: this.passport.codeQr,
       id: this.passport.id,
       status: this.passport.status,
-      names: [{ value: this.passport.names, lang: 'ru' }],
-      tradeNames: [{ value: this.passport.tradeNames, lang: 'ru' }],
-      chemistryNames: [{ value: this.passport.chemistryNames, lang: 'ru' }],
+      names: [{ value: this.fullPassportForm.value.names, lang: 'ru' }],
+      tradeNames: [{ value: this.fullPassportForm.value.tradeNames, lang: 'ru' }],
+      chemistryNames: [{ value: this.fullPassportForm.value.chemistryNames, lang: 'ru' }],
     };
+
+    if (this.fullPassportForm.value.chemistryNames.length === 0) {
+      passportForm.chemistryNames = [{ value: '', lang: 'ru' }];
+    }
+
     this.fullPassportService.updatePassport(passportForm).subscribe();
   }
 
@@ -339,7 +345,9 @@ export class FullPassportFormComponent implements OnInit {
         this.okpd2 = listOkpd2.items;
         this.tnVed = listTnVed.items;
         this.normativeDoc = listNormativeDoc.items;
-        Object.entries<number>(listPassport).forEach(([key, value]) => this.listPrevPassport.set(key, value));
+        Object.entries<number>(listPassport).forEach(([key, value]) =>
+          this.listPrevPassport.set(key, value.toString())
+        );
         this.patch();
       });
   }

@@ -46,7 +46,10 @@
                 nzShowSearch
                 [nzDisabled]="!check"
                 nzSize="large">
-                <nz-option *ngFor="let item of listPrevPassport | keyvalue" [nzLabel]="item.value"></nz-option>
+                <nz-option
+                  *ngFor="let item of listPrevPassport | keyvalue"
+                  [nzValue]="item.value"
+                  [nzLabel]="item.value"></nz-option>
               </nz-select>
             </nz-form-item>
             <label>Тип предприятия</label>
