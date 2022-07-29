@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   host: 'https://iap_dev2.tomskasu.ru/api/',
   fileHost: 'https://iap_dev2.tomskasu.ru/file/api/',
+  passportView: 'https://iap_dev2.tomskasu.ru/passportView/',
 };
 
 /*
