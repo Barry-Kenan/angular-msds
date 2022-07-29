@@ -9,6 +9,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { FullPassportFormComponent } from './components/full-passport-form/full-passport-form.component';
 
 @NgModule({
@@ -25,6 +27,8 @@ import { FullPassportFormComponent } from './components/full-passport-form/full-
     NzSelectModule,
     NzDatePickerModule,
     NzDividerModule,
+    NzTypographyModule,
+    NzToolTipModule,
   ],
 })
 export class FullPassportFormModule {}
