@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { List } from 'src/app/models/list';
-import { Organization } from 'src/app/modules/new-passport-form/models/organization';
 import { RequestService } from 'src/app/modules/shared/services/request.service/request.service';
 import { Expert } from '../../models/expert';
 import { GetNextNumber } from '../../models/get-next-number';
-import { ListDictionaryValueItem } from '../../models/list-dictionary-value-item';
-import { ReadOrganization } from '../../models/read-organization';
-import { ReadPassport } from '../../models/read-passport';
+import { DictionaryValueItem } from '../../models/list-dictionary-value-item';
+import { OrganizationFull } from '../../models/organization-full';
+import { Passport } from '../../models/passport';
 
 /**
  * Сервис для редактирования паспорта
@@ -17,17 +16,6 @@ import { ReadPassport } from '../../models/read-passport';
   providedIn: 'root',
 })
 export class FullPassportService {
-  /**
-   * общие параметры для некоторых методов
-   */
-  public params = [
-    {
-      searchString: null,
-      pagination: null,
-      contains: true,
-    },
-  ];
-
   constructor(private requestService: RequestService) {}
 
   /**
@@ -35,7 +23,7 @@ export class FullPassportService {
    * @param passportId идентификатор паспорта
    * @returns Observable
    */
-  public readPassport(passportId: string | undefined): Observable<ReadPassport> {
+  public readPassport(passportId: string | undefined): Observable<Passport> {
     return this.requestService.postRPC([passportId], 'read_passport');
   }
 
@@ -44,16 +32,8 @@ export class FullPassportService {
    * @param organizationId идентификатор
    * @returns Observable
    */
-  public readOrganization(organizationId: string): Observable<ReadOrganization> {
+  public readOrganization(organizationId: string): Observable<OrganizationFull> {
     return this.requestService.postRPC([organizationId], 'read_organization');
-  }
-
-  /**
-   *
-   * @returns
-   */
-  public userLastOrgByDate(): Observable<Organization> {
-    return this.requestService.postRPC([], 'user_last_org_by_date');
   }
 
   /**
@@ -66,19 +46,17 @@ export class FullPassportService {
   }
 
   /**
-   *
-   * @returns
-   */
-  public userApplicativeOrganizations(): Observable<List<Array<Organization>>> {
-    return this.requestService.postRPC(this.params, 'user_applicative_organizations');
-  }
-
-  /**
    * Метод для получения списка экспертов
    * @returns Observable
    */
-  public listExpert(): Observable<List<Array<Expert>>> {
-    return this.requestService.postRPC(this.params, 'list-expert');
+  public listExpert(): Observable<List<Expert>> {
+    const params = {
+      searchString: null,
+      pagination: null,
+      contains: true,
+    };
+
+    return this.requestService.postRPC([params], 'list-expert');
   }
 
   /**
@@ -91,11 +69,26 @@ export class FullPassportService {
   }
 
   /**
+   * Метод для редактирование ПБ
+   * @param passport объект для заполнения ПБ
+   * @returns Observable
+   */
+  public updatePassport<T>(passport: Passport): Observable<T> {
+    const params: Passport = {
+      ...passport,
+    };
+
+    const method = 'update_passport';
+
+    return this.requestService.postRPC<T>([params], method);
+  }
+
+  /**
    * Метод для получения списков НД, ОКПД2, ТН ВЭД
    * @param param SystemDictsOKPD2, SystemDictsTNVED, SystemDictsDocumentNormativeType
    * @returns Observable
    */
-  public listDictionaryValue(param: string): Observable<List<Array<ListDictionaryValueItem>>> {
+  public listDictionaryValue(param: string): Observable<List<DictionaryValueItem>> {
     const params = [
       param,
       {
