@@ -44,6 +44,7 @@
                 class="full-passport-form-select"
                 nzAllowClear
                 nzShowSearch
+                nzPlaceHolder="Выберите номер предыдущего ПБ"
                 [nzDisabled]="!check"
                 nzSize="large">
                 <nz-option
@@ -58,6 +59,7 @@
                 formControlName="enterpriseTypes"
                 class="full-passport-form-select"
                 nzMode="multiple"
+                nzPlaceHolder="Отсутствуют значения"
                 [(ngModel)]="listOfSelectedEnterprise"
                 nzSize="large">
                 <nz-option
@@ -71,19 +73,34 @@
             <label nz-typography nzEllipsis>Техническое наименование </label>
             <nz-form-item>
               <nz-form-control>
-                <input type="text" nz-input formControlName="names" nzSize="large" />
+                <input
+                  type="text"
+                  nz-input
+                  formControlName="names"
+                  [placeholder]="'Введите техническое наименование'"
+                  nzSize="large" />
               </nz-form-control>
             </nz-form-item>
             <label nz-typography nzEllipsis>Химическое наименование </label>
             <nz-form-item>
               <nz-form-control>
-                <input type="text" nz-input formControlName="chemistryNames" nzSize="large" />
+                <input
+                  type="text"
+                  nz-input
+                  formControlName="chemistryNames"
+                  [placeholder]="'Введите химическое наименование'"
+                  nzSize="large" />
               </nz-form-control>
             </nz-form-item>
             <label>Синонимы</label>
             <nz-form-item>
               <nz-form-control>
-                <input type="text" nz-input formControlName="synonym" nzSize="large" />
+                <input
+                  type="text"
+                  nz-input
+                  formControlName="synonym"
+                  [placeholder]="'Введите синонимы'"
+                  nzSize="large" />
               </nz-form-control>
             </nz-form-item>
           </div>
@@ -91,7 +108,12 @@
             <label>Торговое наименование </label>
             <nz-form-item>
               <nz-form-control>
-                <input type="text" nz-input formControlName="tradeNames" nzSize="large" />
+                <input
+                  type="text"
+                  [placeholder]="'Введите торговое наименование'"
+                  nz-input
+                  formControlName="tradeNames"
+                  nzSize="large" />
               </nz-form-control>
             </nz-form-item>
             <label>Обозначение НД </label>
@@ -101,6 +123,7 @@
                 class="full-passport-form-select"
                 nzAllowClear
                 nzShowSearch
+                nzPlaceHolder="Выберите обозначение НД"
                 nzSize="large">
                 <nz-option
                   *ngFor="let option of normativeDoc"
@@ -111,7 +134,12 @@
             <label>Шифр НД </label>
             <nz-form-item>
               <nz-form-control>
-                <input type="text" nz-input formControlName="normativeDocCode" nzSize="large" />
+                <input
+                  type="text"
+                  nz-input
+                  [placeholder]="'Введите шифр НД'"
+                  formControlName="normativeDocCode"
+                  nzSize="large" />
               </nz-form-control>
             </nz-form-item>
             <label>Код ОКПД 2 </label>
@@ -121,6 +149,7 @@
                 class="full-passport-form-select"
                 nzAllowClear
                 nzShowSearch
+                nzPlaceHolder="Выберите код ОКПД 2"
                 nzSize="large">
                 <nz-option
                   *ngFor="let option of okpd2"
@@ -135,6 +164,7 @@
                 class="full-passport-form-select"
                 nzAllowClear
                 nzShowSearch
+                nzPlaceHolder="Выберите код ТН ВЭД ЕАЭС"
                 nzSize="large">
                 <nz-option
                   *ngFor="let option of tnVed"
@@ -145,20 +175,35 @@
             <label>Посредник</label>
             <nz-form-item>
               <nz-form-control>
-                <input type="text" nz-input formControlName="mediatorId" nzSize="large" />
+                <input
+                  type="text"
+                  nz-input
+                  formControlName="mediatorId"
+                  [placeholder]="'Введите посредника'"
+                  nzSize="large" />
               </nz-form-control>
             </nz-form-item>
             <label>Заявитель</label>
             <nz-form-item>
               <nz-form-control>
-                <input type="text" nz-input formControlName="organizationId" nzSize="large" />
+                <input
+                  type="text"
+                  nz-input
+                  formControlName="organizationId"
+                  [placeholder]="'Введите заявителя'"
+                  nzSize="large" />
               </nz-form-control>
             </nz-form-item>
           </div>
           <div nz-col [nzLg]="{ span: 6 }" [nzMd]="{ span: 12 }" [nzXs]="{ span: 24 }" class="full-passport-cols-col3">
             <label>Способ оплаты</label>
             <nz-form-item>
-              <nz-select formControlName="paymentMethod" class="full-passport-form-select" nzAllowClear nzSize="large">
+              <nz-select
+                formControlName="paymentMethod"
+                class="full-passport-form-select"
+                nzAllowClear
+                nzPlaceHolder="Выберите способ оплаты"
+                nzSize="large">
                 <nz-option
                   *ngFor="let option of listPaymentMethod"
                   [nzValue]="option.value"
@@ -167,7 +212,12 @@
             </nz-form-item>
             <label>Срочность</label>
             <nz-form-item>
-              <nz-select formControlName="passportPeriod" class="full-passport-form-select" nzAllowClear nzSize="large">
+              <nz-select
+                formControlName="passportPeriod"
+                class="full-passport-form-select"
+                nzAllowClear
+                nzPlaceHolder="Выберите срочность"
+                nzSize="large">
                 <nz-option
                   *ngFor="let option of listPassportPeriod"
                   [nzValue]="option.value"
@@ -228,6 +278,7 @@
                 formControlName="singleOrMultiple"
                 class="full-passport-form-select"
                 nzAllowClear
+                nzPlaceHolder="Выберите регулярность"
                 nzSize="large">
                 <nz-option
                   *ngFor="let option of listSingleOrMultiply"
@@ -273,7 +324,12 @@
               [nzEllipsisRows]="2"
               nzContent="Степень опасности химической продукции по ГОСТ 12.1.007"></label>
             <nz-form-item>
-              <nz-select formControlName="danger" class="full-passport-form-select" nzAllowClear nzSize="large">
+              <nz-select
+                formControlName="danger"
+                class="full-passport-form-select"
+                nzAllowClear
+                nzPlaceHolder="Выберите степень опасности химической продукции по ГОСТ 12.1.007"
+                nzSize="large">
                 <nz-option
                   *ngFor="let option of listDanger"
                   [nzValue]="option.value"
@@ -281,7 +337,12 @@
               </nz-select> </nz-form-item
             ><label>Сигнальное слово</label>
             <nz-form-item>
-              <nz-select formControlName="signalWord" class="full-passport-form-select" nzAllowClear nzSize="large">
+              <nz-select
+                formControlName="signalWord"
+                class="full-passport-form-select"
+                nzAllowClear
+                nzPlaceHolder="Выберите сигнальное слово"
+                nzSize="large">
                 <nz-option
                   *ngFor="let option of listSignalWord"
                   [nzValue]="option.value"
@@ -294,6 +355,7 @@
                 class="full-passport-form-select"
                 nzAllowClear
                 nzShowSearch
+                nzPlaceHolder="Выберите эксперта"
                 nzSize="large">
                 <nz-option
                   *ngFor="let option of listExpert"
@@ -305,7 +367,13 @@
             <div class="full-passport-form-last">
               <nz-form-item>
                 <nz-form-control>
-                  <input type="text" nz-input nz formControlName="passportNumber" nzSize="large" />
+                  <input
+                    type="text"
+                    nz-input
+                    nz
+                    formControlName="passportNumber"
+                    [placeholder]="'Введите номер ПБ'"
+                    nzSize="large" />
                 </nz-form-control>
               </nz-form-item>
               <button nz-button nzSize="large" type="button" (click)="getNextNumber()">Получить</button>
