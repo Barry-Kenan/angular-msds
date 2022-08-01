@@ -162,8 +162,6 @@ export class FullPassportFormComponent implements OnInit {
       this.id = params['id'];
     });
 
-    this.listPrevPassport = new Map();
-
     /**
      * Конструктор формы
      */
