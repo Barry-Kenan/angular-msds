@@ -5,6 +5,7 @@ import { forkJoin, map, mergeMap, Observable } from 'rxjs';
 import { List } from 'src/app/models/list';
 import { Organization } from 'src/app/modules/new-passport-form/models/organization';
 import { environment } from 'src/environments/environment';
+import { fullPassportFormConstructor } from '../../consts/full-passport-form-constructor';
 import { listDanger } from '../../consts/list-danger';
 import { listEnterpriseTypes } from '../../consts/list-enterprise-types';
 import { listPassportPeriod } from '../../consts/list-passport-period';
@@ -80,7 +81,7 @@ export class FullPassportFormComponent implements OnInit {
   /**
    * Список предыдущих ПБ
    */
-  public listPrevPassport!: Map<string, string>;
+  public listPrevPassport: Map<string, string>;
 
   /**
    * Номер ПБ
@@ -142,6 +143,7 @@ export class FullPassportFormComponent implements OnInit {
     private activateRoute: ActivatedRoute,
     public fullPassportService: FullPassportService
   ) {
+    this.listPrevPassport = new Map<string, string>();
     this.passportName = '';
     this.listOfSelectedEnterprise = [];
     this.listEnterpriseTypes = listEnterpriseTypes;
@@ -165,37 +167,7 @@ export class FullPassportFormComponent implements OnInit {
     /**
      * Конструктор формы
      */
-    this.fullPassportForm = this.fb.group({
-      startDate: [null],
-      endDate: [null],
-      workDate: [null],
-      passportNumber: [null],
-      names: [null, [Validators.required]],
-      tradeNames: [null],
-      chemistryNames: [null],
-      synonym: [null],
-      normativeDocTypeId: [null],
-      normativeDocCode: [null],
-      okpd2CodeId: [null],
-      tnVedCodeId: [null],
-      mediatorId: [{ value: null, disabled: true }],
-      organizationId: [{ value: null, disabled: true }],
-      expert: [null],
-      paymentMethod: [null],
-      passportPeriod: [null],
-      documentArrivalDate: [{ value: null, disabled: true }],
-      nextRevisionDate: [null],
-      payDay: [null],
-      singleOrMultiple: [{ value: null, disabled: true }],
-      danger: [null],
-      signalWord: [null],
-      accepted: [false],
-      decline: [false],
-      suspend: [false],
-      reRegistration: [false],
-      reRegistrationNumber: [null],
-      enterpriseTypes: [null],
-    });
+    this.fullPassportForm = this.fb.group(fullPassportFormConstructor(Validators));
   }
 
   /**
@@ -325,7 +297,7 @@ export class FullPassportFormComponent implements OnInit {
           this.organization = first;
           this.mediator = second;
 
-          const ArrLists: [
+          const arrLists: [
             Observable<List<Expert>>,
             Observable<List<DictionaryValueItem>>,
             Observable<List<DictionaryValueItem>>,
@@ -339,7 +311,7 @@ export class FullPassportFormComponent implements OnInit {
             this.fullPassportService.organizationPassport(this.organization.id),
           ];
 
-          return forkJoin(ArrLists);
+          return forkJoin(arrLists);
         })
       )
       .subscribe(result => {
