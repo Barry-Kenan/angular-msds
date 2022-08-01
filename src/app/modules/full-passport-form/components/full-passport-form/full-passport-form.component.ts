@@ -5,13 +5,13 @@ import { forkJoin, map, mergeMap, Observable } from 'rxjs';
 import { List } from 'src/app/models/list';
 import { Organization } from 'src/app/modules/new-passport-form/models/organization';
 import { environment } from 'src/environments/environment';
-import { fullPassportFormConstructor } from '../../consts/full-passport-form-constructor';
 import { listDanger } from '../../consts/list-danger';
 import { listEnterpriseTypes } from '../../consts/list-enterprise-types';
 import { listPassportPeriod } from '../../consts/list-passport-period';
 import { listPaymentMethod } from '../../consts/list-payment-method';
 import { listSignalWord } from '../../consts/list-signal-word';
 import { listSingleOrMultiply } from '../../consts/list-single-or-multiply';
+import { Enterprises } from '../../enums/enterprises';
 import { Expert } from '../../models/expert';
 import { DictionaryValueItem } from '../../models/list-dictionary-value-item';
 import { ListDictionaryValues } from '../../models/list-dictionary-values';
@@ -131,7 +131,7 @@ export class FullPassportFormComponent implements OnInit {
   /**
    * Список выбранных предприятий
    */
-  public listOfSelectedEnterprise!: Array<string>;
+  public listOfSelectedEnterprise!: Array<Enterprises>;
 
   /**
    * состояние checkbox
@@ -167,7 +167,37 @@ export class FullPassportFormComponent implements OnInit {
     /**
      * Конструктор формы
      */
-    this.fullPassportForm = this.fb.group(fullPassportFormConstructor(Validators));
+    this.fullPassportForm = this.fb.group({
+      startDate: [null],
+      endDate: [null],
+      workDate: [null],
+      passportNumber: [null],
+      names: [null, [Validators.required]],
+      tradeNames: [null],
+      chemistryNames: [null],
+      synonym: [null],
+      normativeDocTypeId: [null],
+      normativeDocCode: [null],
+      okpd2CodeId: [null],
+      tnVedCodeId: [null],
+      mediatorId: [{ value: null, disabled: true }],
+      organizationId: [{ value: null, disabled: true }],
+      expert: [null],
+      paymentMethod: [null],
+      passportPeriod: [null],
+      documentArrivalDate: [{ value: null, disabled: true }],
+      nextRevisionDate: [null],
+      payDay: [null],
+      singleOrMultiple: [{ value: null, disabled: true }],
+      danger: [null],
+      signalWord: [null],
+      accepted: [false],
+      decline: [false],
+      suspend: [false],
+      reRegistration: [false],
+      reRegistrationNumber: [null],
+      enterpriseTypes: [null],
+    });
   }
 
   /**
@@ -186,13 +216,14 @@ export class FullPassportFormComponent implements OnInit {
   public isNotSelected(enterprise: any): boolean {
     const { value } = enterprise;
 
-    const isEqual345 = (el: string): boolean => ['3', '4', '5'].includes(el);
+    const isEqual345 = (el: Enterprises): boolean =>
+      [Enterprises.Exporter, Enterprises.Importer, Enterprises.Manufacturer].includes(el);
 
-    const isEqual35 = (el: string): boolean => ['3', '5'].includes(el);
+    const isEqual35 = (el: Enterprises): boolean => [Enterprises.Exporter, Enterprises.Manufacturer].includes(el);
 
     if (this.listOfSelectedEnterprise.length === 0 || !this.listOfSelectedEnterprise.some(isEqual345)) return false;
-    if (this.listOfSelectedEnterprise.some(isEqual35) && value !== '4') return false;
-    if (this.listOfSelectedEnterprise.includes('4') && !isEqual35(value)) return false;
+    if (this.listOfSelectedEnterprise.some(isEqual35) && value !== Enterprises.Importer) return false;
+    if (this.listOfSelectedEnterprise.includes(Enterprises.Importer) && !isEqual35(value)) return false;
 
     return true;
   }
@@ -284,18 +315,18 @@ export class FullPassportFormComponent implements OnInit {
         }),
         mergeMap(res => {
           const [organizationId, mediatorId] = res;
-          const arr = [organizationId];
+          const arrId = [organizationId];
           if (mediatorId) {
-            arr.push(mediatorId);
+            arrId.push(mediatorId);
           }
-          const reqArr = arr.map(el => this.fullPassportService.readOrganization(el));
+          const reqArr = arrId.map(el => this.fullPassportService.readOrganization(el));
 
           return forkJoin(reqArr);
         }),
         mergeMap(res => {
-          const [first, second] = res;
-          this.organization = first;
-          this.mediator = second;
+          const [organization, mediator] = res;
+          this.organization = organization;
+          this.mediator = mediator;
 
           const arrLists: [
             Observable<List<Expert>>,
