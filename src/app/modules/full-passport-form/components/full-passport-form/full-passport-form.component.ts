@@ -35,6 +35,11 @@ export class FullPassportFormComponent implements OnInit {
   public passport!: Passport;
 
   /**
+   * Наименование паспорта
+   */
+  public passportName: string;
+
+  /**
    * Данные организации
    */
   public organization!: Organization;
@@ -139,6 +144,7 @@ export class FullPassportFormComponent implements OnInit {
     private activateRoute: ActivatedRoute,
     public fullPassportService: FullPassportService
   ) {
+    this.passportName = '';
     this.listOfSelectedEnterprise = [];
     this.listEnterpriseTypes = listEnterpriseTypes;
 
@@ -274,6 +280,8 @@ export class FullPassportFormComponent implements OnInit {
       tradeNames: this.passport.tradeNames[0].value,
       organizationId: this.organization.names[0].value,
     });
+    this.passportName = this.passport.names[0].value;
+
     if (this.passport.chemistryNames.length) {
       this.fullPassportForm.patchValue({
         chemistryNames: this.passport.chemistryNames[0].value,
