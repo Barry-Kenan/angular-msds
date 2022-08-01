@@ -1,7 +1,7 @@
 import { LocalizationDto } from 'src/app/models/localization-dto';
 
 /**
- * Тип для item НД, Код ОКПД2, Код ТН ВЭД ЕАЭС
+ * Тип словарного значения
  */
 export interface DictionaryValueItem {
   /**

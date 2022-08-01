@@ -1,7 +1,7 @@
 /**
- * Тип получения следующего номера ПБ
+ * Следующий номер ПБ
  */
-export interface GetNextNumber {
+export interface NextNumber {
   /**
    * Номер ПБ
    */

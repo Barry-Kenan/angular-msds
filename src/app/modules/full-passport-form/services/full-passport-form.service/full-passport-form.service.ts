@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { List } from 'src/app/models/list';
 import { RequestService } from 'src/app/modules/shared/services/request.service/request.service';
 import { Expert } from '../../models/expert';
-import { GetNextNumber } from '../../models/get-next-number';
+import { NextNumber } from '../../models/get-next-number';
 import { DictionaryValueItem } from '../../models/list-dictionary-value-item';
 import { OrganizationFull } from '../../models/organization-full';
 import { Passport } from '../../models/passport';
@@ -64,7 +64,7 @@ export class FullPassportService {
    * @param id идентификатор ПБ
    * @returns Observable
    */
-  public getNextNumber(id: string | undefined): Observable<GetNextNumber> {
+  public getNextNumber(id: string | undefined): Observable<NextNumber> {
     return this.requestService.postRPC([id], 'get_next_number');
   }
 
