@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { forkJoin, map, mergeMap, Observable, Subscription } from 'rxjs';
+import { forkJoin, map, mergeMap, Observable } from 'rxjs';
 import { List } from 'src/app/models/list';
 import { Organization } from 'src/app/modules/new-passport-form/models/organization';
 import { environment } from 'src/environments/environment';
@@ -18,6 +18,9 @@ import { Lists } from '../../models/lists';
 import { Passport } from '../../models/passport';
 import { FullPassportService } from '../../services/full-passport-form.service/full-passport-form.service';
 
+/**
+ * Форма для редактирование ПБ
+ */
 @Component({
   selector: 'app-full-passport-form',
   templateUrl: './full-passport-form.component.html',
@@ -127,17 +130,12 @@ export class FullPassportFormComponent implements OnInit {
   /**
    * Список выбранных предприятий
    */
-  public listOfSelectedEnterprise!: any[];
+  public listOfSelectedEnterprise!: Array<string>;
 
   /**
    * состояние checkbox
    */
   public check!: boolean;
-
-  /**
-   * Подписка на изменения
-   */
-  private subscription: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -160,7 +158,7 @@ export class FullPassportFormComponent implements OnInit {
 
     this.passportView = '#';
 
-    this.subscription = this.activateRoute.params.subscribe(params => {
+    this.activateRoute.params.subscribe(params => {
       this.id = params['id'];
     });
 
