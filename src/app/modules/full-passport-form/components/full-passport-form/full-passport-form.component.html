@@ -382,7 +382,9 @@
         </div>
         <div nz-row nzJustify="center" class="full-passport-form-button">
           <div nz-col>
-            <button nz-button nzSize="large" [nzType]="'primary'" type="submit">Сохранить</button>
+            <button nz-button nzSize="large" [nzType]="'primary'" type="submit" [disabled]="!fullPassportForm.valid">
+              Сохранить
+            </button>
           </div>
         </div>
       </form>
