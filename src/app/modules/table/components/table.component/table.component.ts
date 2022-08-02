@@ -64,13 +64,17 @@ export class TableComponent implements OnInit {
   }
 
   /**
-   * Метод для tooltip
+   * Возвращает наименование если строка больше размера ячейки
    * @param data data.names
-   * @param length длина
-   * @returns boolean
+   * @param el HtmlElement
+   * @returns string
    */
-  public dataLength(data: string, length = 30): boolean {
-    return data.length > length;
+  public dataLength(data: string, el: HTMLElement): string {
+    const widthEl = document.querySelector('.dataName')?.clientWidth || 0;
+    const widthText = el.getBoundingClientRect().width;
+    const returnData = widthEl < widthText ? data : '';
+
+    return returnData;
   }
 
   /**
