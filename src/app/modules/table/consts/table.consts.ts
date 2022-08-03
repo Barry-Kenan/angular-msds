@@ -1,5 +1,5 @@
 import { ColumnItems } from 'src/app/modules/table/models/column-items';
-import { ColumnName } from '../models/column-name';
+import { ColumnName } from '../enums/column-name';
 /**
  * данные столбцов таблицы список ПБ(title: название, width: ширина, columName: столбцы)
  */

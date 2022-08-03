@@ -1,4 +1,4 @@
-import { ColumnName } from './column-name';
+import { ColumnName } from '../enums/column-name';
 
 /*
  * тип для списка столбцов

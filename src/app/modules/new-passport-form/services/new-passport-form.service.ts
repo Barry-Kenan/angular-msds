@@ -34,10 +34,8 @@ export class NewPassportFormService {
    */
   public addNewPassport<T>(passport: NewPassportForm): Observable<T> {
     const params: NewPassport = {
-      documentArrivalDate: passport.documentArrivalDate,
+      ...passport,
       names: [{ value: passport.names, lang: 'ru' }],
-      organizationId: passport.organizationId,
-      singleOrMultiple: passport.singleOrMultiple,
     };
     if (passport.isMediator) {
       params.mediatorId = passport.mediatorId;

@@ -6,6 +6,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { RouterModule } from '@angular/router';
 import { TableComponent } from './components/table.component/table.component';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { TableComponent } from './components/table.component/table.component';
     NzButtonModule,
     NzToolTipModule,
     NzTypographyModule,
+    RouterModule,
   ],
 })
 export class TableModule {}

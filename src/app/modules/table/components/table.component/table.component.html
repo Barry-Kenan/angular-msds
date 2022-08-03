@@ -5,11 +5,11 @@
     </div>
   </div>
   <div nz-row class="passport-list-row-margin">
-    <div nz-col [nzSpan]="2" [nzOffset]="22">
+    <div nz-col class="passport-list-button">
       <button type="button" nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="navigate()">+</button>
     </div>
   </div>
-  <div nz-row class="passport-list-row-margin">
+  <div nz-row class="passport-table passport-list-row-margin">
     <div nz-col [nzSpan]="22" [nzOffset]="1">
       <nz-table
         class="passport-list-table"
@@ -19,7 +19,7 @@
         nzSize="small"
         nzOuterBordered
         [nzData]="listOfData"
-        [nzScroll]="{ x: '100vh', y: '65vh' }"
+        [nzScroll]="{ x: '100vh', y: '60vh' }"
         [nzFrontPagination]="false">
         <thead>
           <tr>
@@ -39,7 +39,12 @@
             <td>{{ data.serialNumber }}</td>
             <td>{{ data.documentArrivalDate | date: 'd.MM.yyyy' }}</td>
             <td>{{ data.passportNumber }}</td>
-            <td nzEllipsis nz-tooltip [nzTooltipTitle]="data.names">{{ data.names }}</td>
+            <td class="dataName" nzEllipsis>
+              <a #refEl nz-tooltip [nzTooltipTitle]="dataLength(data.names, refEl)" [routerLink]="['fullForm', data.id]"
+                >{{ data.names }}
+              </a>
+            </td>
+
             <td [ngClass]="classColor(data.status)">
               {{ data.status }}
             </td>

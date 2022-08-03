@@ -1,14 +1,19 @@
 .passport-list {
   &-title {
     background-color: #f6f6f6;
-    height: 100%;
 
     h1 {
-      font-size: 180%;
+      font-size: 30px;
       padding-top: 1%;
       padding-left: 3%;
       color: #324a5e;
     }
+  }
+
+  &-button {
+    max-width: 8em;
+    margin-right: 4%;
+    margin-left: auto;
   }
 
   &-row-margin {
@@ -18,6 +23,7 @@
   &-table {
     position: fixed;
     width: 92%;
+    height: 100%;
 
     th {
       font-size: 14px;
@@ -38,6 +44,11 @@
 
     tr:nth-child(odd) {
       background-color: #f6f6f6;
+    }
+
+    a {
+      color: #014cd6;
+      text-decoration: underline
     }
   }
 

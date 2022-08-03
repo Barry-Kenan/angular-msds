@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { List } from 'src/app/models/list';
 import { ColumnItems } from '../../models/column-items';
 import { Passport } from '../../models/passport';
 import { statusColorGreen, statusColorRed } from '../../consts/status-color';
 import { statusName } from '../../consts/status-name';
 import { tableConst } from '../../consts/table.consts';
 import { TableService } from '../../services/table.service/table.service';
-import { ColumnName } from '../../models/column-name';
-import { Direction } from '../../models/direction';
+import { Direction } from '../../enums/direction';
+import { ColumnName } from '../../enums/column-name';
 
 /**
  * список ПБ
@@ -17,7 +18,7 @@ import { Direction } from '../../models/direction';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, AfterContentChecked {
   /**
    * Map статуса в таблице
    */
@@ -48,7 +49,7 @@ export class TableComponent implements OnInit {
    */
   public directionForPageChange!: Direction;
 
-  constructor(public tableService: TableService, private router: Router) {
+  constructor(public tableService: TableService, private router: Router, private changeDetector: ChangeDetectorRef) {
     // присваивание статуса
     this.statusName = statusName;
     // присвоение данных таблицы
@@ -60,6 +61,20 @@ export class TableComponent implements OnInit {
       ...item,
       sort: (evt: any) => this.sortChecking(evt, item.columnName),
     }));
+  }
+
+  /**
+   * Возвращает наименование если строка больше размера ячейки
+   * @param data data.names
+   * @param el HtmlElement
+   * @returns string
+   */
+  public dataLength(data: string, el: HTMLElement): string {
+    const widthEl = document.querySelector('.dataName')?.clientWidth || 0;
+    const widthText = el.getBoundingClientRect().width;
+    const returnData = widthEl < widthText ? data : '';
+
+    return returnData;
   }
 
   /**
@@ -80,9 +95,7 @@ export class TableComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.tableService.getListPassport(ColumnName.Status, 1, 0).subscribe((res: any) => {
-      this.setData(res);
-    });
+    this.setData(ColumnName.Status, 1, 0);
   }
 
   /**
@@ -90,11 +103,7 @@ export class TableComponent implements OnInit {
    * @param evt страницы (от 1 начинается)
    */
   public pageChange(evt: number): void {
-    this.tableService
-      .getListPassport(this.columnForPageChange, this.directionForPageChange, evt - 1)
-      .subscribe((res: any) => {
-        this.setData(res);
-      });
+    this.setData(this.columnForPageChange, this.directionForPageChange, evt - 1);
   }
 
   /**
@@ -104,9 +113,7 @@ export class TableComponent implements OnInit {
    */
   public sortChecking(direction: string, column: ColumnName): void {
     const directionVal = direction === 'ascend' ? Direction.ascend : Direction.descend;
-    this.tableService.getListPassport(column, directionVal, 0).subscribe((res: any) => {
-      this.setData(res);
-    });
+    this.setData(column, directionVal, 0);
     this.columnForPageChange = column;
     this.directionForPageChange = directionVal;
   }
@@ -131,12 +138,20 @@ export class TableComponent implements OnInit {
     return 'yellow';
   }
 
+  public ngAfterContentChecked(): void {
+    this.changeDetector.detectChanges();
+  }
+
   /**
-   * функция для записи data для заполнения таблицы
-   * @param response response
+   * метод для получения и присвоения списка ПБ
+   * @param column столбцы
+   * @param direction 1 | -1
+   * @param page страницы от 0
    */
-  private setData(response: any): void {
-    this.listOfData = response.items;
-    this.totalPageCount = response.totalCount;
+  private setData(column: ColumnName, direction: Direction, page: number): void {
+    this.tableService.getListPassport(column, direction, page).subscribe((response: List<Passport>) => {
+      this.listOfData = response.items;
+      this.totalPageCount = response.totalCount;
+    });
   }
 }
