@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { List } from 'src/app/models/list';
 import { ColumnItems } from '../../models/column-items';
@@ -18,7 +18,7 @@ import { Direction } from '../../models/direction';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, AfterContentChecked {
   /**
    * Map статуса в таблице
    */
@@ -49,7 +49,7 @@ export class TableComponent implements OnInit {
    */
   public directionForPageChange!: Direction;
 
-  constructor(public tableService: TableService, private router: Router) {
+  constructor(public tableService: TableService, private router: Router, private changeDetector: ChangeDetectorRef) {
     // присваивание статуса
     this.statusName = statusName;
     // присвоение данных таблицы
@@ -136,6 +136,10 @@ export class TableComponent implements OnInit {
     }
 
     return 'yellow';
+  }
+
+  public ngAfterContentChecked(): void {
+    this.changeDetector.detectChanges();
   }
 
   /**
