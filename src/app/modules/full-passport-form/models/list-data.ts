@@ -1,7 +1,7 @@
 /**
  * Тип для списка
  */
-export interface Lists {
+export interface ListData {
   /**
    * Значение
    */

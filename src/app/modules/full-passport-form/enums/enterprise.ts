@@ -1,7 +1,7 @@
 /**
  * Тип предприятия
  */
-export enum Enterprises {
+export enum Enterprise {
   /**
    * Поставщик
    */

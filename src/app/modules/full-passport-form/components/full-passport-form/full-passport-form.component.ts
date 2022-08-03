@@ -11,11 +11,11 @@ import { listPassportPeriod } from '../../consts/list-passport-period';
 import { listPaymentMethod } from '../../consts/list-payment-method';
 import { listSignalWord } from '../../consts/list-signal-word';
 import { listSingleOrMultiply } from '../../consts/list-single-or-multiply';
-import { Enterprises } from '../../enums/enterprises';
+import { Enterprise } from '../../enums/enterprise';
+import { ListDictionaryValue } from '../../enums/list-dictionary-value';
 import { Expert } from '../../models/expert';
-import { DictionaryValueItem } from '../../models/list-dictionary-value-item';
-import { ListDictionaryValues } from '../../models/list-dictionary-values';
-import { Lists } from '../../models/lists';
+import { DictionaryValueItem } from '../../models/dictionary-value-item';
+import { ListData } from '../../models/list-data';
 import { Passport } from '../../models/passport';
 import { FullPassportService } from '../../services/full-passport-form.service/full-passport-form.service';
 
@@ -96,32 +96,32 @@ export class FullPassportFormComponent implements OnInit {
   /**
    * Список тип предприятий
    */
-  public listEnterpriseTypes: Array<Lists>;
+  public listEnterpriseTypes: Array<ListData>;
 
   /**
    * Список способ оплаты
    */
-  public listPaymentMethod: Array<Lists>;
+  public listPaymentMethod: Array<ListData>;
 
   /**
    * Список срочности
    */
-  public listPassportPeriod: Array<Lists>;
+  public listPassportPeriod: Array<ListData>;
 
   /**
    * Список регулярности
    */
-  public listSingleOrMultiply: Array<Lists>;
+  public listSingleOrMultiply: Array<ListData>;
 
   /**
    * Список степень опасности
    */
-  public listDanger: Array<Lists>;
+  public listDanger: Array<ListData>;
 
   /**
    * Список сигнальное слово
    */
-  public listSignalWord: Array<Lists>;
+  public listSignalWord: Array<ListData>;
 
   /**
    * Ссылка на просмотр паспорта
@@ -131,7 +131,7 @@ export class FullPassportFormComponent implements OnInit {
   /**
    * Список выбранных предприятий
    */
-  public listOfSelectedEnterprise!: Array<Enterprises>;
+  public listOfSelectedEnterprise!: Array<Enterprise>;
 
   /**
    * состояние checkbox
@@ -140,7 +140,7 @@ export class FullPassportFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private activateRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     public fullPassportService: FullPassportService
   ) {
     this.listPrevPassport = new Map<string, string>();
@@ -160,7 +160,7 @@ export class FullPassportFormComponent implements OnInit {
 
     this.passportView = '#';
 
-    this.activateRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
     });
 
@@ -216,14 +216,14 @@ export class FullPassportFormComponent implements OnInit {
   public isNotSelected(enterprise: any): boolean {
     const { value } = enterprise;
 
-    const isEqual345 = (el: Enterprises): boolean =>
-      [Enterprises.Exporter, Enterprises.Importer, Enterprises.Manufacturer].includes(el);
+    const isEqual345 = (el: Enterprise): boolean =>
+      [Enterprise.Exporter, Enterprise.Importer, Enterprise.Manufacturer].includes(el);
 
-    const isEqual35 = (el: Enterprises): boolean => [Enterprises.Exporter, Enterprises.Manufacturer].includes(el);
+    const isEqual35 = (el: Enterprise): boolean => [Enterprise.Exporter, Enterprise.Manufacturer].includes(el);
 
     if (this.listOfSelectedEnterprise.length === 0 || !this.listOfSelectedEnterprise.some(isEqual345)) return false;
-    if (this.listOfSelectedEnterprise.some(isEqual35) && value !== Enterprises.Importer) return false;
-    if (this.listOfSelectedEnterprise.includes(Enterprises.Importer) && !isEqual35(value)) return false;
+    if (this.listOfSelectedEnterprise.some(isEqual35) && value !== Enterprise.Importer) return false;
+    if (this.listOfSelectedEnterprise.includes(Enterprise.Importer) && !isEqual35(value)) return false;
 
     return true;
   }
@@ -340,9 +340,9 @@ export class FullPassportFormComponent implements OnInit {
             Observable<any>
           ] = [
             this.fullPassportService.listExpert(),
-            this.fullPassportService.listDictionaryValue(ListDictionaryValues.SystemDictsOKPD2),
-            this.fullPassportService.listDictionaryValue(ListDictionaryValues.SystemDictsTNVED),
-            this.fullPassportService.listDictionaryValue(ListDictionaryValues.SystemDictsDocumentNormativeType),
+            this.fullPassportService.listDictionaryValue(ListDictionaryValue.SystemDictsOKPD2),
+            this.fullPassportService.listDictionaryValue(ListDictionaryValue.SystemDictsTNVED),
+            this.fullPassportService.listDictionaryValue(ListDictionaryValue.SystemDictsDocumentNormativeType),
             this.fullPassportService.organizationPassport(this.organization.id),
           ];
 

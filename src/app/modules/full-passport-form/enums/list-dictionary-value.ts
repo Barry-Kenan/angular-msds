@@ -1,7 +1,7 @@
 /**
  * Enum для запроса списка
  */
-export enum ListDictionaryValues {
+export enum ListDictionaryValue {
   /**
    * НД
    */
