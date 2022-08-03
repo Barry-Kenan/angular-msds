@@ -12,9 +12,10 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { FullPassportFormComponent } from './components/full-passport-form/full-passport-form.component';
+import { ValidationDirective } from './directives/validation.directive';
 
 @NgModule({
-  declarations: [FullPassportFormComponent],
+  declarations: [FullPassportFormComponent, ValidationDirective],
   imports: [
     CommonModule,
     FormsModule,

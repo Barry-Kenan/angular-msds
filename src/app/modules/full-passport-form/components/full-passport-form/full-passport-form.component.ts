@@ -293,6 +293,10 @@ export class FullPassportFormComponent implements OnInit {
     }
   }
 
+  public get f(): any {
+    return this.fullPassportForm.controls;
+  }
+
   public ngOnInit(): void {
     this.fullPassportService
       .readPassport(this.id)
