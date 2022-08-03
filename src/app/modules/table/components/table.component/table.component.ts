@@ -7,8 +7,8 @@ import { statusColorGreen, statusColorRed } from '../../consts/status-color';
 import { statusName } from '../../consts/status-name';
 import { tableConst } from '../../consts/table.consts';
 import { TableService } from '../../services/table.service/table.service';
-import { ColumnName } from '../../models/column-name';
-import { Direction } from '../../models/direction';
+import { Direction } from '../../enums/direction';
+import { ColumnName } from '../../enums/column-name';
 
 /**
  * список ПБ

@@ -4,8 +4,8 @@ import { RequestService } from 'src/app/modules/shared/services/request.service/
 import { List } from 'src/app/models/list';
 import { Passport } from 'src/app/modules/table/models/passport';
 import { statusName } from '../../consts/status-name';
-import { ColumnName } from '../../models/column-name';
-import { Direction } from '../../models/direction';
+import { Direction } from '../../enums/direction';
+import { ColumnName } from '../../enums/column-name';
 
 /**
  * Сервис для логина
