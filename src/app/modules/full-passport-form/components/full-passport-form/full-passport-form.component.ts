@@ -164,11 +164,15 @@ export class FullPassportFormComponent implements OnInit {
       this.id = params['id'];
     });
 
-    /**
-     * Конструктор формы
-     */
+    this.fullPassportBuildGroup();
+  }
+
+  /**
+   * Конструктор формы
+   */
+  public fullPassportBuildGroup(): void {
     this.fullPassportForm = this.fb.group({
-      startDate: [null],
+      startDate: [null, [Validators.required]],
       endDate: [null],
       workDate: [null],
       passportNumber: [null],
@@ -293,6 +297,10 @@ export class FullPassportFormComponent implements OnInit {
     }
   }
 
+  /**
+   * для доступа к формконтролам
+   * @returns form controls
+   */
   public get f(): any {
     return this.fullPassportForm.controls;
   }
