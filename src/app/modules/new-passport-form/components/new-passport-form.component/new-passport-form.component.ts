@@ -57,6 +57,14 @@ export class NewPassportFormComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  /**
+   * для доступа к формконтролам
+   * @returns form controls
+   */
+  public get f(): any {
+    return this.newPassportForm.controls;
+  }
+
   public ngOnInit(): void {
     this.newPassportFormService.getOrganizations().subscribe((res: List<Organization>) => {
       this.listOrganizations = res.items;
@@ -65,9 +73,9 @@ export class NewPassportFormComponent implements OnInit {
     this.newPassportForm = this.fb.group({
       documentArrivalDate: [null, [Validators.required]],
       names: [null, [Validators.required]],
-      organizationId: [null],
+      organizationId: [null, [Validators.required]],
       isMediator: [false],
-      mediatorId: [null, [Validators.required]],
+      mediatorId: [null],
       singleOrMultiple: [null, [Validators.required]],
     });
   }
