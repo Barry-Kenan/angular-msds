@@ -174,7 +174,7 @@ export class FullPassportFormComponent implements OnInit {
     this.fullPassportForm = this.fb.group({
       startDate: [null, [Validators.required]],
       endDate: [null],
-      workDate: [null],
+      workDate: [{ value: null, disabled: true }],
       passportNumber: [null],
       names: [null, [Validators.required]],
       tradeNames: [null, [Validators.required]],
@@ -189,8 +189,8 @@ export class FullPassportFormComponent implements OnInit {
       expert: [null],
       paymentMethod: [null, [Validators.required]],
       passportPeriod: [null],
-      documentArrivalDate: [{ value: null, disabled: true }],
-      nextRevisionDate: [null],
+      documentArrivalDate: [{ value: null, disabled: false }],
+      nextRevisionDate: [{ value: null, disabled: true }],
       payDay: [null],
       singleOrMultiple: [{ value: null, disabled: true }],
       danger: [null],
@@ -294,6 +294,11 @@ export class FullPassportFormComponent implements OnInit {
       this.fullPassportForm.patchValue({
         mediatorId: this.mediator.names[0].value,
       });
+    }
+    if (this.passport.danger) {
+      this.fullPassportForm.controls['passportNumber'].enable();
+    } else {
+      this.fullPassportForm.controls['passportNumber'].disable();
     }
   }
 

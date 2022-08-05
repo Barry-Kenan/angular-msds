@@ -6,8 +6,9 @@
     <form nz-form [formGroup]="newPassportForm" (ngSubmit)="submitForm()">
       <div class="new-passport-form-title">Дата поступления документа</div>
       <nz-form-item>
-        <nz-form-control nzErrorTip="Поле обязательно к заполнению">
+        <nz-form-control>
           <nz-date-picker
+            *appValidation="f.documentArrivalDate; text: 'Поле обязательно к заполнению'"
             formControlName="documentArrivalDate"
             class="new-passport-form-select"
             nzSize="large"
@@ -18,20 +19,26 @@
       </nz-form-item>
       <div class="new-passport-form-title">Техническое наименование</div>
       <nz-form-item>
-        <nz-form-control nzErrorTip="Поле обязательно к заполнению">
-          <input type="text" nz-input formControlName="names" nzSize="large" />
+        <nz-form-control>
+          <input
+            type="text"
+            nz-input
+            formControlName="names"
+            nzSize="large"
+            *appValidation="f.names; text: 'Поле обязательно к заполнению'" />
         </nz-form-control>
       </nz-form-item>
       <div class="new-passport-form-title">Заявитель</div>
 
       <nz-form-item>
-        <nz-form-control nzErrorTip="Поле обязательно к заполнению">
+        <nz-form-control>
           <nz-select
             formControlName="organizationId"
             class="new-passport-form-select"
             nzAllowClear
             nzShowSearch
-            nzSize="large">
+            nzSize="large"
+            *appValidation="f.organizationId; text: 'Поле обязательно к заполнению'">
             <nz-option *ngFor="let option of listOrganizations" [nzValue]="option.id" [nzLabel]="option.names[0].value">
             </nz-option>
           </nz-select>
@@ -57,8 +64,13 @@
       </nz-form-item>
       <div class="new-passport-form-title">Регулярность</div>
       <nz-form-item>
-        <nz-form-control nzErrorTip="Поле обязательно к заполнению">
-          <nz-select formControlName="singleOrMultiple" class="new-passport-form-select" nzAllowClear nzSize="large">
+        <nz-form-control>
+          <nz-select
+            formControlName="singleOrMultiple"
+            class="new-passport-form-select"
+            nzAllowClear
+            nzSize="large"
+            *appValidation="f.singleOrMultiple; text: 'Поле обязательно к заполнению'">
             <nz-option [nzValue]="true" nzLabel="Регулярно"></nz-option>
             <nz-option [nzValue]="false" nzLabel="Разово"></nz-option>
           </nz-select>
