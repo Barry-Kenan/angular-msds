@@ -59,6 +59,7 @@
             <nz-form-item>
               <nz-form-control>
                 <nz-select
+                  *appValidation="getForm.enterpriseTypes; text: 'Укажите тип предприятия'"
                   formControlName="enterpriseTypes"
                   class="full-passport-form-select"
                   nzMode="multiple"
