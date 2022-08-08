@@ -66,11 +66,9 @@ export class ValidationDirective implements AfterContentInit {
     const parent = this.el.nativeElement.parentElement;
 
     this.formControl.valueChanges.subscribe(() => {
-      if (this.formControl.errors) {
-        if (!parent.contains(this.invalid)) {
-          this.addIcon();
-          parent.firstChild.classList.add('transparent-placeholder');
-        }
+      if (this.formControl.errors && !parent.contains(this.invalid)) {
+        this.addIcon();
+        parent.firstChild.classList.add('transparent-placeholder');
       } else if (parent.contains(this.invalid)) {
         parent.removeChild(this.invalid);
         parent.firstChild.classList.remove('transparent-placeholder');
