@@ -67,7 +67,7 @@ export class NewPassportFormComponent implements OnInit {
    * для доступа к формконтролам
    * @returns form controls
    */
-  public get f(): any {
+  public get getForm(): any {
     return this.newPassportForm.controls;
   }
 

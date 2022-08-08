@@ -8,7 +8,7 @@
       <nz-form-item>
         <nz-form-control>
           <nz-date-picker
-            *appValidation="f.documentArrivalDate; text: 'Поле обязательно к заполнению'"
+            *appValidation="getForm.documentArrivalDate; text: 'Поле обязательно к заполнению'"
             formControlName="documentArrivalDate"
             class="new-passport-form-select"
             nzSize="large"
@@ -25,7 +25,7 @@
             nz-input
             formControlName="names"
             nzSize="large"
-            *appValidation="f.names; text: 'Поле обязательно к заполнению'" />
+            *appValidation="getForm.names; text: 'Поле обязательно к заполнению'" />
         </nz-form-control>
       </nz-form-item>
       <div class="new-passport-form-title">Заявитель</div>
@@ -38,7 +38,7 @@
             nzAllowClear
             nzShowSearch
             nzSize="large"
-            *appValidation="f.organizationId; text: 'Поле обязательно к заполнению'">
+            *appValidation="getForm.organizationId; text: 'Поле обязательно к заполнению'">
             <nz-option *ngFor="let option of listOrganizations" [nzValue]="option.id" [nzLabel]="option.names[0].value">
             </nz-option>
           </nz-select>
@@ -70,7 +70,7 @@
             class="new-passport-form-select"
             nzAllowClear
             nzSize="large"
-            *appValidation="f.singleOrMultiple; text: 'Поле обязательно к заполнению'">
+            *appValidation="getForm.singleOrMultiple; text: 'Поле обязательно к заполнению'">
             <nz-option [nzValue]="true" nzLabel="Регулярно"></nz-option>
             <nz-option [nzValue]="false" nzLabel="Разово"></nz-option>
           </nz-select>

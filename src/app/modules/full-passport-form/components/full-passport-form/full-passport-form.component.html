@@ -78,7 +78,7 @@
             <nz-form-item>
               <nz-form-control>
                 <input
-                  *appValidation="f.names; text: 'Укажите техническое наименование'"
+                  *appValidation="getForm.names; text: 'Укажите техническое наименование'"
                   type="text"
                   nz-input
                   formControlName="names"
@@ -114,7 +114,7 @@
             <nz-form-item>
               <nz-form-control>
                 <input
-                  *appValidation="f.tradeNames; text: 'Укажите торговое наименование'"
+                  *appValidation="getForm.tradeNames; text: 'Укажите торговое наименование'"
                   type="text"
                   [placeholder]="'Введите торговое наименование'"
                   nz-input
@@ -126,7 +126,7 @@
             <nz-form-item>
               <nz-form-control>
                 <nz-select
-                  *appValidation="f.normativeDocTypeId; text: 'Укажите обозначение НД'"
+                  *appValidation="getForm.normativeDocTypeId; text: 'Укажите обозначение НД'"
                   formControlName="normativeDocTypeId"
                   class="full-passport-form-select"
                   nzAllowClear
@@ -144,7 +144,7 @@
             <nz-form-item>
               <nz-form-control>
                 <input
-                  *appValidation="f.normativeDocCode; text: 'Укажите шифр НД'"
+                  *appValidation="getForm.normativeDocCode; text: 'Укажите шифр НД'"
                   type="text"
                   nz-input
                   [placeholder]="'Введите шифр НД'"
@@ -156,7 +156,7 @@
             <nz-form-item>
               <nz-form-control>
                 <nz-select
-                  *appValidation="f.okpd2CodeId; text: 'Укажите код ОКПД 2'"
+                  *appValidation="getForm.okpd2CodeId; text: 'Укажите код ОКПД 2'"
                   formControlName="okpd2CodeId"
                   class="full-passport-form-select"
                   nzAllowClear
@@ -174,7 +174,7 @@
             <nz-form-item>
               <nz-form-control>
                 <nz-select
-                  *appValidation="f.tnVedCodeId; text: 'Укажите код ТН ВЭД ЕАЭС'"
+                  *appValidation="getForm.tnVedCodeId; text: 'Укажите код ТН ВЭД ЕАЭС'"
                   formControlName="tnVedCodeId"
                   class="full-passport-form-select"
                   nzAllowClear
@@ -216,7 +216,7 @@
             <nz-form-item>
               <nz-form-control>
                 <nz-select
-                  *appValidation="f.paymentMethod; text: 'Укажите способ оплаты'"
+                  *appValidation="getForm.paymentMethod; text: 'Укажите способ оплаты'"
                   formControlName="paymentMethod"
                   class="full-passport-form-select"
                   nzAllowClear
@@ -408,7 +408,7 @@
                 nzSize="large"
                 type="button"
                 (click)="getNextNumber()"
-                [disabled]="!!f.passportNumber.value || !f.danger.value">
+                [disabled]="!!getForm.passportNumber.value || !getForm.danger.value">
                 Получить
               </button>
             </div>

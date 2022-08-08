@@ -303,9 +303,9 @@ export class FullPassportFormComponent implements OnInit {
       });
     }
     if (this.passport.danger) {
-      this.fullPassportForm.controls['passportNumber'].enable();
+      this.getForm.passportNumber.enable();
     } else {
-      this.fullPassportForm.controls['passportNumber'].disable();
+      this.getForm.passportNumber.disable();
     }
   }
 
@@ -313,7 +313,7 @@ export class FullPassportFormComponent implements OnInit {
    * для доступа к формконтролам
    * @returns form controls
    */
-  public get f(): any {
+  public get getForm(): any {
     return this.fullPassportForm.controls;
   }
 
