@@ -69,7 +69,6 @@ export class NewPassportFormComponent implements OnInit {
     this.newPassportFormService.getOrganizations().subscribe((res: List<Organization>) => {
       this.listOrganizations = res.items;
     });
-    // конструктор формы
     this.newPassportForm = this.fb.group({
       documentArrivalDate: [null, [Validators.required]],
       names: [null, [Validators.required]],
