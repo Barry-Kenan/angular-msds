@@ -24,9 +24,16 @@ export class ValidationDirective implements AfterContentInit {
   public formControl!: AbstractControl;
 
   /**
-   * текст для tooltip
+   * Получение formControl-а
    */
-  public title!: string;
+  @Input() public set appValidation(control: AbstractControl) {
+    this.formControl = control;
+  }
+
+  /**
+   * Получение текста
+   */
+  @Input() public appValidationText!: string;
 
   /**
    * элемент tooltip-а
@@ -37,20 +44,6 @@ export class ValidationDirective implements AfterContentInit {
    * элемент с svg
    */
   private invalid!: HTMLDivElement;
-
-  /**
-   * Получение formControl-а
-   */
-  @Input() public set appValidation(control: AbstractControl) {
-    this.formControl = control;
-  }
-
-  /**
-   * Получение текста
-   */
-  @Input() public set appValidationText(txt: string) {
-    this.title = txt;
-  }
 
   constructor(
     private templateRef: TemplateRef<any>,
@@ -96,7 +89,7 @@ export class ValidationDirective implements AfterContentInit {
    */
   private createTooltipPopup(renderer: Renderer2): void {
     const tooltip = document.createElement('div');
-    tooltip.innerHTML = this.title;
+    tooltip.innerHTML = this.appValidationText;
     tooltip.setAttribute('class', 'tooltip');
     this.setStyle(tooltipStyles, tooltip);
     renderer.appendChild(this.el.nativeElement.parentElement, tooltip);
@@ -110,7 +103,7 @@ export class ValidationDirective implements AfterContentInit {
     const div = this.renderer.createElement('div');
     this.renderer.setAttribute(div, 'class', 'invalid');
     const img = this.renderer.createElement('img');
-    this.renderer.setAttribute(img, 'alt', this.title);
+    this.renderer.setAttribute(img, 'alt', this.appValidationText);
     this.renderer.setAttribute(img, 'src', 'assets/icons/Invalid.svg');
     this.renderer.setStyle(div, 'position', 'relative');
     this.setStyle(iconStyles, img);
