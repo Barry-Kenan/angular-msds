@@ -94,6 +94,9 @@
 
 
 
+
+
+
 ::ng-deep {
     .ant-checkbox-inner {
         width: 24px;
@@ -107,6 +110,7 @@
     .ant-checkbox-checked .ant-checkbox-inner::after {
         margin-left: 9%;
     }
+
 }
 
 @media (max-width: 991px) {
@@ -121,5 +125,4 @@
             width: 30%;
         }
     }
-
 }

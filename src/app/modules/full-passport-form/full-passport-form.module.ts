@@ -11,12 +11,13 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { DirectivesModule } from 'src/app/directives/directives.module';
 import { FullPassportFormComponent } from './components/full-passport-form/full-passport-form.component';
-import { ValidationDirective } from './directives/validation.directive';
 
 @NgModule({
-  declarations: [FullPassportFormComponent, ValidationDirective],
+  declarations: [FullPassportFormComponent],
   imports: [
+    DirectivesModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

@@ -40,6 +40,11 @@ export class NewPassportFormComponent implements OnInit {
    */
   public checked(evt: boolean): void {
     this.check = evt;
+    if (!evt) {
+      this.newPassportForm.patchValue({
+        mediatorId: '',
+      });
+    }
   }
 
   /**
@@ -47,6 +52,7 @@ export class NewPassportFormComponent implements OnInit {
    */
   public submitForm(): void {
     this.newPassportFormService.addNewPassport(this.newPassportForm.value).subscribe();
+    this.router.navigate(['/']);
   }
 
   /**
@@ -57,17 +63,24 @@ export class NewPassportFormComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  /**
+   * для доступа к формконтролам
+   * @returns form controls
+   */
+  public get getForm(): any {
+    return this.newPassportForm.controls;
+  }
+
   public ngOnInit(): void {
     this.newPassportFormService.getOrganizations().subscribe((res: List<Organization>) => {
       this.listOrganizations = res.items;
     });
-    // конструктор формы
     this.newPassportForm = this.fb.group({
       documentArrivalDate: [null, [Validators.required]],
       names: [null, [Validators.required]],
-      organizationId: [null],
+      organizationId: [null, [Validators.required]],
       isMediator: [false],
-      mediatorId: [null, [Validators.required]],
+      mediatorId: [null],
       singleOrMultiple: [null, [Validators.required]],
     });
   }

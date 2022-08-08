@@ -11,6 +11,12 @@
       {
         "ignorePseudoElements": ["ng-deep"]
       }
+    ],
+    "selector-no-vendor-prefix": [
+      true,
+      {
+        "ignoreSelectors": ["::-webkit-input-placeholder"]
+      }
     ]
   }
 }

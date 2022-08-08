@@ -2,3 +2,16 @@
   box-sizing: border-box;
   height: 100%;
 }
+
+
+
+::ng-deep {
+  .transparent-placeholder::-webkit-input-placeholder {
+    color: transparent;
+  }
+
+  .transparent-placeholder .ant-select-selection-placeholder {
+    color: transparent;
+  }
+
+}

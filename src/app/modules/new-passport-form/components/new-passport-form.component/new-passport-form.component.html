@@ -6,8 +6,9 @@
     <form nz-form [formGroup]="newPassportForm" (ngSubmit)="submitForm()">
       <div class="new-passport-form-title">Дата поступления документа</div>
       <nz-form-item>
-        <nz-form-control nzErrorTip="please input">
+        <nz-form-control>
           <nz-date-picker
+            *appValidation="getForm.documentArrivalDate; text: 'Поле обязательно к заполнению'"
             formControlName="documentArrivalDate"
             class="new-passport-form-select"
             nzSize="large"
@@ -18,22 +19,32 @@
       </nz-form-item>
       <div class="new-passport-form-title">Техническое наименование</div>
       <nz-form-item>
-        <nz-form-control nzHasFeedback nzErrorTip="Заполните техническое наименование ">
-          <input type="text" nz-input formControlName="names" nzSize="large" />
+        <nz-form-control>
+          <input
+            type="text"
+            nz-input
+            formControlName="names"
+            nzSize="large"
+            *appValidation="getForm.names; text: 'Поле обязательно к заполнению'" />
         </nz-form-control>
       </nz-form-item>
       <div class="new-passport-form-title">Заявитель</div>
+
       <nz-form-item>
-        <nz-select
-          formControlName="organizationId"
-          class="new-passport-form-select"
-          nzAllowClear
-          nzShowSearch
-          nzSize="large">
-          <nz-option *ngFor="let option of listOrganizations" [nzValue]="option.id" [nzLabel]="option.names[0].value">
-          </nz-option>
-        </nz-select>
+        <nz-form-control>
+          <nz-select
+            formControlName="organizationId"
+            class="new-passport-form-select"
+            nzAllowClear
+            nzShowSearch
+            nzSize="large"
+            *appValidation="getForm.organizationId; text: 'Поле обязательно к заполнению'">
+            <nz-option *ngFor="let option of listOrganizations" [nzValue]="option.id" [nzLabel]="option.names[0].value">
+            </nz-option>
+          </nz-select>
+        </nz-form-control>
       </nz-form-item>
+
       <nz-form-item>
         <label nz-checkbox formControlName="isMediator" (ngModelChange)="checked($event)">
           <label>Посредник</label>
@@ -53,17 +64,31 @@
       </nz-form-item>
       <div class="new-passport-form-title">Регулярность</div>
       <nz-form-item>
-        <nz-select formControlName="singleOrMultiple" class="new-passport-form-select" nzSize="large">
-          <nz-option [nzValue]="true" nzLabel="Регулярно"></nz-option>
-          <nz-option [nzValue]="false" nzLabel="Разово"></nz-option>
-        </nz-select>
+        <nz-form-control>
+          <nz-select
+            formControlName="singleOrMultiple"
+            class="new-passport-form-select"
+            nzAllowClear
+            nzSize="large"
+            *appValidation="getForm.singleOrMultiple; text: 'Поле обязательно к заполнению'">
+            <nz-option [nzValue]="true" nzLabel="Регулярно"></nz-option>
+            <nz-option [nzValue]="false" nzLabel="Разово"></nz-option>
+          </nz-select>
+        </nz-form-control>
       </nz-form-item>
       <div nz-row nzJustify="center" class="new-passport-form-buttons">
         <div nz-col [nzLg]="{ span: 4 }" [nzMd]="{ span: 6 }" [nzXs]="{ span: 9 }">
           <button nz-button nzSize="large" (click)="resetForm()" type="button">Отмена</button>
         </div>
         <div nz-col [nzLg]="{ span: 4, offset: 2 }" [nzMd]="{ span: 6, offset: 2 }" [nzXs]="{ span: 9, offset: 2 }">
-          <button nz-button nzSize="large" [nzType]="'primary'" type="submit">Сохранить</button>
+          <button
+            nz-button
+            nzSize="large"
+            [nzType]="'primary'"
+            type="submit"
+            [disabled]="!newPassportForm.valid || !newPassportForm.dirty">
+            Сохранить
+          </button>
         </div>
       </div>
     </form>
