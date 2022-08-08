@@ -19,16 +19,9 @@ import { tooltipStyles } from './consts/tooltip-styles';
 })
 export class ValidationDirective implements AfterContentInit {
   /**
-   * formControl
-   */
-  public formControl!: AbstractControl;
-
-  /**
    * Получение formControl-а
    */
-  @Input() public set appValidation(control: AbstractControl) {
-    this.formControl = control;
-  }
+  @Input() public appValidation!: AbstractControl;
 
   /**
    * Получение текста
@@ -38,7 +31,7 @@ export class ValidationDirective implements AfterContentInit {
   /**
    * элемент tooltip-а
    */
-  private myTooltip!: HTMLSpanElement;
+  private myTooltip!: HTMLDivElement;
 
   /**
    * элемент с svg
@@ -61,8 +54,8 @@ export class ValidationDirective implements AfterContentInit {
     const parent = this.el.nativeElement.parentElement;
     const transparentPlaceholder = 'transparent-placeholder';
 
-    this.formControl.valueChanges.subscribe(() => {
-      if (this.formControl.errors && !parent.contains(this.invalid)) {
+    this.appValidation.valueChanges.subscribe(() => {
+      if (this.appValidation.errors && !parent.contains(this.invalid)) {
         this.addIcon();
         parent.firstChild.classList.add(transparentPlaceholder);
       } else if (parent.contains(this.invalid)) {
@@ -74,11 +67,11 @@ export class ValidationDirective implements AfterContentInit {
 
   /**
    * для присваивания стилей из Map
-   * @param Map Map<string, string>
+   * @param map Map<string, string>
    * @param place Html element
    */
-  private setStyle(Map: Map<string, string>, place: HTMLElement): void {
-    Map.forEach((value: string, key: string) => {
+  private setStyle(map: Map<string, string>, place: HTMLElement): void {
+    map.forEach((value: string, key: string) => {
       this.renderer.setStyle(place, key, value);
     });
   }
