@@ -29,7 +29,7 @@ export class ValidationDirective implements AfterContentInit {
   /**
    * элемент tooltip-а
    */
-  private myPopup!: HTMLSpanElement;
+  private myTooltip!: HTMLSpanElement;
 
   /**
    * элемент с svg
@@ -83,23 +83,23 @@ export class ValidationDirective implements AfterContentInit {
    * @param renderer Renderer2
    */
   private createTooltipPopup(renderer: Renderer2): void {
-    const popup = document.createElement('span');
-    popup.innerHTML = this.title;
-    popup.setAttribute('class', 'tooltip');
-    this.renderer.setStyle(popup, 'position', 'absolute');
-    this.renderer.setStyle(popup, 'width', '200px');
-    this.renderer.setStyle(popup, 'top', '50%');
-    this.renderer.setStyle(popup, 'left', '100%');
-    this.renderer.setStyle(popup, 'padding', '2%');
-    this.renderer.setStyle(popup, 'z-index', '10');
-    this.renderer.setStyle(popup, 'transform', 'translateY(-50%');
-    this.renderer.setStyle(popup, 'font-size', '18px');
-    this.renderer.setStyle(popup, 'color', '#f27c70');
-    this.renderer.setStyle(popup, 'text-align', 'left');
-    this.renderer.setStyle(popup, 'box-shadow', '0 5px 10px 2px rgb(34 60 80 / 20%)');
-    this.renderer.setStyle(popup, 'background-color', 'white');
-    renderer.appendChild(this.el.nativeElement.parentElement, popup);
-    this.myPopup = popup;
+    const tooltip = document.createElement('span');
+    tooltip.innerHTML = this.title;
+    tooltip.setAttribute('class', 'tooltip');
+    this.renderer.setStyle(tooltip, 'position', 'absolute');
+    this.renderer.setStyle(tooltip, 'width', '200px');
+    this.renderer.setStyle(tooltip, 'top', '50%');
+    this.renderer.setStyle(tooltip, 'left', '100%');
+    this.renderer.setStyle(tooltip, 'padding', '2%');
+    this.renderer.setStyle(tooltip, 'z-index', '10');
+    this.renderer.setStyle(tooltip, 'transform', 'translateY(-50%');
+    this.renderer.setStyle(tooltip, 'font-size', '18px');
+    this.renderer.setStyle(tooltip, 'color', '#f27c70');
+    this.renderer.setStyle(tooltip, 'text-align', 'left');
+    this.renderer.setStyle(tooltip, 'box-shadow', '0 5px 10px 2px rgb(34 60 80 / 20%)');
+    this.renderer.setStyle(tooltip, 'background-color', 'white');
+    renderer.appendChild(this.el.nativeElement.parentElement, tooltip);
+    this.myTooltip = tooltip;
   }
 
   /**
@@ -124,8 +124,8 @@ export class ValidationDirective implements AfterContentInit {
       this.createTooltipPopup(this.renderer);
     };
     div.onmouseleave = () => {
-      if (this.myPopup) {
-        this.myPopup.remove();
+      if (this.myTooltip) {
+        this.myTooltip.remove();
       }
     };
     this.renderer.appendChild(this.el.nativeElement.parentElement, div);
