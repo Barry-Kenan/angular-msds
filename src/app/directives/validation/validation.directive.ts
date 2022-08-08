@@ -80,16 +80,25 @@ export class ValidationDirective implements AfterContentInit {
   }
 
   /**
+   * для присваивания стилей из Map
+   * @param Map Map<string, string>
+   * @param place Html element
+   */
+  private setStyle(Map: Map<string, string>, place: HTMLElement): void {
+    Map.forEach((value: string, key: string) => {
+      this.renderer.setStyle(place, key, value);
+    });
+  }
+
+  /**
    * создание tooltip-а
    * @param renderer Renderer2
    */
   private createTooltipPopup(renderer: Renderer2): void {
-    const tooltip = document.createElement('span');
+    const tooltip = document.createElement('div');
     tooltip.innerHTML = this.title;
     tooltip.setAttribute('class', 'tooltip');
-    tooltipStyles.forEach((value: string, key: string) => {
-      this.renderer.setStyle(tooltip, key, value);
-    });
+    this.setStyle(tooltipStyles, tooltip);
     renderer.appendChild(this.el.nativeElement.parentElement, tooltip);
     this.myTooltip = tooltip;
   }
@@ -104,22 +113,16 @@ export class ValidationDirective implements AfterContentInit {
     this.renderer.setAttribute(img, 'alt', this.title);
     this.renderer.setAttribute(img, 'src', 'assets/icons/Invalid.svg');
     this.renderer.setStyle(div, 'position', 'relative');
-
-    iconStyles.forEach((value: string, key: string) => {
-      this.renderer.setStyle(img, key, value);
-    });
+    this.setStyle(iconStyles, img);
     if (this.el.nativeElement.parentElement.firstChild.tagName.toLowerCase() === 'input') {
       this.renderer.setStyle(img, 'right', '8px');
     }
-
     this.renderer.appendChild(div, img);
     div.onmouseover = () => {
       this.createTooltipPopup(this.renderer);
     };
     div.onmouseleave = () => {
-      if (this.myTooltip) {
-        this.myTooltip.remove();
-      }
+      this.myTooltip?.remove();
     };
     this.renderer.appendChild(this.el.nativeElement.parentElement, div);
     this.invalid = div;
