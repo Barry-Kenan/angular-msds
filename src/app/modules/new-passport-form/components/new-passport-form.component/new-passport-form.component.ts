@@ -40,6 +40,11 @@ export class NewPassportFormComponent implements OnInit {
    */
   public checked(evt: boolean): void {
     this.check = evt;
+    if (!evt) {
+      this.newPassportForm.patchValue({
+        mediatorId: '',
+      });
+    }
   }
 
   /**
@@ -47,6 +52,7 @@ export class NewPassportFormComponent implements OnInit {
    */
   public submitForm(): void {
     this.newPassportFormService.addNewPassport(this.newPassportForm.value).subscribe();
+    this.router.navigate(['/']);
   }
 
   /**
