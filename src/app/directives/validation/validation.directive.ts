@@ -29,12 +29,12 @@ export class ValidationDirective implements AfterContentInit {
   /**
    * элемент tooltip-а
    */
-  private myPopup: any;
+  private myPopup!: HTMLSpanElement;
 
   /**
    * элемент с svg
    */
-  private invalid: any;
+  private invalid!: HTMLDivElement;
 
   /**
    * Получение formControl-а
@@ -46,7 +46,7 @@ export class ValidationDirective implements AfterContentInit {
   /**
    * Получение текста
    */
-  @Input() public set appValidationText(txt: any) {
+  @Input() public set appValidationText(txt: string) {
     this.title = txt;
   }
 
