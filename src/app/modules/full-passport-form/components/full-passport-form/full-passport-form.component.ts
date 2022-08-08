@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin, map, mergeMap, Observable } from 'rxjs';
 import { List } from 'src/app/models/list';
 import { Organization } from 'src/app/modules/new-passport-form/models/organization';
@@ -141,7 +141,8 @@ export class FullPassportFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    public fullPassportService: FullPassportService
+    public fullPassportService: FullPassportService,
+    private router: Router
   ) {
     this.listPrevPassport = new Map<string, string>();
     this.passportName = '';
@@ -210,6 +211,11 @@ export class FullPassportFormComponent implements OnInit {
    */
   public checked(evt: boolean): void {
     this.check = evt;
+    if (!evt) {
+      this.fullPassportForm.patchValue({
+        reRegistrationNumber: '',
+      });
+    }
   }
 
   /**
@@ -264,6 +270,7 @@ export class FullPassportFormComponent implements OnInit {
     }
 
     this.fullPassportService.updatePassport(passportForm).subscribe();
+    this.router.navigate(['/']);
   }
 
   /**
