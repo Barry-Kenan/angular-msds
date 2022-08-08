@@ -8,6 +8,8 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
+import { iconStyles } from './consts/icon-styles';
+import { tooltipStyles } from './consts/tooltip-styles';
 
 /**
  * директива для отображения svg валидации
@@ -85,18 +87,9 @@ export class ValidationDirective implements AfterContentInit {
     const tooltip = document.createElement('span');
     tooltip.innerHTML = this.title;
     tooltip.setAttribute('class', 'tooltip');
-    this.renderer.setStyle(tooltip, 'position', 'absolute');
-    this.renderer.setStyle(tooltip, 'width', '200px');
-    this.renderer.setStyle(tooltip, 'top', '50%');
-    this.renderer.setStyle(tooltip, 'left', '100%');
-    this.renderer.setStyle(tooltip, 'padding', '2%');
-    this.renderer.setStyle(tooltip, 'z-index', '10');
-    this.renderer.setStyle(tooltip, 'transform', 'translateY(-50%');
-    this.renderer.setStyle(tooltip, 'font-size', '18px');
-    this.renderer.setStyle(tooltip, 'color', '#f27c70');
-    this.renderer.setStyle(tooltip, 'text-align', 'left');
-    this.renderer.setStyle(tooltip, 'box-shadow', '0 5px 10px 2px rgb(34 60 80 / 20%)');
-    this.renderer.setStyle(tooltip, 'background-color', 'white');
+    tooltipStyles.forEach((value: string, key: string) => {
+      this.renderer.setStyle(tooltip, key, value);
+    });
     renderer.appendChild(this.el.nativeElement.parentElement, tooltip);
     this.myTooltip = tooltip;
   }
@@ -111,13 +104,14 @@ export class ValidationDirective implements AfterContentInit {
     this.renderer.setAttribute(img, 'alt', this.title);
     this.renderer.setAttribute(img, 'src', 'assets/icons/Invalid.svg');
     this.renderer.setStyle(div, 'position', 'relative');
-    this.renderer.setStyle(img, 'position', 'absolute');
-    this.renderer.setStyle(img, 'bottom', '8px');
-    this.renderer.setStyle(img, 'right', '33px');
+
+    iconStyles.forEach((value: string, key: string) => {
+      this.renderer.setStyle(img, key, value);
+    });
     if (this.el.nativeElement.parentElement.firstChild.tagName.toLowerCase() === 'input') {
       this.renderer.setStyle(img, 'right', '8px');
     }
-    this.renderer.setStyle(img, 'z-index', '10');
+
     this.renderer.appendChild(div, img);
     div.onmouseover = () => {
       this.createTooltipPopup(this.renderer);
