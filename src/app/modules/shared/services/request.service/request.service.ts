@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { Response } from 'src/app/models/response';
 import { User } from 'src/app/modules/login/models/user';
 
@@ -20,7 +19,7 @@ export class RequestService {
    * @returns пост запрос на login
    */
   public postRequest<T>(body: User): Observable<T> {
-    const postUrl = `${environment.host}login`;
+    const postUrl = `https://iap_dev2.tomskasu.ru/api/login`;
 
     return this.http.post<T>(postUrl, body);
   }
@@ -32,7 +31,7 @@ export class RequestService {
    * @returns Результат запроса
    */
   public postRPC<T>(params: any, method: string): Observable<T> {
-    const postUrl = `${environment.host}worker/${method}`;
+    const postUrl = `https://iap_dev2.tomskasu.ru/api/worker/${method}`;
     const body = {
       id: 1,
       jsonrpc: '2.0',

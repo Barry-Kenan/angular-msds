@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin, map, mergeMap, Observable } from 'rxjs';
 import { List } from 'src/app/models/list';
 import { Organization } from 'src/app/modules/new-passport-form/models/organization';
-import { environment } from 'src/environments/environment';
 import { listDanger } from '../../consts/list-danger';
 import { listEnterpriseTypes } from '../../consts/list-enterprise-types';
 import { listPassportPeriod } from '../../consts/list-passport-period';
@@ -323,10 +322,10 @@ export class FullPassportFormComponent implements OnInit {
       .pipe(
         map(res => {
           this.passport = res;
-          this.passportView = environment.passportView + this.id;
+          this.passportView = `https://iap_dev2.tomskasu.ru/passportView/${this.id}`;
 
           if (res.codeQr) {
-            this.codeQrUrl = environment.fileHost + res.codeQr;
+            this.codeQrUrl = `https://iap_dev2.tomskasu.ru/file/api/${res.codeQr}`;
           }
           const { organizationId, mediatorId } = res;
 
