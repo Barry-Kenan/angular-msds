@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it("should have as title 'realWorld'", () => {
+  it("should have as title 'MSDS'", () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('realWorld');
+    expect(app.title).toEqual('MSDS');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('realWorld app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('MSDS app is running!');
   });
 });
